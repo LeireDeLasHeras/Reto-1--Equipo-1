@@ -1,0 +1,138 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Be Vietnam Pro', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f0f0;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    height: 600px;
+    background-color: white;
+}
+
+.background {
+    width: 100%;
+    height: 540px;
+    background-color: #7C90A0;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.profile-section {
+    text-align: center;
+    position: relative;
+    margin-top: 20px;
+}
+
+.profile-pic {
+    width: 125px;
+    height: 125px;
+    background-color: #4E5166;
+    margin: 0 auto;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-img {
+    width: 85px;
+    height: 85px;
+}
+
+.login-form {
+    position: relative;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.label {
+    margin-bottom: 5px;
+    color: white;
+    font-size: 13px;
+    text-align: center;
+}
+
+.input {
+    width: 200px;
+    height: 40px;
+    background-color: #9FABB5;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    border: none;
+    padding: 10px;
+    font-size: 14px;
+}
+
+.button {
+    background-color: #4E5166;
+    border-radius: 5px;
+    text-align: center;
+    color: white;
+    font-size: 13px;
+    padding: 10px 20px;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.login {
+    width: 95px;
+    height: 30px;
+}
+
+.register {
+    width: 90px;
+    height: 30px;
+}
+
+.footer {
+    width: 100%;
+    height: 60px;
+    background-color: #4E5166;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+}
+
+.footer-img {
+    width: 257px;
+    height: 60px;
+    position: relative;
+    bottom: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        height: auto;
+    }
+
+    .button {
+        width: 80px;
+        height: 25px;
+    }
+
+    .input {
+        width: 180px;
+    }
+
+    .footer-img {
+        width: 200px;
+    }
+}
