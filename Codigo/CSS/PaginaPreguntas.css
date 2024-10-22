@@ -107,6 +107,10 @@ body {
     border: none;
     padding: 0 10px;
     color: white;
+    font-size: 1.1em;
+}
+.order-button:hover{
+    background-color: #63D471;
 }
 
 .title {
@@ -150,7 +154,7 @@ body {
     background-color: #7C90A0;
     padding: 10px;
     margin-bottom: 20px;
-    color: black;
+    color: white;
 }
 
 .add-post {
