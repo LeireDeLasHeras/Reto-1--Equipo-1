@@ -58,7 +58,7 @@ label {
     width: 300px;
 }
 
-.input_usuario, .input_password {
+.input_usuario, .input_password, .input_correo {
     width: 300px;
     height: 48px;
     background-color: #9FABB5;
@@ -69,15 +69,15 @@ label {
     font-size: 16px;
 }
 
-.input_usuario:hover, .input_password:hover {
+.input_usuario:hover, .input_password:hover, .input_correo:hover {
     background-color: #9DA6AF;
 }
 
-.input_usuario:focus, .input_password:focus {
+.input_usuario:focus, .input_password:focus, .input_correo:focus {
     outline: 1px solid #4E5166;
 }
 
-.boton_login, .boton_registro {
+.boton_registro {
     background-color: #4E5166;
     border-radius: 6px;
     text-align: center;
@@ -94,12 +94,12 @@ label {
     box-shadow: none;   
 }
 
-.boton_login:hover, .boton_registro:hover {
+.boton_registro:hover {
     background-color: #414352;
     cursor: pointer;
 }
 
-.boton_login, .boton_registro {
+.boton_registro {
     transition: background-color 0.2s ease;
 }
 
