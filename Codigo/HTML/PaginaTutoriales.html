@@ -3,15 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mockup Layout</title>
-    <link rel="stylesheet" href="../CSS/PaginaTutoriales.css">
+    <title>Tutoriales</title>
+    <link rel="icon" href="../Media/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../CSS/EstilosComunes.css">
 </head>
 <body>
     <div class="container">
         <div class="navbar">
             <img class="logo" src="../Media/logo_aergibide.png" alt="Logo Aergibide">
             <div class="menu">
-                <div><a href="#" class="menu-item">PREGUNTAS</a></div>
+                <div><a href="../HTML/PaginaPreguntas.html" class="menu-item">PREGUNTAS</a></div>
                 <div><a href="../HTML/PaginaTutoriales.html" class="menu-item">TUTORIALES</a></div>               
                 <div><a href="../HTML/PaginaGuias.html" class="menu-item">GUIAS</a></div>
             </div>
@@ -26,7 +27,11 @@
                 <div class="search-bar">
                     <img src="../Media/logo_buscar.png" alt="Search Icon" class="search-icon">
                     <input type="text" placeholder="Buscar...">
-                    <button class="order-button">ORDENAR</button>
+                    <select class="order-button" name="orden" id="orden">
+                        <option value="recientes">Más recientes</option>
+                        <option value="antiguas">Más antiguas</option>
+                        <option value="populares">Más populares</option>
+                    </select>
                 </div>
                 <div class="contenido">
                     <div class="video-content">
@@ -34,14 +39,14 @@
                             <img src="../Media/video_placeholder.png" alt="Video Placeholder">
                         </div>
                         <div class="video-details">
-                            <h2>Título del Video</h2>
+                            <h2 class="title">Título del Video</h2>
                             <p>@usuario dd/mm/yyyy</p>
                             <p>Esta es la descripción del video...</p>
                         </div>
                     </div>
-                <div class="add-post">
-                    <button class="add-icon"><img src="../Media/logo_anadir_t.png" alt="Aergibide Logo" width="13%"></button>
-                </div>
+                    <div class="add-post">
+                        <button class="add-icon"><img src="../Media/logo_anadir.png" alt="Icono Añadir"></button>
+                    </div>
                 </div>
             </div>
 
