@@ -142,7 +142,6 @@ body {
     height: 35px;
 }
 
-/* Sidebar */
 .sidebar {
     width: 175px;
     background-color: #798C9C;
@@ -167,7 +166,6 @@ body {
     margin: 20px 0;
 }
 
-/* Footer */
 .footer {
     background-color: #4E5166;
     height: 60px;
@@ -178,3 +176,4 @@ body {
     bottom: 0;
     width: 100%;
 }
+
