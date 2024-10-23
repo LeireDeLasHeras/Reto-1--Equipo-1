@@ -31,6 +31,13 @@ body {
     padding: 0 20px;
     color: white;
 }
+.navbar .menu div{
+    padding: 2em;
+}
+
+.navbar .menu div:hover{
+    background-color: #63D471;
+}
 
 .logo {
     width: 75px;
@@ -171,7 +178,9 @@ body {
     color: white;
     font-size: 1.3em;
 }
-
+.sidebar .topics p:hover {
+   background-color: #63D471;
+}
 .footer {
     background-color: #4E5166;
     height: 60px;
@@ -179,6 +188,7 @@ body {
     justify-content: center;
     align-items: center;
     width: 100%;
+    
 }
 
 /* Estilos para PaginaPreguntas */
