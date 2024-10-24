@@ -16,6 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $conexion = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME, DB_USER, DB_PASS);
         $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+        // Encriptar la contraseña
         $contrasena_encriptada = password_hash($contrasena, PASSWORD_DEFAULT);
 
         $sql = "INSERT INTO Usuario (nombre, apellido, nickname, contrasena, tipo, correo) VALUES (:nombre, :apellido, :nickname, :contrasena, 'normal', :correo)";
