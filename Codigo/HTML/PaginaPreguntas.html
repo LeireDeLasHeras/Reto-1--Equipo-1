@@ -19,7 +19,13 @@
                 </ul>
             </nav>
             <div class="user-info">
-                <span><a href="../HTML/PaginaUsuario.html" class="menu-item">USER</a></span>
+                <span>                    
+                    <select class="user-options" name="opciones" id="opciones">
+                        <option value="user">Usuario</option>
+                        <option value="editar"><a href="../HTML/PaginaPreguntas.html">Editar Perfil</a></option>
+                        <option value="publicadas">Publicadas</option>
+                        <option value="guardadas">Guardados</option>
+                </select></span>
                 <div class="user-avatar"></div>
             </div>
         </div>
@@ -82,7 +88,7 @@
                 </div>
 
                 <div class="add-post">
-                    <button class="add-icon"><img src="../Media/logo_anadir.png" alt="Icono Añadir"></button>
+                    <a href="../HTML/PaginaFormulario_AnadirArchivo.html"><button class="add-icon"><img src="../Media/logo_anadir.png" alt="Icono Añadir"></a></button>
                 </div>
             </div>
 
