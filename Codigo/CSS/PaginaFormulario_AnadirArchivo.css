@@ -30,14 +30,23 @@ body {
     padding: 0 20px;
     color: white;
 }
+.navbar .menu {
+    display: flex; 
+}
+.navbar .menu ul {
+    display: flex; 
+    list-style-type: none; 
+}
+.navbar .menu li {
+    padding: 2em; 
+}
+.navbar .menu li:hover {
+    background-color: #63D471;
+}
 
 .logo {
     width: 75px;
     height: 75px;
-}
-
-.menu {
-    display: flex;
 }
 
 .menu-item {
@@ -71,61 +80,12 @@ body {
     flex-grow: 1;
 }
 
-.content-left {
+.contenido {
     width:100%;
     background-color: #7C90A0;
-    padding: 20px;
     position: relative;
-}
-
-
-.order-button {
-    margin-left: 10px;
-    height: 40px;
-    background-color: #9FABB5;
-    border-radius: 5px;
-    border: none;
-    padding: 0 10px;
-    color: white;
-}
-
-.contenido {
-    background-color: #7C90A0;
-    padding: 10px;
-    margin-bottom: 20px;
-    color: black;
-}
-
-
-
-.sidebar {
-    width: 20%;
-    background-color: #798C9C;
     padding: 20px;
-    color: white;
-}
-
-.sidebar h3 {
-    text-align: center;
-    font-size: 1.7em;
-}
-
-.sidebar hr {
-    border: 1px solid white;
-    margin: 10px 0;
-}
-
-.sidebar .topics {
-    text-align: center;
-}
-
-.sidebar .topics p   {
-    margin: 20px 0;
-}
-.sidebar .topics p .tema {
-    text-decoration: none;
-    color: white;
-    font-size: 1.3em;
+    color: black;
 }
 
 .footer {
@@ -157,10 +117,7 @@ body {
     font-size: 1.2em;
 }
 
-.formulario-post input[type="text"],
-.formulario-post select,
-.formulario-post textarea,
-.formulario-post input[type="file"] {
+.formulario-post input, .formulario-post select, .formulario-post textarea{
     margin-bottom: 20px;
     padding: 10px;
     border: none;
