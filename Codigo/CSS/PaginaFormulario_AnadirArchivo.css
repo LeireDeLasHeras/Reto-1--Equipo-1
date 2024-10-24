@@ -30,14 +30,23 @@ body {
     padding: 0 20px;
     color: white;
 }
+.navbar .menu {
+    display: flex; 
+}
+.navbar .menu ul {
+    display: flex; 
+    list-style-type: none; 
+}
+.navbar .menu li {
+    padding: 2em; 
+}
+.navbar .menu li:hover {
+    background-color: #63D471;
+}
 
 .logo {
     width: 75px;
     height: 75px;
-}
-
-.menu {
-    display: flex;
 }
 
 .menu-item {
