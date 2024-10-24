@@ -1,0 +1,70 @@
+<!DOCTYPE html> 
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mockup Layout</title>
+    <link rel="stylesheet" href="../CSS/PaginaFormulario_AnadirArchivo.css">
+</head>
+<body>
+    <div class="container">
+        <div class="navbar">
+            <img class="logo" src="../Media/logo_aergibide.png" alt="Logo Aergibide">
+            <div class="menu">
+                <div><a href="#" class="menu-item">PREGUNTAS</a></div>
+                <div><a href="../HTML/PaginaTutoriales.html" class="menu-item">TUTORIALES</a></div>               
+                <div><a href="../HTML/PaginaGuias.html" class="menu-item">GUIAS</a></div>
+            </div>
+            <div class="user-info">
+                <span><a href="#" class="menu-item">USER</a></span>
+                <div class="user-avatar"></div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="content-left">
+               
+                <div class="contenido">
+                    <div class="formulario-post">
+                        <form action="#" method="post" enctype="multipart/form-data">
+                            <label for="titulo">Título:</label>
+                            <input type="text" id="titulo" name="titulo" placeholder="Escribe el título">
+                    
+                            <label for="tema">Añadir tema:</label>
+                            <select id="tema" name="tema">
+                                <option value="tema1">Tema1</option>
+                                <option value="tema2">Tema2</option>
+                                <option value="tema3">Tema3</option>
+                                <option value="tema4">Tema4</option>
+                                <option value="tema5">Tema5</option>
+                            </select>
+                    
+                            <label for="descripcion">Descripción:</label>
+                            <textarea id="descripcion" name="descripcion" placeholder="Escribe una descripción..."></textarea>
+                    
+                            <label for="archivo">Adjuntar archivo:</label>
+                            <input type="file" id="archivo" name="archivo">
+
+                            <label for="tema">Donde publicarlo</label>
+                            <select id="tema" name="tema">
+                                <option value="tema1">Preguntas</option>
+                                <option value="tema2">Tutoriales</option>
+                                <option value="tema3">Guias</option>
+                            </select>
+                    
+                            <div class="form-buttons">
+                                <button type="button" class="cancel-button">Cancelar</button>
+                                <button type="submit" class="submit-button">Publicar</button>
+                            </div>
+                        </form>
+                    </div>      
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <img src="../Media/logo_aergibide_letras.png" alt="Aergibide Logo" width="13%">
+        </div>
+    </div>
+</body>
+</html>
