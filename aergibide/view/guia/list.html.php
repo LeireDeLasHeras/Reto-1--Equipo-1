@@ -1,7 +1,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Preguntas</title>
+    <title>Guias</title>
     <link rel="icon" href="../Media/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/comunes_style.css">
 </head>
@@ -26,16 +26,30 @@
                         </button>
                     </h3>
                     <p>@usuario dd/mm/yyyy</p>
-                    <p>Esta es la descripción de la pregunta...</p>
+                    <p>Esta es la vista previa de la guía...</p>
                     <p class="num-like">
-                    <button class="boton-like">
-                        <img src="assets/img/logo_cora_l.png" alt="Icono Like">
-                    </button>000
+                        <button class="boton-like">
+                            <img src="assets/img/logo_cora_l.png" alt="Icono Like">
+                        </button>000
                     </p>
                 </div>
-                
+                <div class="post">
+                    <h3 class="title">Título
+                        <button class="bookmark">
+                            <img src="assets/img/logo_guardar_l.png" alt="Icono Bookmark">
+                        </button>
+                    </h3>
+                    <p>@usuario dd/mm/yyyy</p>
+                    <p>Esta es la vista previa de la guía...</p>
+                    <p class="num-like">
+                        <button class="boton-like">
+                            <img src="assets/img/logo_cora_l.png" alt="Icono Like">
+                        </button>000
+                    </p>
+                </div>
+
                 <div class="add-post">
-                    <a href="../HTML/PaginaFormulario_AnadirArchivo.html"><button class="add-icon"><img src="assets/img/logo_anadir.png" alt="Icono Añadir"></a></button>
+                    <button class="add-icon"><img src="assets/img/logo_anadir.png" alt="Icono Añadir"></button>
                 </div>
             </div>
 

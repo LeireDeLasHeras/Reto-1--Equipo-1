@@ -24,11 +24,11 @@ class Pregunta
         $stmt->execute();
         return $stmt->fetchAll();
     }
+    
     public function getPreguntaById($id){
         $sql = "SELECT * FROM " . $this->table . " WHERE idPregunta = ?";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute([$id]);
         return $stmt->fetch();
     }   
-
 }

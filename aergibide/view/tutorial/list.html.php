@@ -1,9 +1,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Preguntas</title>
-    <link rel="icon" href="../Media/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="assets/css/comunes_style.css">
+    <title>Tutoriales</title>
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="assets/css/estilos_comunes.css">
 </head>
 <body>
     <div class="container">
@@ -18,24 +18,29 @@
                         <option value="populares">Más populares</option>
                     </select>
                 </div>
-
-                <div class="post">
-                    <h3 class="title">Título
-                        <button class="bookmark">
-                            <img src="assets/img/logo_guardar_l.png" alt="Icono Bookmark">
-                        </button>
-                    </h3>
-                    <p>@usuario dd/mm/yyyy</p>
-                    <p>Esta es la descripción de la pregunta...</p>
-                    <p class="num-like">
-                    <button class="boton-like">
-                        <img src="assets/img/logo_cora_l.png" alt="Icono Like">
-                    </button>000
-                    </p>
+                <div class="contenido">
+                    <div class="video-content">
+                        <div class="video-placeholder">
+                            <img src="assets/img/video_placeholder.png" alt="Video Placeholder">
+                        </div>
+                        <div class="video-details">
+                            <h2 class="title">Título del Video
+                                <button class="bookmark">
+                                    <img src="../Media/logo_guardar_l.png" alt="Icono Bookmark">
+                                </button>
+                            </h2>
+                            <p>@usuario dd/mm/yyyy</p>
+                            <p>Esta es la descripción del video...</p>
+                            <p class="num-like">
+                                <button class="boton-like">
+                                    <img src="../Media/logo_cora_l.png" alt="Icono Like">
+                                </button>000
+                            </p>
+                        </div>
+                    </div>
                 </div>
-                
                 <div class="add-post">
-                    <a href="../HTML/PaginaFormulario_AnadirArchivo.html"><button class="add-icon"><img src="assets/img/logo_anadir.png" alt="Icono Añadir"></a></button>
+                    <button class="add-icon"><img src="assets/img/logo_anadir.png" alt="Icono Añadir"></button>
                 </div>
             </div>
 
