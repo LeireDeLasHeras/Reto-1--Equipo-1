@@ -6,7 +6,7 @@
     <title>Registrarme</title>
     <link rel="icon" href="../../public/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="../../public/css/registro_style.css">
-    <script src="../../public/js/registro.js"></script>
+
 </head>
 <body>
     <main>

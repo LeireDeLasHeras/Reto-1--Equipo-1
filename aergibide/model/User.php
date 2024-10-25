@@ -16,14 +16,13 @@ class User
         $this->connection = $dbObj->conection;
     }
 
-    public function getUsuarioPor($campo, $valor)
+    public function getUserByEmail($correo)
     {
-        if (is_null($valor)) return false;
+        if (is_null($correo)) return false;
 
-        $columna = ($campo === 'email') ? 'correo' : 'nickname';
-        $sql = "SELECT * FROM " . $this->table . " WHERE $columna = ?";
+        $sql = "SELECT * FROM " . $this->table . " WHERE correo = ?";
         $stmt = $this->connection->prepare($sql);
-        $stmt->execute([$valor]);
+        $stmt->execute([$correo]);
         return $stmt->fetch();
     }
 
@@ -34,12 +33,14 @@ class User
 
             $hashedPassword = password_hash($post['password'], PASSWORD_DEFAULT);
 
-            $stmt=$this->connection->prepare('INSERT INTO `users` (`name`, `email`, `password`) VALUES (:name, :email, :password)');
+            $stmt=$this->connection->prepare('INSERT INTO `Usuario` (`nombre`, `apellido`, `nickname`, `contrasena`, `tipo`, `correo`) VALUES (:nombre, :apellido, :nickname, :contrasena, "normal", :correo)');
 
             $stmt->execute([
-                ':name' => $post['name'],
-                ':email' => $post['email'],
-                ':password' => $hashedPassword,
+                ':nombre' => $post['nombre'],
+                ':apellido' => $post['apellidos'],
+                ':nickname' => $post['usuario'],
+                ':contrasena' => $hashedPassword,
+                ':correo' => $post['correo']
             ]);
 
             if ($this->connection->lastInsertId()){
@@ -51,14 +52,13 @@ class User
 
     public function login(){
         $post = filter_input_array(INPUT_POST, FILTER_SANITIZE_SPECIAL_CHARS);
+
         if (isset($post['submit'])){
-            $storedUser= $this->getUserByEmail($post['email']);
-            if (isset($storedUser['email']) && password_verify($post['password'], $storedUser['password'])){
+            $storedUser= $this->getUserByEmail($post['correo']);
+            if (isset($storedUser['correo']) && password_verify($post['password'], $storedUser['password'])){
                 return $storedUser;
             }
         }
         return;
     }
 }
-
-?>
