@@ -27,28 +27,31 @@ class User
     }
 
     public function register(){
-        $post = filter_input_array(INPUT_POST, FILTER_SANITIZE_SPECIAL_CHARS);
-
-        if(isset($post['submit'])){
-
-            $hashedPassword = password_hash($post['password'], PASSWORD_DEFAULT);
-
+        if(isset($_POST['submit'])){
+    
+                if ($this->getUserByEmail($_POST['correo'])) {
+                return "El correo ya está registrado.";
+            }
+    
+            $hashedPassword = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    
             $stmt=$this->connection->prepare('INSERT INTO `Usuario` (`nombre`, `apellido`, `nickname`, `contrasena`, `tipo`, `correo`) VALUES (:nombre, :apellido, :nickname, :contrasena, "normal", :correo)');
-
+    
             $stmt->execute([
-                ':nombre' => $post['nombre'],
-                ':apellido' => $post['apellidos'],
-                ':nickname' => $post['usuario'],
+                ':nombre' => $_POST['nombre'],
+                ':apellido' => $_POST['apellido'],
+                ':nickname' => $_POST['nickname'],
                 ':contrasena' => $hashedPassword,
-                ':correo' => $post['correo']
+                ':correo' => $_POST['correo']
             ]);
-
+    
             if ($this->connection->lastInsertId()){
                 return $this->connection->lastInsertId();
             }
         }
-        return;
+        return false;
     }
+    
 
     public function login(){
         $post = filter_input_array(INPUT_POST, FILTER_SANITIZE_SPECIAL_CHARS);
