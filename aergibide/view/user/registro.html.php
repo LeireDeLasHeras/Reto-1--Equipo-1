@@ -1,20 +1,17 @@
-<!DOCTYPE html>
-<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrarme</title>
-    <link rel="icon" href="../../public/img/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="../../public/css/registro_style.css">
-
+    <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="assets/css/registro_style.css">
 </head>
 <body>
     <main>
         <div class="logo">
-            <img class="logo_aergibide" src="../../public/img/logo_aergibide.png" alt="Logo Aergibide">
+            <img class="logo_aergibide" src="assets/img/logo_aergibide.png" alt="Logo Aergibide">
         </div>
 
-        <form action="../models/registro.php" method="POST">
+        <form action="#" method="POST">
             <label for="nickname">Nickname:</label>
             <input type="text" id="nickname" class="input_nickname" name="nickname" required>
 
@@ -33,8 +30,5 @@
             <input type="submit" class="boton_registro" value="Registrarme">
         </form>
     </main>
-    <footer>
-        <img class="logo_footer" src="../../public/img/logo_aergibide_letras.png" alt="Logo Aergibide" width="13%">
-    </footer>
 </body>
-</html>
+    

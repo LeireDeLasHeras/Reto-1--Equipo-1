@@ -1,7 +1,5 @@
 <?php
 
-//index.php?controller=user&action=login
-//index.php?controller=pregunta&action=list
 
 session_start();
 require_once "config/config.php";
@@ -22,7 +20,15 @@ $controller = new $controllerName();
 $dataToView["data"] = array();
 if(method_exists($controller, $_GET["action"])) $dataToView["data"] = $controller -> {$_GET["action"]}();
 
-require_once "view/layout/header.php";
+if ($_GET["action"] != "login" && $_GET["action"] != "register") {
+    require_once "view/layout/header.php";
+}
+
 require_once "view/".$_GET["controller"]."/".$controller->view.".html.php";
-require_once "view/layout/footer.php";
+
+if ($_GET["action"] != "login" && $_GET["action"] != "register") {
+    require_once "view/layout/footer.php";
+}
+
+
 

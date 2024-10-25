@@ -14,8 +14,8 @@
             <nav class="menu">
                 <ul>
                     <li><a href="index.php?controller=pregunta&action=list" class="menu-item">PREGUNTAS</a></li>
-                    <li><a href="../HTML/PaginaTutoriales.html" class="menu-item">TUTORIALES</a></li>               
-                    <li><a href="../HTML/PaginaGuias.html" class="menu-item">GUIAS</a></li>
+                    <li><a href="index.php?controller=tutorial&action=list" class="menu-item">TUTORIALES</a></li>               
+                    <li><a href="index.php?controller=guia&action=list" class="menu-item">GUIAS</a></li>
                 </ul>
             </nav>
             <div class="user-info">

@@ -55,7 +55,7 @@ class User
 
         if (isset($post['submit'])){
             $storedUser= $this->getUserByEmail($post['correo']);
-            if (isset($storedUser['correo']) && password_verify($post['password'], $storedUser['password'])){
+            if (isset($storedUser['correo']) && password_verify($post['password'], $storedUser['contrasena'])){
                 return $storedUser;
             }
         }
