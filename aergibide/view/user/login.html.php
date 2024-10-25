@@ -14,18 +14,15 @@
             </div>
 
             <form action="../models/login.php" method="POST">
-                <label for="usuario">Usuario:</label>
-                <input type="text" id="usuario" class="input_usuario" name="username">
+                <label for="usuario">Correo electrónico:</label>
+                <input type="text" id="usuario" class="input_usuario" name="correo">
 
                 <label for="password">Contraseña:</label>
                 <input type="password" id="password" class="input_password" name="password">
 
                 <input type="submit" class="boton_login" value="Iniciar Sesión">
-                <a href="registro.html" class="boton_registro">Registrarme</a>
+                <a href="index.php?controller=user&action=registro" class="boton_registro">Registrarme</a>
             </form>
         </main>
-        <footer>
-            <img class="logo_footer" src="../../public/img/logo_aergibide_letras.png" alt="Logo Aergibide" width="13%">
-        </footer>
     </body>
 </html>

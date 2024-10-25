@@ -1,10 +1,8 @@
-<!DOCTYPE html> 
-<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mockup Layout</title>
-    <link rel="stylesheet" href="../CSS/PaginaFormulario_AnadirArchivo.css">
+    <link rel="stylesheet" href="assets/css/formulario_style.css">
 </head>
 <body>
     <div class="container">
@@ -12,7 +10,7 @@
             <img class="logo" src="../Media/logo_aergibide.png" alt="Logo Aergibide">
             <nav class="menu">
                 <ul>
-                    <li><a href="../HTML/PaginaPreguntas.html" class="menu-item">PREGUNTAS</a></li>
+                    <li><a href="" class="menu-item">PREGUNTAS</a></li>
                     <li><a href="../HTML/PaginaTutoriales.html" class="menu-item">TUTORIALES</a></li>               
                     <li><a href="../HTML/PaginaGuias.html" class="menu-item">GUIAS</a></li>
                 </ul>
@@ -58,4 +56,3 @@
         </div>
     </div>
 </body>
-</html>
