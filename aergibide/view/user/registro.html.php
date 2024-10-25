@@ -4,6 +4,7 @@
     <title>Registrarme</title>
     <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/registro_style.css">
+    <script src="assets/js/registro.js" ></script>
 </head>
 <body>
     <main>
@@ -11,7 +12,7 @@
             <img class="logo_aergibide" src="assets/img/logo_aergibide.png" alt="Logo Aergibide">
         </div>
 
-        <form action="#" method="POST">
+        <form action="index.php?controller=user&action=register" method="POST">
             <label for="nickname">Nickname:</label>
             <input type="text" id="nickname" class="input_nickname" name="nickname" required>
 
@@ -25,9 +26,9 @@
             <input type="email" id="correo" class="input_correo" name="correo" required>
 
             <label for="password">Contraseña:</label>
-            <input type="password" id="password" class="input_password" name="contrasena" required>
+            <input type="password" id="password" class="input_password" name="password" required>
 
-            <input type="submit" class="boton_registro" value="Registrarme">
+            <input type="submit" id="submit" name="submit" class="boton_registro" value="Registrarme">
         </form>
     </main>
 </body>
