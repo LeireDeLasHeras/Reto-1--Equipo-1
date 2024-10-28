@@ -18,27 +18,31 @@
                         <option value="populares">Más populares</option>
                     </select>
                 </div>
-                <div class="contenido">
-                    <div class="video-content">
-                        <div class="video-placeholder">
-                            <img src="assets/img/video_placeholder.png" alt="Video Placeholder">
-                        </div>
-                        <div class="video-details">
-                            <h2 class="title">Título del Video
+                <?php if(empty($dataToView["data"])): ?>
+                    <p>Actualmente no hay tutoriales</p>
+                <?php else: ?>
+                    <?php foreach($dataToView["data"] as $tutorial): ?>
+                        <div class="post">
+                            <h3 class="title"><?php echo $tutorial["titulo"]; ?>
                                 <button class="bookmark">
                                     <img src="assets/img/logo_guardar_l.png" alt="Icono Bookmark">
                                 </button>
-                            </h2>
-                            <p>@usuario dd/mm/yyyy</p>
-                            <p>Esta es la descripción del video...</p>
+                            </h3>
+                            <p><?php echo $tutorial["nickname"]; ?></p>
+                            <p><?php echo $tutorial["descripcion"]; ?></p>
+                            <p><iframe width="560" height="315" src="https://www.youtube.com/embed/<?php echo $tutorial["enlace"]; ?>"
+                                title="YouTube video player" frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></p>
                             <p class="num-like">
                                 <button class="boton-like">
                                     <img src="assets/img/logo_cora_l.png" alt="Icono Like">
                                 </button>000
                             </p>
+
                         </div>
-                    </div>
-                </div>
+                    <?php endforeach; ?>
+                <?php endif; ?>
                 <div class="add-post">
                     <button class="add-icon"><img src="assets/img/logo_anadir.png" alt="Icono Añadir"></button>
                 </div>

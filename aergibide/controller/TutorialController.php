@@ -10,9 +10,15 @@ class TutorialController {
         $this->view = "";
         $this->model = new Tutorial();
     }
-    
     public function list(){
-        $this->view = "list";
+        $this->view= "list";
+        return $this->model->getAlltutoriales();
+    }
+
+    public function view() {
+        $this->view= "view";
+        $id = $_GET["id"];
+        return $this->model->getTutorialById($id);
     }
     
 }
