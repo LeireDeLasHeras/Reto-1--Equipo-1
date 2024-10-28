@@ -19,23 +19,29 @@
                     </select>
                 </div>
 
-                <div class="post">
-                    <h3 class="title">Título
-                        <button class="bookmark">
-                            <img src="assets/img/logo_guardar_l.png" alt="Icono Bookmark">
-                        </button>
-                    </h3>
-                    <p>@usuario dd/mm/yyyy</p>
-                    <p>Esta es la descripción de la pregunta...</p>
-                    <p class="num-like">
-                    <button class="boton-like">
-                        <img src="assets/img/logo_cora_l.png" alt="Icono Like">
-                    </button>000
-                    </p>
-                </div>
+                <?php if(empty($dataToView["data"])): ?>
+                    <p>Actualmente no hay preguntas</p>
+                <?php else: ?>
+                    <?php foreach($dataToView["data"] as $pregunta): ?>
+                        <div class="post">
+                            <h3 class="title"><?php echo $pregunta["titulo"]; ?>
+                                <button class="bookmark">
+                                    <img src="assets/img/logo_guardar_l.png" alt="Icono Bookmark">
+                                </button>
+                            </h3>
+                            <p><?php echo $pregunta["nickname"]; ?><br><?php echo $pregunta["fecha"]; ?></p>
+                            <p><?php echo $pregunta["descripcion"]; ?></p>
+                            <p class="num-like">
+                                <button class="boton-like">
+                                    <img src="assets/img/logo_cora_l.png" alt="Icono Like">
+                                </button>000
+                            </p>
+                        </div>
+                    <?php endforeach; ?>
+                <?php endif; ?>
                 
                 <div class="add-post">
-                    <a href="../HTML/PaginaFormulario_AnadirArchivo.html"><button class="add-icon"><img src="assets/img/logo_anadir.png" alt="Icono Añadir"></a></button>
+                    <a href="../HTML/PaginaFormulario_AnadirArchivo.html"><button class="add-icon"><img src="assets/img/logo_anadir.png" alt="Icono Añadir"></button></a>
                 </div>
             </div>
 

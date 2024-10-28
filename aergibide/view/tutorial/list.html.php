@@ -3,7 +3,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tutoriales</title>
     <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="assets/css/estilos_comunes.css">
+    <link rel="stylesheet" href="assets/css/comunes_style.css">
 </head>
 <body>
     <div class="container">
@@ -26,14 +26,14 @@
                         <div class="video-details">
                             <h2 class="title">Título del Video
                                 <button class="bookmark">
-                                    <img src="../Media/logo_guardar_l.png" alt="Icono Bookmark">
+                                    <img src="assets/img/logo_guardar_l.png" alt="Icono Bookmark">
                                 </button>
                             </h2>
                             <p>@usuario dd/mm/yyyy</p>
                             <p>Esta es la descripción del video...</p>
                             <p class="num-like">
                                 <button class="boton-like">
-                                    <img src="../Media/logo_cora_l.png" alt="Icono Like">
+                                    <img src="assets/img/logo_cora_l.png" alt="Icono Like">
                                 </button>000
                             </p>
                         </div>
