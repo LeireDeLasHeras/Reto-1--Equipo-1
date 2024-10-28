@@ -26,9 +26,11 @@ if ($_GET["action"] != "login" && $_GET["action"] != "register") {
 
 require_once "view/".$_GET["controller"]."/".$controller->view.".html.php";
 
+/*
 if ($_GET["action"] != "login" && $_GET["action"] != "register") {
     require_once "view/layout/footer.php";
 }
+*/
 
 
 

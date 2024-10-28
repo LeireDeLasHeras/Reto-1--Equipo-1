@@ -19,7 +19,7 @@ class Pregunta
     public function getAllPreguntas()
     {
 
-        $sql = "SELECT * FROM " . $this->table ;
+        $sql = "SELECT titulo, descripcion, fecha, nickname FROM Pregunta, Usuario WHERE Pregunta.idUsuario = Usuario.idUsuario";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute();
         return $stmt->fetchAll();
