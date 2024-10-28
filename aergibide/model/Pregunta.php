@@ -30,5 +30,18 @@ class Pregunta
         $stmt = $this->connection->prepare($sql);
         $stmt->execute([$id]);
         return $stmt->fetch();
-    }   
+    }
+
+    public function crearPregunta(){
+        if(isset($_POST['submit'])){
+            $stmt = $this->connection->prepare("INSERT INTO Pregunta (titulo, descripcion, tema, fecha, idUsuario) VALUES (:titulo, :descripcion, :tema, NULL, :idUsuario)");
+            $stmt->execute([
+                ':titulo' => $_POST['titulo'],
+                ':descripcion' => $_POST['descripcion'],    
+                ':tema' => $_POST['tema'],
+
+                ':idUsuario' => "22"
+            ]);
+        }
+    }
 }

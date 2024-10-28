@@ -1,6 +1,5 @@
 <?php
 
-
 session_start();
 require_once "config/config.php";
 require_once "model/db.php";
@@ -27,6 +26,8 @@ if ($_GET["action"] != "login" && $_GET["action"] != "register") {
 require_once "view/".$_GET["controller"]."/".$controller->view.".html.php";
 
 /*
+FOOTER QUITADO POR QUE DA PROBLEMAS CUANDO EL CONTENIDO ES MAYOR QUE LA PANTALLA
+
 if ($_GET["action"] != "login" && $_GET["action"] != "register") {
     require_once "view/layout/footer.php";
 }

@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Preguntas</title>
     <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="assets/css/EstilosComunes.css">
 </head>
 <body>
     <div class="container">
