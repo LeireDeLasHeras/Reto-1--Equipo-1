@@ -137,7 +137,7 @@ body {
 
 .form-buttons {
     display: flex;
-    justify-content: space-between;
+    justify-content: ri;
 }
 
 .cancel-button,
@@ -149,9 +149,50 @@ body {
     font-size: 1em;
     color: white;
     cursor: pointer;
+    width: 120px;
+    height: 40px;
+    margin-right: 10px;
 }
 
 .submit-button:hover,
 .cancel-button:hover {
     background-color: #7C90A0;
+}
+
+
+.error-container {
+    background-color: white; 
+    color: #333;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    font-size: 0.9em;
+    position: relative;
+    width: 100%; 
+    max-width: 300px;
+    border: 1px solid lightgray; 
+    box-sizing: border-box;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.icono-error {
+    font-size: 1.2em;
+    margin-right: 8px;
+    color: #FFA500;
+}
+
+.texto-error {
+    font-weight: normal;
+}
+
+.error-container:after {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    border-width: 0 10px 10px 10px;
+    border-style: solid;
+    border-color: transparent transparent white transparent; 
 }
