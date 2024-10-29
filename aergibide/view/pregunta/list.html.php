@@ -41,7 +41,7 @@
                 <?php endif; ?>
                 
                 <div class="add-post">
-                    <a href="../HTML/PaginaFormulario_AnadirArchivo.html"><button class="add-icon"><img src="assets/img/logo_anadir.png" alt="Icono Añadir"></button></a>
+                    <a href="index.php?controller=pregunta&action=create"><button class="add-icon"><img src="assets/img/logo_anadir.png" alt="Icono Añadir"></button></a>
                 </div>
             </div>
 
