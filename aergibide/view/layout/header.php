@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Preguntas</title>
     <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
+    <script src="assets/js/desplegable.js"></script>
 </head>
 <body>
     <div class="container">
@@ -23,7 +24,8 @@
                         <option value="user">Usuario</option>
                         <option value="editar">Editar Perfil</option>
                         <option value="publicadas">Publicadas</option>
-                        <option value="guardadas">Guardados</option>
+                        <option value="guardadas">Guardadas</option>
+                        <option value="logout">Cerrar Sesión</option>
                 </select></span>
                 <div class="user-avatar"></div>
             </div>
