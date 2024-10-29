@@ -49,7 +49,27 @@ class UserController {
         header('Location: index.php?controller=pregunta&action=list');
         exit();
     }
-
+    public function edit() {
+        $this->page_title = "Editar usuario";
+        $this->view = "edit";
+    
+        if (isset($_GET["idUsuario"])) {
+            $idUsuario = $_GET["idUsuario"];
+            return $this->model->getUserById($idUsuario);
+        }
+        return null; // O manejar el caso donde no se proporciona un idUsuario
+    }
+    
+    public function update() {
+        $this->page_title = 'Actualizar usuario';
+        $this->view = 'edit';
+    
+        $idUsuario = $this->model->update($_POST);
+        $result = $this->model->getUserById($idUsuario);
+        $_GET["response"] = true;
+    
+        return $result;
+    }
     public function logout(){
         // Limpiar la sesión del usuario
         unset($_SESSION['is_logged_in'  ]);

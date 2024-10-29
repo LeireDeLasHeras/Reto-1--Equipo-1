@@ -15,6 +15,15 @@ class User
         $dbObj = new Db();
         $this->connection = $dbObj->conection;
     }
+    public function getUserById($idUsuario) {
+        if (is_null($idUsuario)) return false;
+        
+        $sql = "SELECT * FROM " . $this->table . " WHERE idUsuario = ?";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute([$idUsuario]);
+        
+        return $stmt->fetch();
+    }
 
     public function getUserByEmail($correo)
     {
@@ -55,6 +64,51 @@ class User
             }
         }
         return false;
+    }
+    public function update($param) {
+        $nombre = $apellido = $nickname = $correo = "";
+        $exists = false;
+    
+        // Cogemos de BD el objeto usuario si existe
+        if (isset($param["idUsuario"]) && $param["idUsuario"] != '') {
+            $actualUser = $this->getUserById($param["idUsuario"]);
+            if (isset($actualUser["idUsuario"])) {
+                $exists = true;
+                $idUsuario = $param["idUsuario"];
+                $nombre = $actualUser["nombre"];
+                $apellido = $actualUser["apellido"];
+                $nickname = $actualUser["nickname"];
+                $correo = $actualUser["correo"];
+            }
+        }
+    
+        // Sobreescribimos los campos cambiados que nos vengan vía POST
+        if (isset($param["nombre"])) $nombre = $param["nombre"];
+        if (isset($param["apellido"])) $apellido = $param["apellido"];
+        if (isset($param["nickname"])) $nickname = $param["nickname"];
+        if (isset($param["correo"])) $correo = $param["correo"];
+    
+        // Si se proporciona una nueva contraseña, la hasheamos
+        $passwordUpdate = "";
+        if (isset($param["password"]) && !empty($param["password"])) {
+            $passwordUpdate = ", contrasena = ?";
+            $hashedPassword = password_hash($param["password"], PASSWORD_DEFAULT);
+        }
+    
+        if ($exists) {
+            $sql = "UPDATE " . $this->table . " SET nombre = ?, apellido = ?, nickname = ?, correo = ?" . $passwordUpdate . " WHERE idUsuario = ?";
+            $stmt = $this->connection->prepare($sql);
+            
+            $params = [$nombre, $apellido, $nickname, $correo];
+            if ($passwordUpdate) {
+                $params[] = $hashedPassword;
+            }
+            $params[] = $idUsuario;
+    
+            $res = $stmt->execute($params);
+        }
+    
+        return $idUsuario;
     }
 
     public function login(){
