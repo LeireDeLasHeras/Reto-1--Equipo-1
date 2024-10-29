@@ -1,5 +1,4 @@
 <?php
-
 require_once "model/Pregunta.php";
 
 class PreguntaController {
