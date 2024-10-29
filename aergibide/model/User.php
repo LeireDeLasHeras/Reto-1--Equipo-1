@@ -26,17 +26,21 @@ class User
         return $stmt->fetch();
     }
 
-    public function register(){
-        if(isset($_POST['submit'])){
-    
-                if ($this->getUserByEmail($_POST['correo'])) {
+    public function register()
+    {
+        if (isset($_POST['submit'])){
+            // Verificar si el correo ya existe en la base de datos
+            if ($this->getUserByEmail($_POST['correo'])) {
                 return "El correo ya está registrado.";
             }
-    
+
             $hashedPassword = password_hash($_POST['password'], PASSWORD_DEFAULT);
-    
-            $stmt=$this->connection->prepare('INSERT INTO `Usuario` (`nombre`, `apellido`, `nickname`, `contrasena`, `tipo`, `correo`) VALUES (:nombre, :apellido, :nickname, :contrasena, "normal", :correo)');
-    
+
+            $stmt = $this->connection->prepare(
+                'INSERT INTO `Usuario` (`nombre`, `apellido`, `nickname`, `contrasena`, `tipo`, `correo`) 
+                 VALUES (:nombre, :apellido, :nickname, :contrasena, "normal", :correo)'
+            );
+
             $stmt->execute([
                 ':nombre' => $_POST['nombre'],
                 ':apellido' => $_POST['apellido'],
@@ -44,24 +48,25 @@ class User
                 ':contrasena' => $hashedPassword,
                 ':correo' => $_POST['correo']
             ]);
-    
+
+            // Confirmar que el registro fue exitoso
             if ($this->connection->lastInsertId()){
                 return $this->connection->lastInsertId();
             }
         }
         return false;
     }
-    
 
     public function login(){
         $post = filter_input_array(INPUT_POST, FILTER_SANITIZE_SPECIAL_CHARS);
-
+    
         if (isset($post['submit'])){
-            $storedUser= $this->getUserByEmail($post['correo']);
-            if (isset($storedUser['correo']) && password_verify($post['password'], $storedUser['contrasena'])){
+            $storedUser = $this->getUserByEmail($post['correo']);
+            if ($storedUser && password_verify($post['password'], $storedUser['contrasena'])){
                 return $storedUser;
             }
         }
-        return;
+        return null;
     }
+    
 }
