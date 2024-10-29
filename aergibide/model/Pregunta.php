@@ -1,5 +1,4 @@
 <?php
-
 class Pregunta
 {
     private $table = "Pregunta";
@@ -39,8 +38,7 @@ class Pregunta
                 ':titulo' => $_POST['titulo'],
                 ':descripcion' => $_POST['descripcion'],    
                 ':tema' => $_POST['tema'],
-
-                ':idUsuario' => "22"
+                ':idUsuario' => $_SESSION['idUsuario']
             ]);
         }
     }

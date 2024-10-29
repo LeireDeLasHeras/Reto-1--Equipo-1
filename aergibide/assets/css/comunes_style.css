@@ -153,15 +153,16 @@ body {
 }
 
 .add-post {
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
+    position: fixed;
+    top: 620px; 
+    right: 380px;
+    z-index: 100;
 }
 
 .add-icon {
     width: 60px;
     height: 60px;
-    position: relative;
+    position: fixed; 
     background: none;
     border: none;
     margin-right: 7.5px;
