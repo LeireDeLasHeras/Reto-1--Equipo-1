@@ -1,9 +1,12 @@
-<link rel="stylesheet" href="assets/css/formulario_style.css">
+<link rel="stylesheet" href="assets/css/formulario_styles.css">
 <div class="container">
     <div class="main-content">              
         <div class="contenido">
                 <div class="formulario-post">
                     <form action="index.php?controller=user&action=edit" method="POST">
+                        <label for="perfil">Cambiar Foto:</label>
+                        <input type="file" id="perfil" class="input_perfil" name="perfil"  accept=".jpg, .jpeg, .png"  />
+
                         <label for="nickname">Cambiar Nickname:</label>
                         <input type="text" id="nickname" class="input_nickname" name="nickname" required>
 
@@ -18,7 +21,7 @@
 
                         <div class="form-buttons">
                             <button type="button" class="cancel-button">Cancelar</button>
-                            <input  type="submit" class="submit-button" value="Guardar Cambios">
+                            <input style="color: white;" type="submit" name="sumbit" class="submit-button" value="Guardar">
                         </div>
                     </form>
                 </div>      
