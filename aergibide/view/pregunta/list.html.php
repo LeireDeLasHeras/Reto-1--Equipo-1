@@ -20,7 +20,7 @@
                 </div>
 
                 <?php if(empty($dataToView["data"])): ?>
-                    <p>Actualmente no hay preguntas</p>
+                    <p style="color: white;">Aún no hay preguntas de este tema</p>
                 <?php else: ?>
                     <?php foreach($dataToView["data"] as $pregunta): ?>
                         <div class="post">
@@ -54,11 +54,12 @@
                 <h3>Temas</h3>
                 <hr>    
                 <div class="topics">
-                    <p><a href="#" class="tema">Seguridad</a></p>
-                    <p><a href="#" class="tema">Aviones</a></p>
-                    <p><a href="#" class="tema">Piezas</a></p>
-                    <p><a href="#" class="tema">Vuelos</a></p>
-                    <p><a href="#" class="tema">Reparaciones</a></p>
+                    <p><a href="index.php?controller=pregunta&action=list" class="tema">Todos</a></p>
+                    <p><a href="index.php?controller=pregunta&action=list&tema=Seguridad" class="tema">Seguridad</a></p>
+                    <p><a href="index.php?controller=pregunta&action=list&tema=Aviones" class="tema">Aviones</a></p>
+                    <p><a href="index.php?controller=pregunta&action=list&tema=Piezas" class="tema">Piezas</a></p>
+                    <p><a href="index.php?controller=pregunta&action=list&tema=Vuelos" class="tema">Vuelos</a></p>
+                    <p><a href="index.php?controller=pregunta&action=list&tema=Reparaciones" class="tema">Reparaciones</a></p>
                 </div>
             </div>
         </div>
