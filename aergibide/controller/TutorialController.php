@@ -22,6 +22,10 @@ class TutorialController {
     }
     public function create(){
         $this->view= "create";
+        return ;
+    }
+    public function save(){
+        $this->view= "create";
         return $this->model->crearTutorial();
     }
     

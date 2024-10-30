@@ -32,27 +32,49 @@ class Tutorial
         return $stmt->fetch();
     } 
     public function crearTutorial(){
-        if(isset($_POST['titulo']) && isset($_POST['descripcion']) && isset($_POST['tema']) && isset($_POST['tema'])){
-            try {
-                $stmt = $this->connection->prepare("INSERT INTO Tutorial (titulo, tema, descripcion, enlace, fecha, idUsuario) VALUES (:titulo, :tema, :descripcion, :enlace, :fecha, :idUsuario)");
-                $result = $stmt->execute([
-                    ':titulo' => $_POST['titulo'],
-                    ':tema' => $_POST['tema'],
-                    ':descripcion' => $_POST['descripcion'],    
-                    ':enlace' => $_POST['enlace'],    
-                    ':fecha' => date('Y-m-d'),
-                    ':idUsuario' => $_SESSION['user_data']['idUsuario']
-                ]);
-                
-                if($result) {
-                    header('Location: index.php?controller=tutorial&action=list');
-                    exit();
-                }
-                return false;
-            } catch(PDOException $e) {
-                return false;
-            }
+     
+        if(!isset($_SESSION['user_data']) || !isset($_SESSION['user_data']['idUsuario'])) {
+           
+            return "Usuario no autenticado";
         }
-        return false;   
+    
+        if(!isset($_POST['titulo']) || !isset($_POST['descripcion']) || 
+           !isset($_POST['tema']) || !isset($_POST['enlace'])) {
+            
+            return "Todos los campos son obligatorios";
+        }
+    
+        if(empty($_POST['titulo']) || empty($_POST['descripcion']) || 
+           empty($_POST['tema']) || empty($_POST['enlace'])) {
+            
+            return "Ningún campo puede estar vacío";
+        }
+    
+
+        $videoId = $_POST['enlace'];
+    
+        try {
+            $stmt = $this->connection->prepare(
+                "INSERT INTO Tutorial (titulo, tema, descripcion, enlace, fecha, idUsuario) 
+                 VALUES (:titulo, :tema, :descripcion, :enlace, :fecha, :idUsuario)"
+            );
+            
+            $result = $stmt->execute([
+                ':titulo' => $_POST['titulo'],
+                ':tema' => $_POST['tema'],
+                ':descripcion' => $_POST['descripcion'],    
+                ':enlace' => $videoId, // Guardamos solo el ID del video    
+                ':fecha' => date('Y-m-d'),
+                ':idUsuario' => $_SESSION['user_data']['idUsuario']
+            ]);
+            
+            if($result) {
+                header('Location: index.php?controller=tutorial&action=list');
+                exit();
+            }
+            return "Error al crear el tutorial";
+        } catch(PDOException $e) {
+            return "Error en la base de datos: " . $e->getMessage();
+        }
     }
 }
