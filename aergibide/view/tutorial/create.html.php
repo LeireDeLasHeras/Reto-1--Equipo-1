@@ -4,7 +4,7 @@
     <div class="main-content">              
         <div class="contenido">
                 <div class="formulario-post">
-                    <form action="index.php?controller=pregunta&action=create" method="POST">
+                    <form action="index.php?controller=tutorial&action=create" method="POST">
                         <label for="titulo">T&iacute;tulo:</label>
                         <input type="text" id="titulo" name="titulo" placeholder="Escribe el título">
                     
@@ -17,7 +17,10 @@
                             <option value="Reparaciones">Reparaciones</option>
                         </select>
                         <label for="descripcion">Descripción:</label>
-                        <textarea id="descripcion" name="descripcion" placeholder="Escribe una descripción..."></textarea>               
+                        <textarea id="descripcion" name="descripcion" placeholder="Escribe una descripción..."></textarea>
+                        
+                        <label for="enlace">Enlace:</label>
+                        <input type="text" id="enlace" name="enlace" placeholder="Pega el enlace del video que quieras añadir">
 
                         <div class="form-buttons">
                             <button type="button" class="cancel-button">Cancelar</button>

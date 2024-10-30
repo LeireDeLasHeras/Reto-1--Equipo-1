@@ -49,11 +49,11 @@
                 <h3>Temas</h3>
                 <hr>    
                 <div class="topics">
-                    <p><a href="#" class="tema">Tema1</a></p>
-                    <p><a href="#" class="tema">Tema2</a></p>
-                    <p><a href="#" class="tema">Tema3</a></p>
-                    <p><a href="#" class="tema">Tema4</a></p>
-                    <p><a href="#" class="tema">Tema5</a></p>
+                    <p><a href="#" class="tema">Seguridad</a></p>
+                    <p><a href="#" class="tema">Aviones</a></p>
+                    <p><a href="#" class="tema">Piezas</a></p>
+                    <p><a href="#" class="tema">Vuelos</a></p>
+                    <p><a href="#" class="tema">Reparaciones</a></p>
                 </div>
             </div>
         </div>
