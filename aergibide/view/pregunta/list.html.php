@@ -24,18 +24,23 @@
                 <?php else: ?>
                     <?php foreach($dataToView["data"] as $pregunta): ?>
                         <div class="post">
-                            <h3 class="title"><?php echo $pregunta["titulo"]; ?>
+                            <h3 class="title">
+                                <a style="text-decoration: none; color: white; transition: color 0.2s;" onmouseover="this.style.color='#63D471'" onmouseout="this.style.color='white'" href="index.php?controller=pregunta&action=view&id=<?php echo $pregunta['idPregunta']; ?>">
+                                    <?php echo $pregunta["titulo"]; ?>
+                                </a>
                                 <button class="bookmark">
                                     <img src="assets/img/logo_guardar_l.png" alt="Icono Bookmark">
                                 </button>
                             </h3>
-                            <p><?php echo $pregunta["nickname"]; ?><br><?php echo $pregunta["fecha"]; ?></p>
-                            <p><?php echo $pregunta["descripcion"]; ?></p>
+                            <p><?php echo $pregunta["nickname"]; ?><br><?php echo $pregunta["fecha"]; ?></p><br>
+                            <p style="text-align: justify; max-width: 90%;"><?php echo $pregunta["descripcion"]; ?></p>
                             <p class="num-like">
                                 <button class="boton-like">
                                     <img src="assets/img/logo_cora_l.png" alt="Icono Like">
                                 </button>000
                             </p>
+                            <br>
+                            <hr style="width: 90%;">
                         </div>
                     <?php endforeach; ?>
                 <?php endif; ?>

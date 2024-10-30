@@ -17,15 +17,25 @@ class Pregunta
 
     public function getAllPreguntas()
     {
-
-        $sql = "SELECT titulo, descripcion, fecha, nickname FROM Pregunta, Usuario WHERE Pregunta.idUsuario = Usuario.idUsuario";
+        $sql = "SELECT idPregunta, titulo, descripcion, fecha, nickname FROM Pregunta, Usuario WHERE Pregunta.idUsuario = Usuario.idUsuario";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute();
         return $stmt->fetchAll();
     }
+
+    public function getRespuestasByPreguntaId($idPregunta){
+        $sql = "SELECT r.idRespuesta, r.descripcion, r.fecha, u.nickname 
+                FROM Respuesta r 
+                INNER JOIN Usuario u ON r.idUsuario = u.idUsuario 
+                WHERE r.idPregunta = ?
+                ORDER BY r.fecha DESC";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute([$idPregunta]);
+        return $stmt->fetchAll();
+    }
     
     public function getPreguntaById($id){
-        $sql = "SELECT * FROM " . $this->table . " WHERE idPregunta = ?";
+        $sql = "SELECT p.*, u.nickname FROM " . $this->table . " p JOIN Usuario u ON p.idUsuario = u.idUsuario WHERE p.idPregunta = ?";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute([$id]);
         return $stmt->fetch();

@@ -16,9 +16,15 @@ class PreguntaController {
     }
 
     public function view() {
-        $this->view= "view";
+        $this->view = "view";
         $id = $_GET["id"];
-        return $this->model->getPreguntaById($id);
+        
+        $data = [
+            'pregunta' => $this->model->getPreguntaById($id),
+            'respuestas' => $this->model->getRespuestasByPreguntaId($id)
+        ];
+        
+        return $data;
     }
 
     public function create(){
