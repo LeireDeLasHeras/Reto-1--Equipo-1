@@ -40,20 +40,21 @@ class Guia
     
         if (isset($param["titulo"])) $titulo = $param["titulo"];
         if (isset($param["descripcion"])) $descripcion = $param["descripcion"];
-        if (isset($param["tema"])) $tema = $param["tema"];
         $idUsuario = $_SESSION['user_data']['idUsuario'];
     
         try {
-            $sql = "INSERT INTO Guia (titulo, descripcion, tema, fecha, idUsuario, fichero) VALUES (?, ?, ?, ?, ?, ?)";
+            $sql = "INSERT INTO Guia (titulo, descripcion, fecha, idUsuario, fichero) VALUES (?, ?, ?, ?, ?)";
             $stmt = $this->connection->prepare($sql);
     
             $fechaActual = date('Y-m-d');
-            $stmt->execute([$titulo, $descripcion, $tema, $fechaActual, $idUsuario, $filePath]);
+            $stmt->execute([$titulo, $descripcion, $fechaActual, $idUsuario, $filePath]);
     
             $id = $this->connection->lastInsertId();
     
             return $id; 
         } catch (PDOException $e) {
+            print_r($e->getMessage());
+            die();  
             return false;
         }
     }
