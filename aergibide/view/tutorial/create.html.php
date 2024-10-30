@@ -1,10 +1,10 @@
 <link rel="stylesheet" href="assets/css/formulario_styles.css">
-<script src="assets/js/crear_pregunta.js"></script>
+<script src="assets/js/crear_tutorial.js"></script>
 <div class="container">
     <div class="main-content">              
         <div class="contenido">
                 <div class="formulario-post">
-                    <form action="index.php?controller=tutorial&action=create" method="POST">
+                    <form action="index.php?controller=tutorial&action=save" method="POST">
                         <label for="titulo">T&iacute;tulo:</label>
                         <input type="text" id="titulo" name="titulo" placeholder="Escribe el título">
                     
