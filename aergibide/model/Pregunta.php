@@ -15,12 +15,20 @@ class Pregunta
         $this->connection = $dbObj->conection;
     }
 
-    public function getAllPreguntas()
+    public function getPreguntasByTema()
     {
-        $sql = "SELECT idPregunta, titulo, descripcion, fecha, nickname FROM Pregunta, Usuario WHERE Pregunta.idUsuario = Usuario.idUsuario";
-        $stmt = $this->connection->prepare($sql);
-        $stmt->execute();
-        return $stmt->fetchAll();
+        if(isset($_GET['tema'])){
+            $tema = $_GET['tema'];
+            $sql = "SELECT idPregunta, titulo, descripcion, fecha, nickname FROM Pregunta, Usuario WHERE Pregunta.idUsuario = Usuario.idUsuario AND tema = ?";
+            $stmt = $this->connection->prepare($sql);
+            $stmt->execute([$tema]);
+            return $stmt->fetchAll();
+        }else{
+            $sql = "SELECT idPregunta, titulo, descripcion, fecha, nickname FROM Pregunta, Usuario WHERE Pregunta.idUsuario = Usuario.idUsuario";
+            $stmt = $this->connection->prepare($sql);
+            $stmt->execute();
+            return $stmt->fetchAll();        
+        }
     }
 
     public function getRespuestasByPreguntaId($idPregunta){

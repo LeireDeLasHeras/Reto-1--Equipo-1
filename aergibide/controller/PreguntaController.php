@@ -12,7 +12,7 @@ class PreguntaController {
 
     public function list(){
         $this->view= "list";
-        return $this->model->getAllPreguntas();
+        return $this->model->getPreguntasByTema();
     }
 
     public function view() {
