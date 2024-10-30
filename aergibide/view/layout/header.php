@@ -21,7 +21,7 @@
             <div class="user-info">
                 <span>                    
                     <select class="user-options" name="opciones" id="opciones">
-                        <option value="user">Usuario</option>
+                        <option value="user"disabled selected><?php echo $_SESSION['user_data']['nickname']; ?></option>
                         <option value="editar">Editar Perfil</option>
                         <option value="publicadas">Publicadas</option>
                         <option value="guardadas">Guardadas</option>

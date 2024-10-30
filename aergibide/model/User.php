@@ -86,7 +86,6 @@ class User
         if (isset($param["nombre"])) $nombre = $param["nombre"];
         if (isset($param["apellido"])) $apellido = $param["apellido"];
         if (isset($param["nickname"])) $nickname = $param["nickname"];
-        if (isset($param["correo"])) $correo = $param["correo"];
     
         // Si se proporciona una nueva contraseña, la hasheamos
         $passwordUpdate = "";
