@@ -19,7 +19,7 @@ class Tutorial
     public function getAlltutoriales()
     {
 
-        $sql = "SELECT titulo, descripcion, nickname, enlace FROM Tutorial, Usuario WHERE Tutorial.idUsuario = Usuario.idUsuario";
+        $sql = "SELECT titulo, descripcion, nickname, enlace, fecha, tema FROM Tutorial, Usuario WHERE Tutorial.idUsuario = Usuario.idUsuario";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute();
         return $stmt->fetchAll();

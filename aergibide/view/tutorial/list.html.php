@@ -28,8 +28,11 @@
                                     <img src="assets/img/logo_guardar_l.png" alt="Icono Bookmark">
                                 </button>
                             </h3>
+                            <p><?php echo $tutorial["tema"]; ?></p>
+                            <p><?php echo $tutorial["fecha"]; ?></p>
                             <p><?php echo $tutorial["nickname"]; ?></p>
                             <p><?php echo $tutorial["descripcion"]; ?></p>
+
                             <p><iframe width="560" height="315" src="https://www.youtube.com/embed/<?php echo $tutorial["enlace"]; ?>"
                                 title="YouTube video player" frameborder="0" 
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
