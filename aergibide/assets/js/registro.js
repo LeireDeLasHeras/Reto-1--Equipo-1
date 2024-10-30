@@ -61,10 +61,9 @@ document.addEventListener('DOMContentLoaded', function () {
             mostrarMensajeError(correoInput, "El correo debe terminar con @egibide.org.");
             esValido = false;
         }
-
-        const passwordPattern = /^(?=.*[A-Z].*[A-Z])(?=.*\d.*\d)(?=.*[.,-_].*[.,-_]).{8,}$/;
+        const passwordPattern = /^(?=.*[A-Z])(?=.*\d)(?=.*[.,-_]).{8,}$/;
         if (!passwordPattern.test(passwordInput.value)) {
-            mostrarMensajeError(passwordInput, "La contraseña debe tener al menos 8 caracteres, con 2 números, 2 mayúsculas y 2 caracteres especiales (. , - _).");
+            mostrarMensajeError(passwordInput, "La contraseña debe tener al menos 8 caracteres, con 1 número, 1 mayúscula y 1 caracter especial (. , - _).");
             esValido = false;
         }
 

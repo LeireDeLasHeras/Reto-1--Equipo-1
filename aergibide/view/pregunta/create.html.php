@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="assets/css/formulario_style.css">
+<link rel="stylesheet" href="assets/css/formulario_styles.css">
 <script src="assets/js/crear_pregunta.js"></script>
 <div class="container">
     <div class="main-content">              

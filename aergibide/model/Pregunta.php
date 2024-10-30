@@ -32,14 +32,26 @@ class Pregunta
     }
 
     public function crearPregunta(){
-        if(isset($_POST['submit'])){
-            $stmt = $this->connection->prepare("INSERT INTO Pregunta (titulo, descripcion, tema, fecha, idUsuario) VALUES (:titulo, :descripcion, :tema, NULL, :idUsuario)");
-            $stmt->execute([
-                ':titulo' => $_POST['titulo'],
-                ':descripcion' => $_POST['descripcion'],    
-                ':tema' => $_POST['tema'],
-                ':idUsuario' => $_SESSION['idUsuario']
-            ]);
+        if(isset($_POST['titulo']) && isset($_POST['descripcion']) && isset($_POST['tema'])){
+            try {
+                $stmt = $this->connection->prepare("INSERT INTO Pregunta (titulo, descripcion, tema, fecha, idUsuario) VALUES (:titulo, :descripcion, :tema, :fecha, :idUsuario)");
+                $result = $stmt->execute([
+                    ':titulo' => $_POST['titulo'],
+                    ':descripcion' => $_POST['descripcion'],    
+                    ':tema' => $_POST['tema'],
+                    ':fecha' => date('Y-m-d'),
+                    ':idUsuario' => $_SESSION['user_data']['idUsuario']
+                ]);
+                
+                if($result) {
+                    header('Location: index.php?controller=pregunta&action=list');
+                    exit();
+                }
+                return false;
+            } catch(PDOException $e) {
+                return false;
+            }
         }
+        return false;   
     }
 }
