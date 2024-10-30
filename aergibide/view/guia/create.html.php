@@ -20,7 +20,7 @@
                         <textarea id="descripcion" name="descripcion" placeholder="Escribe una descripción..."></textarea>               
 
                         <label for="archivos">Añadir archivos:</label>
-                        <input type="file" id="archivos" name="archivos[]" multiple>
+                        <input type="file" id="archivos" name="archivos">
 
                         <div class="form-buttons">
                             <button type="button" class="cancel-button">Cancelar</button>
