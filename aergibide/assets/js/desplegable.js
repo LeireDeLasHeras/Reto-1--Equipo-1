@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 window.location.href = 'index.php?controller=user&action=profile';
                 break;
             case 'editar':
-                window.location.href = 'index.php?controller=user&action=edit';
+                window.location.href = 'index.php?controller=user&action=edit'; 
                 break;
             case 'publicadas':
                 window.location.href = 'index.php?controller=user&action=published';

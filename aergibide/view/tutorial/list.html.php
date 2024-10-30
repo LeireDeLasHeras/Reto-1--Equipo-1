@@ -44,8 +44,7 @@
                     <?php endforeach; ?>
                 <?php endif; ?>
                 <div class="add-post">
-                    <button class="add-icon"><img src="assets/img/logo_anadir.png" alt="Icono Añadir"></button>
-                </div>
+                    <a href="index.php?controller=tutorial&action=create"><button class="add-icon"><img src="assets/img/logo_anadir.png" alt="Icono Añadir"></button></a>                </div>
             </div>
 
             <div class="sidebar">

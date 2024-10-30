@@ -20,5 +20,9 @@ class TutorialController {
         $id = $_GET["id"];
         return $this->model->getTutorialById($id);
     }
+    public function create(){
+        $this->view= "create";
+        return $this->model->crearTutorial();
+    }
     
 }
