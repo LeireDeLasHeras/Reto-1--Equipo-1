@@ -31,6 +31,7 @@ class Pregunta
         }
     }
 
+
     public function getRespuestasByPreguntaId($idPregunta){
         $sql = "SELECT r.idRespuesta, r.descripcion, r.fecha, u.nickname 
                 FROM Respuesta r 
