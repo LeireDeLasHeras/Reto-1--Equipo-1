@@ -19,12 +19,12 @@ class Pregunta
     {
         if(isset($_GET['tema'])){
             $tema = $_GET['tema'];
-            $sql = "SELECT idPregunta, titulo, descripcion, fecha, nickname FROM Pregunta, Usuario WHERE Pregunta.idUsuario = Usuario.idUsuario AND tema = ?";
+            $sql = "SELECT idPregunta, titulo, descripcion, fecha, nickname, Pregunta.idUsuario FROM Pregunta, Usuario WHERE Pregunta.idUsuario = Usuario.idUsuario AND tema = ?";
             $stmt = $this->connection->prepare($sql);
             $stmt->execute([$tema]);
             return $stmt->fetchAll();
         }else{
-            $sql = "SELECT idPregunta, titulo, descripcion, fecha, nickname FROM Pregunta, Usuario WHERE Pregunta.idUsuario = Usuario.idUsuario";
+            $sql = "SELECT idPregunta, titulo, descripcion, fecha, nickname, Pregunta.idUsuario FROM Pregunta, Usuario WHERE Pregunta.idUsuario = Usuario.idUsuario";
             $stmt = $this->connection->prepare($sql);
             $stmt->execute();
             return $stmt->fetchAll();        
@@ -79,5 +79,16 @@ class Pregunta
         $stmt = $this->connection->prepare($sql);
         $stmt->execute([$userId]);
         return $stmt->fetchAll();
+
+    
+    public function borrarPregunta($id){
+        if(isset($_POST['delete'])){
+            $sql = "DELETE FROM Pregunta WHERE idPregunta = ?";
+            $stmt = $this->connection->prepare($sql);
+            $stmt->execute([$id]);
+            header('Location: index.php?controller=pregunta&action=list');
+            exit();
+        }
+
     }
 }

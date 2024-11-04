@@ -32,5 +32,10 @@ class PreguntaController {
         return $this->model->crearPregunta();
     }
 
+    public function delete(){
+        $this->view= "delete";
+        $id = $_GET["id"];
+        return $this->model->borrarPregunta($id);
+    }
 }
 

@@ -1,7 +1,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guias</title>
+    <title>Preguntas</title>
     <link rel="icon" href="../Media/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/comunes_style.css">
 </head>
@@ -19,37 +19,48 @@
                     </select>
                 </div>
 
-                <div class="post">
-                    <h3 class="title">Título
-                        <button class="bookmark">
-                            <img src="assets/img/logo_guardar_l.png" alt="Icono Bookmark">
-                        </button>
-                    </h3>
-                    <p>@usuario dd/mm/yyyy</p>
-                    <p>Esta es la vista previa de la guía...</p>
-                    <p class="num-like">
-                        <button class="boton-like">
-                            <img src="assets/img/logo_cora_l.png" alt="Icono Like">
-                        </button>000
-                    </p>
-                </div>
-                <div class="post">
-                    <h3 class="title">Título
-                        <button class="bookmark">
-                            <img src="assets/img/logo_guardar_l.png" alt="Icono Bookmark">
-                        </button>
-                    </h3>
-                    <p>@usuario dd/mm/yyyy</p>
-                    <p>Esta es la vista previa de la guía...</p>
-                    <p class="num-like">
-                        <button class="boton-like">
-                            <img src="assets/img/logo_cora_l.png" alt="Icono Like">
-                        </button>000
-                    </p>
-                </div>
+                <?php if (empty($dataToView["data"])): ?>
+                    <p>Actualmente no hay guías</p>
+                <?php else: ?>
+                    <?php foreach ($dataToView["data"] as $guia): ?>
+                        <div class="post">
+                            <h3 class="title">
+                                <a style="text-decoration: none; color: white; transition: color 0.2s;" 
+                                   onmouseover="this.style.color='#63D471'" 
+                                   onmouseout="this.style.color='white'" 
+                                   href="index.php?controller=pregunta&action=view&id=<?php echo $pregunta['idPregunta']; ?>">
+                                    <?php echo htmlspecialchars($guia["titulo"]); ?>
+                                </a>
+                                <button class="bookmark">
+                                    <img src="assets/img/logo_guardar_l.png" alt="Icono Bookmark">
+                                </button>
+                            </h3>
+                            <p><?php echo htmlspecialchars($guia["nickname"]); ?><br><?php echo htmlspecialchars($guia["fecha"]); ?></p><br>
+                            <p style="text-align: justify; max-width: 90%;"><?php echo htmlspecialchars($guia["descripcion"]); ?></p>
 
+                            <!-- Botón para descargar el archivo directamente -->
+                            <?php if (!empty($guia["fichero"])): ?>
+                                <p>
+                                    <a href="<?php echo htmlentities($guia['fichero']); ?>" download>
+                                        <button class="download-button">Descargar</button>
+                                    </a>
+                                </p>
+                            <?php else: ?>
+                                <p>No hay archivos asociados a esta guía.</p>
+                            <?php endif; ?>
+                            <p class="num-like">
+                                <button class="boton-like">
+                                    <img src="assets/img/logo_cora_l.png" alt="Icono Like">
+                                </button>000
+                            </p>
+                            <br>
+                            <hr style="width: 90%;">
+                        </div>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+                
                 <div class="add-post">
-                    <button class="add-icon"><img src="assets/img/logo_anadir.png" alt="Icono Añadir"></button>
+                    <a href="index.php?controller=guia&action=create"><button class="add-icon"><img src="assets/img/logo_anadir.png" alt="Icono Añadir"></button></a>
                 </div>
             </div>
 
@@ -57,11 +68,11 @@
                 <h3>Temas</h3>
                 <hr>    
                 <div class="topics">
-                    <p><a href="#" class="tema">Tema1</a></p>
-                    <p><a href="#" class="tema">Tema2</a></p>
-                    <p><a href="#" class="tema">Tema3</a></p>
-                    <p><a href="#" class="tema">Tema4</a></p>
-                    <p><a href="#" class="tema">Tema5</a></p>
+                    <p><a href="#" class="tema">Seguridad</a></p>
+                    <p><a href="#" class="tema">Aviones</a></p>
+                    <p><a href="#" class="tema">Piezas</a></p>
+                    <p><a href="#" class="tema">Vuelos</a></p>
+                    <p><a href="#" class="tema">Reparaciones</a></p>
                 </div>
             </div>
         </div>
