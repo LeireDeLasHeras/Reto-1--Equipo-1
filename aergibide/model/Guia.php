@@ -58,6 +58,11 @@ class Guia
             return false;
         }
     }
-    
+    public function getAllGuiasByUserId($userId) {
+        $sql = "SELECT * FROM Guia WHERE idUsuario = ?";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute([$userId]);
+        return $stmt->fetchAll();
+    }
     
 }

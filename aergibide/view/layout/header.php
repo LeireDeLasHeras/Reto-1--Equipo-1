@@ -23,10 +23,10 @@
                     <select class="user-options" name="opciones" id="opciones">
                         <option value="user"disabled selected><?php echo $_SESSION['user_data']['nickname']; ?></option>
                         <option value="editar">Editar Perfil</option>
-                        <option value="publicadas">Publicadas</option>
+                        <option value="publicaciones">Publicaciones</option>
                         <option value="guardadas">Guardadas</option>
                         <option value="logout">Cerrar Sesión</option>
                 </select></span>
-                <div class="user-avatar"></div>
+                <!--<div class="user-avatar"></div>-->
             </div>
         </div>

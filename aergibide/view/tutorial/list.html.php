@@ -19,7 +19,7 @@
                     </select>
                 </div>
                 <?php if(empty($dataToView["data"])): ?>
-                    <p>Actualmente no hay tutoriales</p>
+                    <p style="color: white;">Aún no hay tutoriales de este tema</p>
                 <?php else: ?>
                     <?php foreach($dataToView["data"] as $tutorial): ?>
                         <div class="post">
@@ -54,11 +54,12 @@
                 <h3>Temas</h3>
                 <hr>    
                 <div class="topics">
-                    <p><a href="#" class="tema">Tema1</a></p>
-                    <p><a href="#" class="tema">Tema2</a></p>
-                    <p><a href="#" class="tema">Tema3</a></p>
-                    <p><a href="#" class="tema">Tema4</a></p>
-                    <p><a href="#" class="tema">Tema5</a></p>
+                    <p><a href="index.php?controller=tutorial&action=list" class="tema">Todos</a></p>
+                    <p><a href="index.php?controller=tutorial&action=list&tema=Seguridad" class="tema">Seguridad</a></p>
+                    <p><a href="index.php?controller=tutorial&action=list&tema=Aviones" class="tema">Aviones</a></p>
+                    <p><a href="index.php?controller=tutorial&action=list&tema=Piezas" class="tema">Piezas</a></p>
+                    <p><a href="index.php?controller=tutorial&action=list&tema=Vuelos" class="tema">Vuelos</a></p>
+                    <p><a href="index.php?controller=tutorial&action=list&tema=Reparaciones" class="tema">Reparaciones</a></p>
                 </div>
             </div>
         </div>
