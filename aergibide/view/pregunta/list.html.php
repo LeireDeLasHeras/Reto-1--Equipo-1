@@ -33,7 +33,8 @@
                                 </button>
                                 <?php if($pregunta['idUsuario'] == $_SESSION['user_data']['idUsuario']): ?>
                                     <button class="eliminar" onclick="window.location.href='index.php?controller=pregunta&action=delete&id=<?php echo $pregunta['idPregunta']; ?>'">
-                                        borrar 
+                                        <img class="eliminar-img" src="assets/img/logo_borrar.png" alt="Icono Borrar">
+                                        <img class="eliminar-img-hover" src="assets/img/logo_borrar_rojo.png" alt="Icono Borrar">
                                     </button>
                                 <?php endif; ?>
                             </h3>

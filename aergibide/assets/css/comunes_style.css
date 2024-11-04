@@ -234,6 +234,30 @@ body {
     width: 24px; 
     height: 24px;
     background-color: transparent;  
+}   
+
+.eliminar {
+    background: none;
+    border: none;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.eliminar img {
+    width: 26px; 
+    height: 26px;
+}
+
+.eliminar-img-hover {
+    display: none;
+}
+
+.eliminar:hover .eliminar-img {
+    display: none;
+}
+
+.eliminar:hover .eliminar-img-hover {
+    display: inline;
 }
 
 .num-like {
