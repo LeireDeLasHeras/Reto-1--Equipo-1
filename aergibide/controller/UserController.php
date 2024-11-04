@@ -57,6 +57,7 @@ class UserController {
             $idUsuario = $_GET["idUsuario"];
             return $this->model->getUserById($idUsuario);
         }
+        
         return null; // O manejar el caso donde no se proporciona un idUsuario
     }
     
