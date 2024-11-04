@@ -16,15 +16,21 @@ class Tutorial
         $this->connection = $dbObj->conection;
     }
 
-    public function getAlltutoriales()
+    public function getTutorialesByTema()
     {
-
-        $sql = "SELECT titulo, descripcion, nickname, enlace, fecha, tema FROM Tutorial, Usuario WHERE Tutorial.idUsuario = Usuario.idUsuario";
-        $stmt = $this->connection->prepare($sql);
-        $stmt->execute();
-        return $stmt->fetchAll();
+        if(isset($_GET['tema'])){
+            $tema = $_GET['tema'];
+            $sql = "SELECT idTutorial, titulo, tema, descripcion, enlace, fecha, nickname FROM Tutorial, Usuario WHERE Tutorial.idUsuario = Usuario.idUsuario AND tema = ?";
+            $stmt = $this->connection->prepare($sql);
+            $stmt->execute([$tema]);
+            return $stmt->fetchAll();
+        }else{
+            $sql = "SELECT idTutorial, titulo, tema, descripcion, enlace, fecha, nickname FROM Tutorial, Usuario WHERE Tutorial.idUsuario = Usuario.idUsuario";
+            $stmt = $this->connection->prepare($sql);
+            $stmt->execute();
+            return $stmt->fetchAll();        
+        }
     }
-    
     public function getTutorialById($id){
         $sql = "SELECT * FROM " . $this->table . " WHERE idTutorial = ?";
         $stmt = $this->connection->prepare($sql);
@@ -76,5 +82,11 @@ class Tutorial
         } catch(PDOException $e) {
             return "Error en la base de datos: " . $e->getMessage();
         }
+    }
+    public function getAlltutorialesByUserId($userId) {
+        $sql = "SELECT * FROM Tutorial WHERE idUsuario = ?";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute([$userId]);
+        return $stmt->fetchAll();
     }
 }

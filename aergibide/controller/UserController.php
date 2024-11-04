@@ -1,6 +1,9 @@
 <?php
 
 require_once "model/User.php";
+require_once "model/Pregunta.php";
+require_once "model/Tutorial.php";
+require_once "model/Guia.php";
 
 class UserController {
     public $page_title;
@@ -71,6 +74,24 @@ class UserController {
     
         return $result;
     }
+    public function publicaciones() {
+        $this->view = 'publicaciones';
+        $userId = $_SESSION['user_data']['idUsuario'];
+        $preguntaModel = new Pregunta();
+        $guiaModel = new Guia();
+        $tutorialModel = new Tutorial();
+
+        $preguntasPublicadas = $preguntaModel->getPreguntasByUserId($userId);
+        $guiasPublicadas = $guiaModel->getAllGuiasByUserId($userId);
+        $tutorialesPublicados = $tutorialModel->getAlltutorialesByUserId($userId);
+
+        return [
+            'preguntas' => $preguntasPublicadas,
+            'guias' => $guiasPublicadas,
+            'tutoriales' => $tutorialesPublicados,
+        ];
+    }
+
     public function logout(){
         // Limpiar la sesión del usuario
         unset($_SESSION['is_logged_in'  ]);

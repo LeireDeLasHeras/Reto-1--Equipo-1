@@ -49,6 +49,7 @@ class Pregunta
         return $stmt->fetch();
     }
 
+
     public function crearPregunta(){
         if(isset($_POST['titulo']) && isset($_POST['descripcion']) && isset($_POST['tema'])){
             try {
@@ -72,6 +73,13 @@ class Pregunta
         }
         return false;   
     }
+
+    public function getPreguntasByUserId($userId) {
+        $sql = "SELECT * FROM Pregunta WHERE idUsuario = ?";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute([$userId]);
+        return $stmt->fetchAll();
+
     
     public function borrarPregunta($id){
         if(isset($_POST['delete'])){
@@ -81,5 +89,6 @@ class Pregunta
             header('Location: index.php?controller=pregunta&action=list');
             exit();
         }
+
     }
 }

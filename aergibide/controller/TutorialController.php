@@ -12,7 +12,7 @@ class TutorialController {
     }
     public function list(){
         $this->view= "list";
-        return $this->model->getAlltutoriales();
+        return $this->model->getTutorialesByTema();
     }
 
     public function view() {
