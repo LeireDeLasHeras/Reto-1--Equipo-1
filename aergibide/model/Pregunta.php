@@ -80,7 +80,7 @@ class Pregunta
         $stmt->execute([$userId]);
         return $stmt->fetchAll();
 
-    
+    }
     public function borrarPregunta($id){
         if(isset($_POST['delete'])){
             $sql = "DELETE FROM Pregunta WHERE idPregunta = ?";
