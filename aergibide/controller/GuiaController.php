@@ -25,7 +25,7 @@ class GuiaController {
     public function create() {
         $this->view = "create";
     
-       
+       if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $filePath = null;
         if (isset($_FILES['archivos']) && $_FILES['archivos']['error'] === UPLOAD_ERR_OK) {
             $fileTmpPath = $_FILES['archivos']['tmp_name'];
@@ -56,6 +56,11 @@ class GuiaController {
         }
     
         return $id;
+       }
+       else {
+        return;
+       }
+   
     }
     
     
