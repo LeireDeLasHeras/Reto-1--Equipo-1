@@ -31,6 +31,11 @@
                                 <button class="bookmark">
                                     <img src="assets/img/logo_guardar_l.png" alt="Icono Bookmark">
                                 </button>
+                                <?php if($pregunta['idUsuario'] == $_SESSION['user_data']['idUsuario']): ?>
+                                    <button class="eliminar" onclick="window.location.href='index.php?controller=pregunta&action=delete&id=<?php echo $pregunta['idPregunta']; ?>'">
+                                        borrar 
+                                    </button>
+                                <?php endif; ?>
                             </h3>
                             <p><?php echo $pregunta["nickname"]; ?><br><?php echo $pregunta["fecha"]; ?></p><br>
                             <p style="text-align: justify; max-width: 90%;"><?php echo $pregunta["descripcion"]; ?></p>
