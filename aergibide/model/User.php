@@ -86,8 +86,7 @@ class User
         if (isset($param["nombre"])) $nombre = $param["nombre"];
         if (isset($param["apellido"])) $apellido = $param["apellido"];
         if (isset($param["nickname"])) $nickname = $param["nickname"];
-        if (isset($param["correo"])) $correo = $param["correo"];
-    
+       
         // Si se proporciona una nueva contraseña, la hasheamos
         $passwordUpdate = "";
         if (isset($param["password"]) && !empty($param["password"])) {
@@ -96,16 +95,28 @@ class User
         }
     
         if ($exists) {
-            $sql = "UPDATE " . $this->table . " SET nombre = ?, apellido = ?, nickname = ?, correo = ?" . $passwordUpdate . " WHERE idUsuario = ?";
+            $sql = "UPDATE " . $this->table . " SET nombre = ?, apellido = ?, nickname = ?". $passwordUpdate . " WHERE idUsuario = ?";
             $stmt = $this->connection->prepare($sql);
             
-            $params = [$nombre, $apellido, $nickname, $correo];
+            $params = [$nombre, $apellido, $nickname];
             if ($passwordUpdate) {
                 $params[] = $hashedPassword;
             }
             $params[] = $idUsuario;
     
             $res = $stmt->execute($params);
+            
+            // Si la actualización fue exitosa, actualizamos la sesión
+            if ($res) {
+                $_SESSION['user_data'] = array(
+                    "idUsuario" => $idUsuario,
+                    "nombre" => $nombre,
+                    "apellido" => $apellido,
+                    "nickname" => $nickname,
+                    "tipo" => $_SESSION['user_data']['tipo'], // Mantener el tipo de usuario
+                    "correo" => $_SESSION['user_data']['correo'] //Mantener el correo
+                );
+            }
         }
     
         return $idUsuario;

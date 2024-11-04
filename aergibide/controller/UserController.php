@@ -34,7 +34,7 @@ class UserController {
                 $_SESSION['user_data'] = array(
                     "idUsuario" => $row['idUsuario'],
                     "nombre" => $row['nombre'],
-                    "apellido" => $row['apellidos'],
+                    "apellido" => $row['apellido'],
                     "nickname" => $row['nickname'],
                     "tipo" => $row['tipo'],
                     "correo" => $row['correo']
@@ -57,6 +57,7 @@ class UserController {
             $idUsuario = $_GET["idUsuario"];
             return $this->model->getUserById($idUsuario);
         }
+        
         return null; // O manejar el caso donde no se proporciona un idUsuario
     }
     
