@@ -18,7 +18,7 @@ class Tutorial
     public function getTutorialesByTema()
     {
         if(isset($_GET['tema'])){
-            $tema = $_GET['tema'];
+            $tema = $_GET['tema']; 
             $sql = "SELECT Tutorial.idUsuario, Tutorial.idTutorial, titulo, tema, descripcion, enlace, fecha, nickname FROM Tutorial, Usuario WHERE Tutorial.idUsuario = Usuario.idUsuario AND tema = ?";
             $stmt = $this->connection->prepare($sql);
             $stmt->execute([$tema]);
@@ -31,7 +31,7 @@ class Tutorial
         }
     }
     public function getTutorialById($id){
-        $sql = "SELECT * FROM " . $this->table . " WHERE idTutorial = ?";
+        $sql = "SELECT t.*, u.nickname FROM " . $this->table . " t JOIN Usuario u ON t.idUsuario = u.idUsuario WHERE t.idTutorial = ?";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute([$id]);
         return $stmt->fetch();

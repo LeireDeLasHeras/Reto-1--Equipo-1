@@ -27,5 +27,11 @@ class TutorialController {
         $id = $_GET["id"];
         return $this->model->borrarTutorial($id);
     }
+
+    public function view(){
+        $this->view= "view";
+        $id = $_GET["id"];
+        return $this->model->getTutorialById($id);
+    }
     
 }
