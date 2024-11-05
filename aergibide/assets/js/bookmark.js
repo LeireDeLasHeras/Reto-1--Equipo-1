@@ -17,3 +17,5 @@ function toggleBookmark(idPregunta, isSaved) {
         console.error('Error en la solicitud AJAX:', error);
     });
 }
+
+// revisar
