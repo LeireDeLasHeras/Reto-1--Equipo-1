@@ -62,6 +62,11 @@ class GuiaController {
        }
    
     }
+    public function delete(){
+        $this->view= "delete";
+        $id = $_GET["id"];
+        return $this->model->borrarGuia($id);
+    }
     
     
 }
