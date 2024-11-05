@@ -83,8 +83,8 @@ class Tutorial
             return "Error en la base de datos: " . $e->getMessage();
         }
     }
-    public function getAlltutorialesByUserId($userId) {
-        $sql = "SELECT * FROM Tutorial WHERE idUsuario = ?";
+    public function getTutorialesByUserId($userId) {
+        $sql = "SELECT titulo FROM Tutorial WHERE idUsuario = ?";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute([$userId]);
         return $stmt->fetchAll();

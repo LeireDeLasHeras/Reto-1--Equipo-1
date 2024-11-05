@@ -10,7 +10,7 @@
     <div class="container">
         <div class="main-content">
             <div class="content-left">
-                <h1>Publicaciones de <?php echo $_SESSION['user_data']['nickname']; ?></h1>
+                <h1>Publicaciones guardadas></h1>
                 <hr>
                 <?php if ($tema == 'todas' || $tema == 'preguntas'): ?>
                     <h2>Preguntas</h2>
