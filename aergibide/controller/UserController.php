@@ -80,10 +80,11 @@ class UserController {
         $preguntaModel = new Pregunta();
         $guiaModel = new Guia();
         $tutorialModel = new Tutorial();
-
+    
         $preguntasPublicadas = $preguntaModel->getPreguntasByUserId($userId);
-        $guiasPublicadas = $guiaModel->getAllGuiasByUserId($userId);
-        $tutorialesPublicados = $tutorialModel->getAlltutorialesByUserId($userId);
+        $guiasPublicadas = $guiaModel->getGuiasByUserId($userId);
+        $tutorialesPublicados = $tutorialModel->getTutorialesByUserId($userId);
+    
 
         return [
             'preguntas' => $preguntasPublicadas,

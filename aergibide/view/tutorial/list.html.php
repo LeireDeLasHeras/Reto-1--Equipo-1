@@ -48,7 +48,7 @@
                                     <img src="assets/img/logo_cora_l.png" alt="Icono Like">
                                 </button>000
                             </p>
-
+                            <hr style="width: 90%;">
                         </div>
                     <?php endforeach; ?>
                 <?php endif; ?>
