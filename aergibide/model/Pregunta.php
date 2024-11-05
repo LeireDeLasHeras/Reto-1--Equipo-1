@@ -42,6 +42,13 @@ class Pregunta
         $stmt->execute([$idPregunta]);
         return $stmt->fetchAll();
     }
+
+    public function getPreguntasGuardadasUsuario(){
+        $sql = "SELECT idPregunta FROM PreguntasGuardadas WHERE idUsuario = ?";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute([$_SESSION['user_data']['idUsuario']]);
+        return $stmt->fetchAll();
+    }
     
     public function getPreguntaById($id){
         $sql = "SELECT p.*, u.nickname FROM " . $this->table . " p JOIN Usuario u ON p.idUsuario = u.idUsuario WHERE p.idPregunta = ?";
@@ -82,6 +89,7 @@ class Pregunta
         return $stmt->fetchAll();
 
     }
+    
     public function borrarPregunta($id){
         if(isset($_POST['delete'])){
             $sql = "DELETE FROM Pregunta WHERE idPregunta = ?";
@@ -90,6 +98,17 @@ class Pregunta
             header('Location: index.php?controller=pregunta&action=list');
             exit();
         }
+    }
 
+    public function guardarPregunta($idPregunta,$idUsuario){
+        $sql = "INSERT INTO PreguntasGuardadas (idPregunta, idUsuario) VALUES (?,?)";
+        $stmt = $this->connection->prepare($sql);
+        return $stmt->execute([$idPregunta,$idUsuario]);
+    }
+
+    public function borrarGuardada($idPregunta,$idUsuario){
+        $sql = "DELETE FROM PreguntasGuardadas WHERE idPregunta = ? AND idUsuario = ?";
+        $stmt = $this->connection->prepare($sql);
+        return $stmt->execute([$idPregunta,$idUsuario]);
     }
 }
