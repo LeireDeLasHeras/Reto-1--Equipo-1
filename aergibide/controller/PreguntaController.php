@@ -12,7 +12,13 @@ class PreguntaController {
 
     public function list(){
         $this->view= "list";
-        return $this->model->getPreguntasByTema();
+
+        $data = [
+            'pregunta' => $this->model->getPreguntasByTema(),
+            'guardadas' => $this->model->getPreguntasGuardadasUsuario()
+        ];
+
+        return $data;
     }
 
     public function view() {
@@ -37,5 +43,22 @@ class PreguntaController {
         $id = $_GET["id"];
         return $this->model->borrarPregunta($id);
     }
-}
 
+    public function guardarPregunta() {
+        if (isset($_SESSION['user_data'])) {
+            $idPregunta = $_GET['id'];
+            $idUsuario = $_SESSION['user_data']['idUsuario'];
+            $this->model->guardarPregunta($idPregunta, $idUsuario);
+
+        }
+    }
+
+    public function borrarGuardada() {
+        if (isset($_SESSION['user_data'])) {
+            $idPregunta = $_GET['id'];
+            $idUsuario = $_SESSION['user_data']['idUsuario'];
+            $this->model->borrarGuardada($idPregunta, $idUsuario);
+            
+        }
+    }
+}

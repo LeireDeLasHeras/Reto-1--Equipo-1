@@ -53,7 +53,6 @@ class Guia
         } catch (PDOException $e) {
             print_r($e->getMessage());
             die();  
-            return false;
         }
     }
     public function getAllGuiasByUserId($userId) {

@@ -22,15 +22,26 @@
                 <?php if(empty($dataToView["data"])): ?>
                     <p style="color: white;">Aún no hay preguntas de este tema</p>
                 <?php else: ?>
-                    <?php foreach($dataToView["data"] as $pregunta): ?>
+                    <?php foreach($dataToView["data"]["pregunta"] as $pregunta): ?>
                         <div class="post">
                             <h3 class="title">
                                 <a style="text-decoration: none; color: white; transition: color 0.2s;" onmouseover="this.style.color='#63D471'" onmouseout="this.style.color='white'" href="index.php?controller=pregunta&action=view&id=<?php echo $pregunta['idPregunta']; ?>">
                                     <?php echo $pregunta["titulo"]; ?>
                                 </a>
-                                <button class="bookmark">
-                                    <img src="assets/img/logo_guardar_l.png" alt="Icono Bookmark">
+
+                                <?php 
+                                $saved = false;
+                                foreach($dataToView["data"]["guardadas"] as $guardada): 
+                                    if($guardada["idPregunta"] == $pregunta["idPregunta"]): 
+                                        $saved = true;
+                                        break;
+                                    endif; 
+                                endforeach; 
+                                ?>
+                                <button class="bookmark" onclick="toggleBookmark(<?php echo $pregunta['idPregunta']; ?>, <?php echo $saved ? 'true' : 'false'; ?>)">
+                                    <img class="bookmark-icon" src="assets/img/logo_guardar_<?php echo $saved ? 'r' : 'l'; ?>.png" alt="Icono Bookmark guardado">
                                 </button>
+
                                 <?php if($pregunta['idUsuario'] == $_SESSION['user_data']['idUsuario']): ?>
                                     <button class="eliminar" onclick="window.location.href='index.php?controller=pregunta&action=delete&id=<?php echo $pregunta['idPregunta']; ?>'">
                                         <img class="eliminar-img" src="assets/img/logo_borrar.png" alt="Icono Borrar">
@@ -70,4 +81,5 @@
             </div>
         </div>
     </div>
+    <script src="assets/js/bookmark.js"></script>
 </body>
