@@ -61,6 +61,18 @@ class Guia
         $stmt->execute([$userId]);
         return $stmt->fetchAll();
     }
+
+    public function getGuiasGuardadasByUserId($userId) {
+        $sql = "SELECT Guia.* 
+        FROM GuiasGuardadas 
+        JOIN Guia ON GuiaGuardadas.idGuia = Guia.idGuia
+        WHERE GuiasGuardadas.idUsuario = ?
+        ";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute([$userId]);
+        return $stmt->fetchAll();
+
+    }
     public function borrarGuia($id){
         if(isset($_POST['delete'])){
             $sql = "DELETE FROM Guia WHERE idGuia = ?";

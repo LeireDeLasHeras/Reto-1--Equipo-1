@@ -89,6 +89,17 @@ class Pregunta
         return $stmt->fetchAll();
 
     }
+    public function getPreguntasGuardadasByUserId($userId) {
+        $sql = "SELECT Pregunta.* 
+        FROM PreguntasGuardadas 
+        JOIN Pregunta ON PreguntasGuardadas.idPregunta = Pregunta.idPregunta 
+        WHERE PreguntasGuardadas.idUsuario = ?
+        ";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute([$userId]);
+        return $stmt->fetchAll();
+
+    }
     
     public function borrarPregunta($id){
         if(isset($_POST['delete'])){
