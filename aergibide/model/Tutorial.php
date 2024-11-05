@@ -15,17 +15,16 @@ class Tutorial
         $dbObj = new Db();
         $this->connection = $dbObj->conection;
     }
-
     public function getTutorialesByTema()
     {
         if(isset($_GET['tema'])){
             $tema = $_GET['tema'];
-            $sql = "SELECT idTutorial, titulo, tema, descripcion, enlace, fecha, nickname FROM Tutorial, Usuario WHERE Tutorial.idUsuario = Usuario.idUsuario AND tema = ?";
+            $sql = "SELECT Tutorial.idUsuario, Tutorial.idTutorial, titulo, tema, descripcion, enlace, fecha, nickname FROM Tutorial, Usuario WHERE Tutorial.idUsuario = Usuario.idUsuario AND tema = ?";
             $stmt = $this->connection->prepare($sql);
             $stmt->execute([$tema]);
             return $stmt->fetchAll();
         }else{
-            $sql = "SELECT idTutorial, titulo, tema, descripcion, enlace, fecha, nickname FROM Tutorial, Usuario WHERE Tutorial.idUsuario = Usuario.idUsuario";
+            $sql = "SELECT Tutorial.idUsuario, Tutorial.idTutorial, titulo, tema, descripcion, enlace, fecha, nickname FROM Tutorial, Usuario WHERE Tutorial.idUsuario = Usuario.idUsuario";
             $stmt = $this->connection->prepare($sql);
             $stmt->execute();
             return $stmt->fetchAll();        
@@ -88,5 +87,14 @@ class Tutorial
         $stmt = $this->connection->prepare($sql);
         $stmt->execute([$userId]);
         return $stmt->fetchAll();
+    }
+    public function borrarTutorial($id){
+        if(isset($_POST['delete'])){
+            $sql = "DELETE FROM Tutorial WHERE idTutorial = ?";
+            $stmt = $this->connection->prepare($sql);
+            $stmt->execute([$id]);
+            header('Location: index.php?controller=tutorial&action=list');
+            exit();
+        }
     }
 }

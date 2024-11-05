@@ -18,7 +18,7 @@ class Guia
     public function getAllGuias()
     {
 
-        $sql = "SELECT titulo, descripcion, fecha, nickname, fichero FROM Guia, Usuario WHERE Guia.idUsuario = Usuario.idUsuario";
+        $sql = "SELECT titulo, descripcion, fecha, nickname, fichero, Guia.idUsuario, Guia.idGuia FROM Guia, Usuario WHERE Guia.idUsuario = Usuario.idUsuario";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute();
         return $stmt->fetchAll();
@@ -61,6 +61,16 @@ class Guia
         $stmt = $this->connection->prepare($sql);
         $stmt->execute([$userId]);
         return $stmt->fetchAll();
+    }
+    public function borrarGuia($id){
+        if(isset($_POST['delete'])){
+            $sql = "DELETE FROM Guia WHERE idGuia = ?";
+            $stmt = $this->connection->prepare($sql);
+            $stmt->execute([$id]);
+            header('Location: index.php?controller=guia&action=list');
+            exit();
+        }
+
     }
     
 }

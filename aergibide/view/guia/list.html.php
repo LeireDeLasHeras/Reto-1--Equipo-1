@@ -34,6 +34,12 @@
                                 <button class="bookmark">
                                     <img src="assets/img/logo_guardar_l.png" alt="Icono Bookmark">
                                 </button>
+                                <?php if($guia['idUsuario'] == $_SESSION['user_data']['idUsuario']): ?>
+                                    <button class="eliminar" onclick="window.location.href='index.php?controller=guia&action=delete&id=<?php echo $guia['idGuia']; ?>'">
+                                        <img class="eliminar-img" src="assets/img/logo_borrar.png" alt="Icono Borrar">
+                                        <img class="eliminar-img-hover" src="assets/img/logo_borrar_rojo.png" alt="Icono Borrar">
+                                    </button>
+                                <?php endif; ?>
                             </h3>
                             <p><?php echo htmlspecialchars($guia["nickname"]); ?><br><?php echo htmlspecialchars($guia["fecha"]); ?></p><br>
                             <p style="text-align: justify; max-width: 90%;"><?php echo htmlspecialchars($guia["descripcion"]); ?></p>

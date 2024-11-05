@@ -189,3 +189,25 @@ body {
     width: 100%;
 }
 
+.download-button {
+    background-color: #4E5166; /* Color de fondo similar */
+    color: white; /* Color del texto */
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); /* Sombra */
+}
+
+.download-button:hover {
+    background-color: #63D471; /* Color de fondo al pasar el mouse */
+    transform: translateY(-3px); /* Efecto de elevación al hacer hover */
+}
+
+.download-button:active {
+    transform: translateY(0); /* Vuelve al nivel original al hacer clic */
+}
+

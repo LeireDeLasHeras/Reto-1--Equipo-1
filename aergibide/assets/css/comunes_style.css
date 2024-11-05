@@ -325,3 +325,66 @@ body {
 .video-details p {
     margin-bottom: 5px;
 }
+
+/* Estilos para PaginaGuias */
+
+/* Asegura que el contenedor esté centrado en la pantalla */
+.content-left-borrar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centra verticalmente */
+    align-items: center; /* Centra horizontalmente */
+    text-align: center; /* Centra el texto en el medio */
+    position: fixed; /* Permite que el contenido permanezca en el centro al hacer scroll */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #4E5166;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    width: 500px;
+}
+
+/* Estilo para el texto dentro del contenedor */
+.content-left-borrar h1 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.content-left-borrar p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    color: white;
+}
+
+/* Estilo para los botones */
+.content-left-borrar .borrar input[type="submit"],
+.content-left-borrar .borrar input[type="button"] {
+    padding: 10px 20px;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5px;
+    transition: background-color 0.3s;
+}
+
+
+
+
+.content-left-borrar .borrar input[type="submit"]:hover,
+.content-left-borrar .borrar input[type="button"]:hover {
+    background-color: #63D471; /* Color de fondo al pasar el mouse */
+    transform: translateY(-2px); /* Efecto de elevación */
+}
+
+.content-left-borrar .borrar input[type="submit"]:active,
+.content-left-borrar .borrar input[type="button"]:active {
+    transform: translateY(0); /* Vuelve al nivel original al hacer clic */
+}
+
+
+
+
