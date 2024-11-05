@@ -328,6 +328,30 @@ body {
 
 /* Estilos para PaginaGuias */
 
+.download-button {
+    background-color: #4E5166; 
+    color: white; 
+    font-size: 12px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px; 
+    padding: 6px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); 
+    margin-top: 10px;
+}
+
+.download-button:hover {
+    background-color: #63D471; 
+    transform: translateY(-3px); 
+}
+
+.download-button:active {
+    transform: translateY(0); 
+}
+
+
 /* Asegura que el contenedor esté centrado en la pantalla */
 .content-left-borrar {
     display: flex;
