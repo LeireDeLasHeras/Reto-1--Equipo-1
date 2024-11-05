@@ -10,10 +10,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 window.location.href = 'index.php?controller=user&action=edit'; 
                 break;
             case 'publicaciones':
-                window.location.href = 'index.php?controller=user&action=publicaciones&tema=todos';
+                window.location.href = 'index.php?controller=user&action=publicaciones&tipo=todas';
                 break;
             case 'guardadas':
-                window.location.href = 'index.php?controller=user&action=saved';
+                window.location.href = 'index.php?controller=user&action=guardadas&tipo=todas';
                 break;
             case 'logout':
                 window.location.href = 'index.php?controller=user&action=logout';

@@ -36,6 +36,18 @@ class Tutorial
         $stmt->execute([$id]);
         return $stmt->fetch();
     } 
+    
+    public function getTutorialesGuardadosByUserId($userId) {
+        $sql = "SELECT Tutoriales.* 
+        FROM TutorialesGuardados 
+        JOIN Tutoriales ON TutorialesGuardados.idTutorial = Tutorial.idTutorial
+        WHERE TutorialesGuardados.idUsuario = ?
+        ";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute([$userId]);
+        return $stmt->fetchAll();
+
+    }
     public function crearTutorial(){
      
         if(!isset($_SESSION['user_data']) || !isset($_SESSION['user_data']['idUsuario'])) {

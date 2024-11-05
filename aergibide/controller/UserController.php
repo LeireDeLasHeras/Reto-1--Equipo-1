@@ -93,6 +93,25 @@ class UserController {
         ];
     }
 
+    public function guardadas() {
+        $this->view = 'guardadas';
+        $userId = $_SESSION['user_data']['idUsuario'];
+        $preguntaModel = new Pregunta();
+        $guiaModel = new Guia();
+        $tutorialModel = new Tutorial();
+    
+        $preguntasGuardadas = $preguntaModel->getPreguntasGuardadasByUserId($userId);
+        $guiasGuardadas = $guiaModel->getGuiasGuardadasByUserId($userId);
+        $tutorialesGuardados = $tutorialModel->getTutorialesGuardadosByUserId($userId);
+    
+
+        return [
+            'preguntas' => $preguntasGuardadas,
+            'guias' => $guiasGuardadas,
+            'tutoriales' => $tutorialesGuardados,
+        ];
+    }
+
     public function logout(){
         // Limpiar la sesión del usuario
         unset($_SESSION['is_logged_in'  ]);
