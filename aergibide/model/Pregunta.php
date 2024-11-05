@@ -48,7 +48,7 @@ class Pregunta
         $stmt = $this->connection->prepare($sql);
         $stmt->execute([$_SESSION['user_data']['idUsuario']]);
         return $stmt->fetchAll();
-    }
+    } 
     
     public function getPreguntaById($id){
         $sql = "SELECT p.*, u.nickname FROM " . $this->table . " p JOIN Usuario u ON p.idUsuario = u.idUsuario WHERE p.idPregunta = ?";

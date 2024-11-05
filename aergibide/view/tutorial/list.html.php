@@ -5,7 +5,7 @@
     <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/comunes_style.css">
 </head>
-<body>
+<body> 
     <div class="container">
         <div class="main-content">
             <div class="content-left">
@@ -23,7 +23,12 @@
                 <?php else: ?>
                     <?php foreach($dataToView["data"] as $tutorial): ?>
                         <div class="post">
-                            <h3 class="title"><?php echo $tutorial["titulo"]; ?>
+                            <h3 class="title">
+                                <a style="text-decoration: none; color: white; transition: color 0.2s;" onmouseover="this.style.color='#63D471'" onmouseout="this.style.color='white'" href="index.php?controller=tutorial&action=view&id=<?php echo $tutorial['idTutorial']; ?>">
+                                    <?php echo $tutorial["titulo"]; ?>
+                                </a>
+
+
                                 <button class="bookmark">
                                     <img src="assets/img/logo_guardar_l.png" alt="Icono Bookmark">
                                 </button>
@@ -39,7 +44,7 @@
                             <p><?php echo $tutorial["nickname"]; ?></p>
                             <p><?php echo $tutorial["descripcion"]; ?></p>
 
-                            <p><iframe width="560" height="315" src="https://www.youtube.com/embed/<?php echo $tutorial["enlace"]; ?>"
+                            <p><iframe width="420" height="235" src="https://www.youtube.com/embed/<?php echo $tutorial["enlace"]; ?>"
                                 title="YouTube video player" frameborder="0" 
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                                 referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></p>
