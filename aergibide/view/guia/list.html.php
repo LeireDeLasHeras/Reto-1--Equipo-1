@@ -28,7 +28,7 @@
                                 <a style="text-decoration: none; color: white; transition: color 0.2s;" 
                                    onmouseover="this.style.color='#63D471'" 
                                    onmouseout="this.style.color='white'" 
-                                   href="index.php?controller=pregunta&action=view&id=<?php echo $pregunta['idPregunta']; ?>">
+                                   href="index.php?controller=guia&action=view&id=<?php echo $guia['idGuia']; ?>">
                                     <?php echo htmlspecialchars($guia["titulo"]); ?>
                                 </a>
                                 <button class="bookmark">
