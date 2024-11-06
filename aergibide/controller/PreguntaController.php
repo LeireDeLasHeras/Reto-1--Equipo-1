@@ -12,13 +12,40 @@ class PreguntaController {
 
     public function list(){
         $this->view= "list";
-
-        $data = [
-            'pregunta' => $this->model->getPreguntasByTema(),
-            'guardadas' => $this->model->getPreguntasGuardadasUsuario(),
-            'favoritas' => $this->model->getPreguntasFavoritasUsuario(),
-            'favoritasGenerales' => $this->model->getPreguntasFavoritasGenerales()
-        ];
+      
+        if(isset($_GET['tema'])){
+            if($_GET['tema'] == 'MasRecientes'){
+                $data = [
+                    'pregunta' => $this->model->getPreguntasByFecha('DESC'),
+                    'guardadas' => $this->model->getPreguntasGuardadasUsuario()
+                    'favoritas' => $this->model->getPreguntasFavoritasUsuario(),
+                    'favoritasGenerales' => $this->model->getPreguntasFavoritasGenerales()
+                ];
+            }
+            else if($_GET['tema'] == 'MasAntiguos'){
+                $data = [
+                    'pregunta' => $this->model->getPreguntasByFecha('ASC'),
+                    'guardadas' => $this->model->getPreguntasGuardadasUsuario()
+                    'favoritas' => $this->model->getPreguntasFavoritasUsuario(),
+                    'favoritasGenerales' => $this->model->getPreguntasFavoritasGenerales()
+                ];
+            }
+            else {
+                $data = [
+                    'pregunta' => $this->model->getPreguntasByTema(),
+                    'guardadas' => $this->model->getPreguntasGuardadasUsuario()
+                    'favoritas' => $this->model->getPreguntasFavoritasUsuario(),
+                    'favoritasGenerales' => $this->model->getPreguntasFavoritasGenerales()
+                ];
+            }
+        } else {
+            $data = [
+                'pregunta' => $this->model->getPreguntasByTema(),
+                'guardadas' => $this->model->getPreguntasGuardadasUsuario()
+                'favoritas' => $this->model->getPreguntasFavoritasUsuario(),
+                'favoritasGenerales' => $this->model->getPreguntasFavoritasGenerales()
+            ];
+        }
 
         return $data;
     }

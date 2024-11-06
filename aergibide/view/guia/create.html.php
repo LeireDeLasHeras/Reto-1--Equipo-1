@@ -10,11 +10,11 @@
                     
                         <label for="tema">Añadir tema:</label>
                         <select id="tema" name="tema">
-                            <option value="tema1">Seguridad</option>
-                            <option value="tema2">Aviones</option>
-                            <option value="tema3">Piezas</option>
-                            <option value="tema4">Vuelos</option>
-                            <option value="tema5">Reparaciones</option>
+                            <option value="Seguridad">Seguridad</option>
+                            <option value="Aviones">Aviones</option>
+                            <option value="Piezas">Piezas</option>
+                            <option value="Vuelos">Vuelos</option>
+                            <option value="Reparaciones">Reparaciones</option>
                         </select>
                         <label for="descripcion">Descripción:</label>
                         <textarea id="descripcion" name="descripcion" placeholder="Escribe una descripción..."></textarea>               

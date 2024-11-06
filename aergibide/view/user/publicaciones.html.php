@@ -5,17 +5,23 @@
     <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/comunes_style.css">
 </head>
+
 <body>
     <?php $tipo = $_GET['tipo'] ?>
     <div class="container">
         <div class="main-content">
             <div class="content-left">
-                <h1>Publicaciones de <?php echo $_SESSION['user_data']['nickname']; ?></h1>
+                <?php if ($dataToView['data']['usuario']['idUsuario'] == $_SESSION['user_data']['idUsuario']): ?>
+                    <h1>Mis Publicaciones</h1>
+                <?php else: ?>
+                    <h1>Publicaciones de <?php echo htmlspecialchars($dataToView['data']['usuario']['nickname']); ?></h1>
+                <?php endif; ?>
                 <hr>
+
                 <?php if ($tipo == 'todas' || $tipo == 'preguntas'): ?>
                     <h2>Preguntas</h2>
                     <?php if (empty($dataToView['data']['preguntas'])): ?>
-                        <p>No has publicado ninguna pregunta.</p>
+                        <p>No hay preguntas publicadas.</p>
                     <?php else: ?>
                         <ul>
                             <?php foreach ($dataToView['data']['preguntas'] as $pregunta): ?>
@@ -36,7 +42,9 @@
                     <?php else: ?>
                         <ul>
                             <?php foreach ($dataToView['data']['tutoriales'] as $tutorial): ?>
-                                <li><?php echo $tutorial['titulo']; ?></li>
+                                <li><a href="index.php?controller=pregunta&action=view&id=<?php echo $pregunta['idPregunta']; ?>">
+                                        <?php echo $tutorial['titulo']; ?>
+                                    </a></li>
                             <?php endforeach; ?>
                         </ul>
                     <?php endif; ?>
@@ -49,7 +57,9 @@
                     <?php else: ?>
                         <ul>
                             <?php foreach ($dataToView['data']['guias'] as $guia): ?>
-                                <li><?php echo $guia['titulo']; ?></li>
+                                <li> <a href="index.php?controller=pregunta&action=view&id=<?php echo $pregunta['idPregunta']; ?>">
+                                        <?php echo $guia['titulo']; ?>
+                                    </a></li>
                             <?php endforeach; ?>
                         </ul>
                     <?php endif; ?>
@@ -58,7 +68,7 @@
 
             <div class="sidebar">
                 <h3>Tipos</h3>
-                <hr>    
+                <hr>
                 <div class="topics">
                     <p><a href="index.php?controller=user&action=publicaciones&tipo=todas" class="tipo">Todos</a></p>
                     <p><a href="index.php?controller=user&action=publicaciones&tipo=preguntas" class="tipo">Preguntas</a></p>

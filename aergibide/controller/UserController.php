@@ -72,7 +72,10 @@ class UserController {
     public function publicaciones() {
         $this->view = 'publicaciones';
 
-        $userId = $_SESSION['user_data']['idUsuario'];
+        $userId = isset($_GET['idUsuario']) ? $_GET['idUsuario'] : $_SESSION['user_data']['idUsuario'];
+        
+        $usuario = $this->model->getUserById($userId);
+    
         $preguntaModel = new Pregunta();
         $guiaModel = new Guia();
         $tutorialModel = new Tutorial();
@@ -81,11 +84,11 @@ class UserController {
         $guiasPublicadas = $guiaModel->getGuiasByUserId($userId);
         $tutorialesPublicados = $tutorialModel->getTutorialesByUserId($userId);
     
-
         return [
             'preguntas' => $preguntasPublicadas,
             'guias' => $guiasPublicadas,
             'tutoriales' => $tutorialesPublicados,
+            'usuario' => $usuario
         ];
     }
 
