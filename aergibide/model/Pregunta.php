@@ -38,6 +38,14 @@ class Pregunta
         return $stmt->fetchAll();
     }
 
+    public function getPreguntasByLikes(){
+        $sql = "SELECT p.titulo, p.descripcion, p.fecha, u.nickname, pf.idPregunta, pf.idUsuario FROM PreguntasFavoritas pf JOIN Pregunta p ON pf.idPregunta = p.idPregunta JOIN Usuario u ON p.idUsuario = u.idUsuario GROUP BY pf.idPregunta ORDER BY COUNT(pf.idPregunta) DESC";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute();
+        $resultados = $stmt->fetchAll();
+        return !empty($resultados) ? $resultados : null;
+    }
+
     public function getRespuestasByPreguntaId($idPregunta){
         $sql = "SELECT r.idRespuesta, r.descripcion, r.fecha, u.nickname, r.idUsuario
                 FROM Respuesta r 
