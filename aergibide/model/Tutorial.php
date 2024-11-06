@@ -102,7 +102,7 @@ class Tutorial
         }
     }
     public function getTutorialesByUserId($userId) {
-        $sql = "SELECT titulo FROM Tutorial WHERE idUsuario = ?";
+        $sql = "SELECT * FROM Tutorial WHERE idUsuario = ?";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute([$userId]);
         return $stmt->fetchAll();
