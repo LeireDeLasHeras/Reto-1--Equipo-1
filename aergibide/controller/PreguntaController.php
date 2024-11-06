@@ -30,6 +30,14 @@ class PreguntaController {
                     'favoritasGenerales' => $this->model->getPreguntasFavoritasGenerales()
                 ];
             }
+            else if($_GET['tema'] == 'MasPopulares'){
+                $data = [
+                    'pregunta' => $this->model->getPreguntasByLikes(),
+                    'guardadas' => $this->model->getPreguntasGuardadasUsuario(),
+                    'favoritas' => $this->model->getPreguntasFavoritasUsuario(),
+                    'favoritasGenerales' => $this->model->getPreguntasFavoritasGenerales()
+                ];
+            }
             else {
                 $data = [
                     'pregunta' => $this->model->getPreguntasByTema(),
@@ -46,7 +54,6 @@ class PreguntaController {
                 'favoritasGenerales' => $this->model->getPreguntasFavoritasGenerales()
             ];
         }
-
         return $data;
     }
 
