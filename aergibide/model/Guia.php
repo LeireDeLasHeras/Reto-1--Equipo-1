@@ -25,7 +25,7 @@ class Guia
     }
     
     public function getGuiaById($id){
-        $sql = "SELECT * FROM " . $this->table . " WHERE idGuia = ?";
+        $sql = "SELECT titulo, descripcion, fecha, nickname, fichero, Guia.idUsuario, Guia.idGuia FROM Guia, Usuario WHERE Guia.idUsuario = Usuario.idUsuario AND Guia.idGuia = ?";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute([$id]);
         return $stmt->fetch();
