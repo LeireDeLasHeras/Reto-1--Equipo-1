@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const cancelButton = document.querySelector('.cancel-button');
     if (cancelButton) {
         cancelButton.addEventListener('click', function() {
-            window.location.href = 'index.php?controller=pregunta&action=list';
+            window.location.href = 'index.php?controller=guia&action=list';
         });
     }
 });
