@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Preguntas</title>
+    <title>Aergibide</title>
     <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
     <script src="assets/js/desplegable.js"></script>
 </head>

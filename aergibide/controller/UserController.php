@@ -6,19 +6,16 @@ require_once "model/Tutorial.php";
 require_once "model/Guia.php";
 
 class UserController {
-    public $page_title;
     public $view;
     public $model;
 
     public function __construct(){
         $this->view = "";
-        $this->page_title = "";
         $this->model = new User();
     }
 
     public function register(){
         $this->view = "registro";
-        $this->page_title = "Crea tu cuenta";
         $id = $this->model->register();
         if ($id > 0){
             // Redirigir al login después de un registro exitoso
@@ -53,7 +50,6 @@ class UserController {
         exit();
     }
     public function edit() {
-        $this->page_title = "Editar usuario";
         $this->view = "edit";
     
         if (isset($_GET["idUsuario"])) {
@@ -65,7 +61,6 @@ class UserController {
     }
     
     public function update() {
-        $this->page_title = 'Actualizar usuario';
         $this->view = 'edit';
     
         $idUsuario = $this->model->update($_POST);
@@ -76,6 +71,7 @@ class UserController {
     }
     public function publicaciones() {
         $this->view = 'publicaciones';
+
         $userId = $_SESSION['user_data']['idUsuario'];
         $preguntaModel = new Pregunta();
         $guiaModel = new Guia();
