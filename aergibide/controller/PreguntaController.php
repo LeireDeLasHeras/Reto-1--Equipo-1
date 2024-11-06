@@ -17,7 +17,7 @@ class PreguntaController {
             if($_GET['tema'] == 'MasRecientes'){
                 $data = [
                     'pregunta' => $this->model->getPreguntasByFecha('DESC'),
-                    'guardadas' => $this->model->getPreguntasGuardadasUsuario()
+                    'guardadas' => $this->model->getPreguntasGuardadasUsuario(),
                     'favoritas' => $this->model->getPreguntasFavoritasUsuario(),
                     'favoritasGenerales' => $this->model->getPreguntasFavoritasGenerales()
                 ];
@@ -25,7 +25,7 @@ class PreguntaController {
             else if($_GET['tema'] == 'MasAntiguos'){
                 $data = [
                     'pregunta' => $this->model->getPreguntasByFecha('ASC'),
-                    'guardadas' => $this->model->getPreguntasGuardadasUsuario()
+                    'guardadas' => $this->model->getPreguntasGuardadasUsuario(),
                     'favoritas' => $this->model->getPreguntasFavoritasUsuario(),
                     'favoritasGenerales' => $this->model->getPreguntasFavoritasGenerales()
                 ];
@@ -33,7 +33,7 @@ class PreguntaController {
             else {
                 $data = [
                     'pregunta' => $this->model->getPreguntasByTema(),
-                    'guardadas' => $this->model->getPreguntasGuardadasUsuario()
+                    'guardadas' => $this->model->getPreguntasGuardadasUsuario(),
                     'favoritas' => $this->model->getPreguntasFavoritasUsuario(),
                     'favoritasGenerales' => $this->model->getPreguntasFavoritasGenerales()
                 ];
@@ -41,7 +41,7 @@ class PreguntaController {
         } else {
             $data = [
                 'pregunta' => $this->model->getPreguntasByTema(),
-                'guardadas' => $this->model->getPreguntasGuardadasUsuario()
+                'guardadas' => $this->model->getPreguntasGuardadasUsuario(),
                 'favoritas' => $this->model->getPreguntasFavoritasUsuario(),
                 'favoritasGenerales' => $this->model->getPreguntasFavoritasGenerales()
             ];

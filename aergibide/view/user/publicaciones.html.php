@@ -5,7 +5,6 @@
     <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/comunes_style.css">
 </head>
-
 <body>
     <?php $tipo = $_GET['tipo'] ?>
     <div class="container">
@@ -42,7 +41,7 @@
                     <?php else: ?>
                         <ul>
                             <?php foreach ($dataToView['data']['tutoriales'] as $tutorial): ?>
-                                <li><a href="index.php?controller=pregunta&action=view&id=<?php echo $pregunta['idPregunta']; ?>">
+                                <li><a href="index.php?controller=tutorial&action=view&id=<?php echo $tutorial['idTutorial']; ?>">
                                         <?php echo $tutorial['titulo']; ?>
                                     </a></li>
                             <?php endforeach; ?>
@@ -57,8 +56,9 @@
                     <?php else: ?>
                         <ul>
                             <?php foreach ($dataToView['data']['guias'] as $guia): ?>
-                                <li> <a href="index.php?controller=pregunta&action=view&id=<?php echo $pregunta['idPregunta']; ?>">
+                                <li> <a href="index.php?controller=guia&action=view&id=<?php echo $guia['idGuia']; ?>">
                                         <?php echo $guia['titulo']; ?>
+
                                     </a></li>
                             <?php endforeach; ?>
                         </ul>

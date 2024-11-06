@@ -69,6 +69,10 @@
                     <p><a href="index.php?controller=guia&action=list&tema=Piezas" class="tema">Piezas</a></p>
                     <p><a href="index.php?controller=guia&action=list&tema=Vuelos" class="tema">Vuelos</a></p>
                     <p><a href="index.php?controller=guia&action=list&tema=Reparaciones" class="tema">Reparaciones</a></p>
+                </div>
+                <h3>Ordenar</h3>
+                <hr>
+                <div class="topics">
                     <p><a href="index.php?controller=guia&action=list&tema=MasRecientes" class="tema">Más recientes</a></p>
                     <p><a href="index.php?controller=guia&action=list&tema=MasAntiguos" class="tema">Más antiguos</a></p>
                     <p><a href="index.php?controller=guia&action=list&tema=MasPopulares" class="tema">Más populares</a></p>
