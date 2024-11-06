@@ -13,7 +13,7 @@
                 <?php if ($dataToView['data']['usuario']['idUsuario'] == $_SESSION['user_data']['idUsuario']): ?>
                     <h1>Mis Publicaciones</h1>
                 <?php else: ?>
-                    <h1>Publicaciones de <?php echo htmlspecialchars($dataToView['data']['usuario']['nickname']); ?></h1>
+                    <h1>Publicaciones de <?php echo $dataToView['data']['usuario']['nickname']; ?></h1>
                 <?php endif; ?>
                 <hr>
 

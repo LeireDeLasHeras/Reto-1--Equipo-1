@@ -6,33 +6,40 @@
     <link rel="stylesheet" href="assets/css/comunes_style.css">
     <script src="assets/js/scroll.js"></script>
 </head>
+
 <body>
     <div class="container">
         <div class="main-content">
             <div class="content-left">
-                <?php if(empty($dataToView["data"]["pregunta"])): ?>
+                <?php if (empty($dataToView["data"]["pregunta"])): ?>
                     <p style="color: white;">Aún no hay preguntas de este tema</p>
                 <?php else: ?>
-                    <?php foreach($dataToView["data"]["pregunta"] as $pregunta): ?>
+                    <?php foreach ($dataToView["data"]["pregunta"] as $pregunta): ?>
                         <div class="post">
                             <h3 class="title">
                                 <a style="text-decoration: none; color: white; transition: color 0.2s;" onmouseover="this.style.color='#63D471'" onmouseout="this.style.color='white'" href="index.php?controller=pregunta&action=view&id=<?php echo $pregunta['idPregunta']; ?>">
                                     <?php echo $pregunta["titulo"]; ?>
                                 </a>
 
-                                <?php 
+                                <?php
                                 $saved = false;
-                                foreach($dataToView["data"]["guardadas"] as $guardada): 
-                                    if($guardada["idPregunta"] == $pregunta["idPregunta"]): 
+                                foreach ($dataToView["data"]["guardadas"] as $guardada):
+                                    if ($guardada["idPregunta"] == $pregunta["idPregunta"]):
                                         $saved = true;
                                         break;
-                                    endif; 
-                                endforeach; 
+                                    endif;
+                                endforeach;
                                 ?>
-                                
-                                <a class="bookmark" href="index.php?controller=pregunta&action=<?php echo $saved ? 'unsave' : 'save'; ?>&id=<?php echo $pregunta['idPregunta']; ?><?php if(isset($_GET['tema'])): ?>&tema=<?php echo $_GET['tema']; ?><?php endif; ?>"><img class="bookmark-icon" src="assets/img/logo_guardar_<?php echo $saved ? 'r' : 'l'; ?>.png" alt="Icono Bookmark guardado"></a>
 
-                                <?php if($pregunta['idUsuario'] == $_SESSION['user_data']['idUsuario']): ?>
+                                <a class="bookmark"
+                                    href="index.php?controller=pregunta&action=<?php echo $saved ? 'unsave' : 'save'; ?>&id=<?php echo $pregunta['idPregunta']; ?><?php if (isset($_GET['tema'])): ?>&tema=<?php echo $_GET['tema']; ?><?php endif; ?>"
+                                    onmouseover="this.querySelector('.bookmark-icon').src='assets/img/logo_guardar_r.png';"
+                                    onmouseout="this.querySelector('.bookmark-icon').src='assets/img/logo_guardar_<?php echo $saved ? 'r' : 'l'; ?>.png';">
+
+                                    <img class="bookmark-icon" src="assets/img/logo_guardar_<?php echo $saved ? 'r' : 'l'; ?>.png" alt="Icono Bookmark guardado">
+                                </a>
+
+                                <?php if ($pregunta['idUsuario'] == $_SESSION['user_data']['idUsuario']): ?>
                                     <button class="eliminar" onclick="window.location.href='index.php?controller=pregunta&action=delete&id=<?php echo $pregunta['idPregunta']; ?>'">
                                         <img class="eliminar-img" src="assets/img/logo_borrar.png" alt="Icono Borrar">
                                         <img class="eliminar-img-hover" src="assets/img/logo_borrar_rojo.png" alt="Icono Borrar">
@@ -42,34 +49,41 @@
                             <p><?php echo $pregunta["nickname"]; ?><br><?php echo $pregunta["fecha"]; ?></p><br>
                             <p style="text-align: justify; max-width: 90%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><?php echo $pregunta["descripcion"]; ?></p>
                             <p class="num-like">
-                                <?php 
+                                <?php
                                 $liked = false;
-                                foreach($dataToView["data"]["favoritas"] as $favorita):
-                                    if($favorita["idPregunta"] == $pregunta["idPregunta"]): 
+                                foreach ($dataToView["data"]["favoritas"] as $favorita):
+                                    if ($favorita["idPregunta"] == $pregunta["idPregunta"]):
                                         $liked = true;
                                         break;
-                                    endif; 
-                                endforeach; 
+                                    endif;
+                                endforeach;
                                 ?>
-                                <a class="boton-like" href="index.php?controller=pregunta&action=<?php echo $liked ? 'unlike' : 'like'; ?>&id=<?php echo $pregunta['idPregunta']; ?><?php if(isset($_GET['tema'])): ?>&tema=<?php echo $_GET['tema']; ?><?php endif; ?>"><img src="assets/img/logo_cora_<?php echo $liked ? 'r' : 'l'; ?>.png" alt="Icono Like"></a>
-                                
-                                    <?php
-                                    $contadorLikes = 0;
-                                    foreach($dataToView["data"]["favoritasGenerales"] as $favoritaGeneral):
-                                        if($favoritaGeneral["idPregunta"] == $pregunta["idPregunta"]):
-                                            $contadorLikes++;
-                                        endif;
-                                    endforeach;
-                                    ?>
-                                    <?php if($contadorLikes > 0): echo $contadorLikes; endif; ?>
-                                                              
+                                <a class="boton-like"
+                                    href="index.php?controller=pregunta&action=<?php echo $liked ? 'unlike' : 'like'; ?>&id=<?php echo $pregunta['idPregunta']; ?><?php if (isset($_GET['tema'])): ?>&tema=<?php echo $_GET['tema']; ?><?php endif; ?>"
+                                    onmouseover="this.querySelector('.like-icon').src='assets/img/logo_cora_r.png';"
+                                    onmouseout="this.querySelector('.like-icon').src='assets/img/logo_cora_<?php echo $liked ? 'r' : 'l'; ?>.png';">
+
+                                    <img class="like-icon" src="assets/img/logo_cora_<?php echo $liked ? 'r' : 'l'; ?>.png" alt="Icono Like">
+                                </a>
+
+                                <?php
+                                $contadorLikes = 0;
+                                foreach ($dataToView["data"]["favoritasGenerales"] as $favoritaGeneral):
+                                    if ($favoritaGeneral["idPregunta"] == $pregunta["idPregunta"]):
+                                        $contadorLikes++;
+                                    endif;
+                                endforeach;
+                                ?>
+                                <?php if ($contadorLikes > 0): echo $contadorLikes;
+                                endif; ?>
+
                             </p>
                             <br>
                             <hr style="width: 90%;">
                         </div>
                     <?php endforeach; ?>
                 <?php endif; ?>
-                
+
                 <div class="add-post">
                     <a href="index.php?controller=pregunta&action=create"><button class="add-icon"><img src="assets/img/logo_anadir.png" alt="Icono Añadir"></button></a>
                 </div>
@@ -77,7 +91,7 @@
 
             <div class="sidebar">
                 <h3>Temas</h3>
-                <hr>    
+                <hr>
                 <div class="topics">
                     <p><a href="index.php?controller=pregunta&action=list" class="tema">Todos</a></p>
                     <p><a href="index.php?controller=pregunta&action=list&tema=Seguridad" class="tema">Seguridad</a></p>
