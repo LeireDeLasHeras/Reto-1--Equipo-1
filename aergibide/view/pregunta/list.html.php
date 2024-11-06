@@ -4,6 +4,7 @@
     <title>Preguntas</title>
     <link rel="icon" href="../Media/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/comunes_style.css">
+    <script src="assets/js/scroll.js"></script>
 </head>
 <body>
     <div class="container">
@@ -38,9 +39,8 @@
                                     endif; 
                                 endforeach; 
                                 ?>
-                                <button class="bookmark" onclick="toggleBookmark(<?php echo $pregunta['idPregunta']; ?>, <?php echo $saved ? 'true' : 'false'; ?>)">
-                                    <img class="bookmark-icon" src="assets/img/logo_guardar_<?php echo $saved ? 'r' : 'l'; ?>.png" alt="Icono Bookmark guardado">
-                                </button>
+                                
+                                <a class="bookmark" href="index.php?controller=pregunta&action=<?php echo $saved ? 'unsave' : 'save'; ?>&id=<?php echo $pregunta['idPregunta']; ?><?php if(isset($_GET['tema'])): ?>&tema=<?php echo $_GET['tema']; ?><?php endif; ?>"><img class="bookmark-icon" src="assets/img/logo_guardar_<?php echo $saved ? 'r' : 'l'; ?>.png" alt="Icono Bookmark guardado"></a>
 
                                 <?php if($pregunta['idUsuario'] == $_SESSION['user_data']['idUsuario']): ?>
                                     <button class="eliminar" onclick="window.location.href='index.php?controller=pregunta&action=delete&id=<?php echo $pregunta['idPregunta']; ?>'">
@@ -52,9 +52,27 @@
                             <p><?php echo $pregunta["nickname"]; ?><br><?php echo $pregunta["fecha"]; ?></p><br>
                             <p style="text-align: justify; max-width: 90%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><?php echo $pregunta["descripcion"]; ?></p>
                             <p class="num-like">
-                                <button class="boton-like">
-                                    <img src="assets/img/logo_cora_l.png" alt="Icono Like">
-                                </button>000
+                                <?php 
+                                $liked = false;
+                                foreach($dataToView["data"]["favoritas"] as $favorita):
+                                    if($favorita["idPregunta"] == $pregunta["idPregunta"]): 
+                                        $liked = true;
+                                        break;
+                                    endif; 
+                                endforeach; 
+                                ?>
+                                <a class="boton-like" href="index.php?controller=pregunta&action=<?php echo $liked ? 'unlike' : 'like'; ?>&id=<?php echo $pregunta['idPregunta']; ?><?php if(isset($_GET['tema'])): ?>&tema=<?php echo $_GET['tema']; ?><?php endif; ?>"><img src="assets/img/logo_cora_<?php echo $liked ? 'r' : 'l'; ?>.png" alt="Icono Like"></a>
+                                
+                                    <?php
+                                    $contadorLikes = 0;
+                                    foreach($dataToView["data"]["favoritasGenerales"] as $favoritaGeneral):
+                                        if($favoritaGeneral["idPregunta"] == $pregunta["idPregunta"]):
+                                            $contadorLikes++;
+                                        endif;
+                                    endforeach;
+                                    ?>
+                                    <?php if($contadorLikes > 0): echo $contadorLikes; endif; ?>
+                                                              
                             </p>
                             <br>
                             <hr style="width: 90%;">
@@ -81,5 +99,4 @@
             </div>
         </div>
     </div>
-    <script src="assets/js/bookmark.js"></script>
 </body>

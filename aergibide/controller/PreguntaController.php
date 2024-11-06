@@ -15,7 +15,9 @@ class PreguntaController {
 
         $data = [
             'pregunta' => $this->model->getPreguntasByTema(),
-            'guardadas' => $this->model->getPreguntasGuardadasUsuario()
+            'guardadas' => $this->model->getPreguntasGuardadasUsuario(),
+            'favoritas' => $this->model->getPreguntasFavoritasUsuario(),
+            'favoritasGenerales' => $this->model->getPreguntasFavoritasGenerales()
         ];
 
         return $data;
@@ -44,21 +46,23 @@ class PreguntaController {
         return $this->model->borrarPregunta($id);
     }
 
-    public function guardarPregunta() {
-        if (isset($_SESSION['user_data'])) {
-            $idPregunta = $_GET['id'];
-            $idUsuario = $_SESSION['user_data']['idUsuario'];
-            $this->model->guardarPregunta($idPregunta, $idUsuario);
-
-        }
+    public function save(){
+        $id = $_GET["id"];
+        return $this->model->guardarPregunta($id);
     }
 
-    public function borrarGuardada() {
-        if (isset($_SESSION['user_data'])) {
-            $idPregunta = $_GET['id'];
-            $idUsuario = $_SESSION['user_data']['idUsuario'];
-            $this->model->borrarGuardada($idPregunta, $idUsuario);
-            
-        }
+    public function unsave(){
+        $id = $_GET["id"];
+        return $this->model->borrarGuardada($id);
+    }
+
+    public function like(){
+        $id = $_GET["id"];
+        return $this->model->like($id);
+    }
+
+    public function unlike(){
+        $id = $_GET["id"];
+        return $this->model->unlike($id);
     }
 }
