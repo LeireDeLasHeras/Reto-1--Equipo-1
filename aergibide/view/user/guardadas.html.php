@@ -10,7 +10,7 @@
     <div class="container">
         <div class="main-content">
             <div class="content-left">
-                <h1>Publicaciones guardadas</h1>
+                <h1>Mis publicaciones guardadas</h1>
                 <hr>
                 <?php if ($tipo == 'todas' || $tipo == 'preguntas'): ?>
                     <h2>Preguntas</h2>
