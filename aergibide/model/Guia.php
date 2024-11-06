@@ -65,7 +65,7 @@ class Guia
     public function getGuiasGuardadasByUserId($userId) {
         $sql = "SELECT Guia.* 
         FROM GuiasGuardadas 
-        JOIN Guia ON GuiaGuardadas.idGuia = Guia.idGuia
+        JOIN Guia ON GuiasGuardadas.idGuia = Guia.idGuia
         WHERE GuiasGuardadas.idUsuario = ?
         ";
         $stmt = $this->connection->prepare($sql);
