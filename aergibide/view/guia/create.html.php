@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="assets/css/formulario_styles.css">
-<script src="assets/js/crear_pregunta.js"></script>
+<script src="assets/js/crear_guia.js"></script>
 <div class="container">
     <div class="main-content">              
         <div class="contenido">
