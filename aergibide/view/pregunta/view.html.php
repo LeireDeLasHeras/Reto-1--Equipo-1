@@ -10,7 +10,9 @@
         <div class="main-content">
             <div class="content-left">
                 <h1><?php echo $dataToView["data"]["pregunta"]["titulo"]; ?></h1>
-                <p><?php echo $dataToView["data"]["pregunta"]["nickname"]; ?></p>
+                <p><a href="index.php?controller=user&action=publicaciones&tipo=todas&idUsuario=<?php echo $dataToView["data"]["pregunta"]["idUsuario"]; ?>">
+                    <?php echo $dataToView["data"]["pregunta"]["nickname"]; ?>
+                </a></p>
                 <p><?php echo $dataToView["data"]["pregunta"]["fecha"]; ?></p>
                 <br>
                 <p style="text-align: justify;"><?php echo $dataToView["data"]["pregunta"]["descripcion"]; ?></p>
@@ -22,9 +24,11 @@
                     <br>
                     <?php if(empty($dataToView["data"]["respuestas"])): ?>
                         <p>Alguien responderá esta pregunta pronto</p>
-                    <?php else: ?>
+                        <?php else: ?>
                         <?php foreach($dataToView["data"]["respuestas"] as $respuesta): ?>
-                            <p><?php echo $respuesta["nickname"]; ?></p>
+                            <p><a href="index.php?controller=user&action=publicaciones&tipo=todas&idUsuario=<?php echo $respuesta["idUsuario"]; ?>">
+                    <?php echo $respuesta["nickname"]; ?>
+                </a></p>
                             <p><?php echo $respuesta["fecha"]; ?></p>
                             <p><?php echo $respuesta["descripcion"]; ?></p>
                             <br>

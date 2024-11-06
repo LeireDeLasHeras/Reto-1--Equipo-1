@@ -10,7 +10,9 @@
         <div class="main-content">
             <div class="content-left">
                 <h1><?php echo $dataToView["data"]["titulo"]; ?></h1>
-                <p><?php echo $dataToView["data"]["nickname"]; ?></p>
+                <p><a href="index.php?controller=user&action=publicaciones&tipo=todas&idUsuario=<?php echo $dataToView["data"]["idUsuario"]; ?>">
+                    <?php echo $dataToView["data"]["nickname"]; ?>
+                </a></p>
                 <p><?php echo $dataToView["data"]["fecha"]; ?></p>
                 <br>
                 <p style="text-align: justify;"><?php echo $dataToView["data"]["descripcion"]; ?></p>
