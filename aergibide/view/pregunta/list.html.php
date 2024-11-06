@@ -19,7 +19,7 @@
                     </select>
                 </div>
 
-                <?php if(empty($dataToView["data"])): ?>
+                <?php if(empty($dataToView["data"]["pregunta"])): ?>
                     <p style="color: white;">Aún no hay preguntas de este tema</p>
                 <?php else: ?>
                     <?php foreach($dataToView["data"]["pregunta"] as $pregunta): ?>
@@ -50,7 +50,7 @@
                                 <?php endif; ?>
                             </h3>
                             <p><?php echo $pregunta["nickname"]; ?><br><?php echo $pregunta["fecha"]; ?></p><br>
-                            <p style="text-align: justify; max-width: 90%;"><?php echo $pregunta["descripcion"]; ?></p>
+                            <p style="text-align: justify; max-width: 90%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><?php echo $pregunta["descripcion"]; ?></p>
                             <p class="num-like">
                                 <button class="boton-like">
                                     <img src="assets/img/logo_cora_l.png" alt="Icono Like">

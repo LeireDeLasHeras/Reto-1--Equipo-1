@@ -38,9 +38,9 @@ class Tutorial
     } 
     
     public function getTutorialesGuardadosByUserId($userId) {
-        $sql = "SELECT Tutoriales.* 
+        $sql = "SELECT Tutorial.* 
         FROM TutorialesGuardados 
-        JOIN Tutoriales ON TutorialesGuardados.idTutorial = Tutorial.idTutorial
+        JOIN Tutorial ON TutorialesGuardados.idTutorial = Tutorial.idTutorial
         WHERE TutorialesGuardados.idUsuario = ?
         ";
         $stmt = $this->connection->prepare($sql);
