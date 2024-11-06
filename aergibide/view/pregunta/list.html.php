@@ -11,7 +11,9 @@
     <div class="container">
         <div class="main-content">
             <div class="content-left">
-                <?php if (empty($dataToView["data"]["pregunta"])): ?>
+
+                <?php if (empty($dataToView["data"]["pregunta"])): ?>      
+
                     <p style="color: white;">Aún no hay preguntas de este tema</p>
                 <?php else: ?>
                     <?php foreach ($dataToView["data"]["pregunta"] as $pregunta): ?>
