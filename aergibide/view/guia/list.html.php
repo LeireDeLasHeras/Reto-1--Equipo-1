@@ -9,16 +9,6 @@
     <div class="container">
         <div class="main-content">
             <div class="content-left">
-                <div class="search-bar">
-                    <img src="assets/img/logo_buscar.png" alt="Search Icon" class="search-icon">
-                    <input type="text" placeholder="Buscar...">
-                    <select class="order-button" name="orden" id="orden">
-                        <option value="recientes">Más recientes</option>
-                        <option value="antiguas">Más antiguas</option>
-                        <option value="populares">Más populares</option>
-                    </select>
-                </div>
-
                 <?php if (empty($dataToView["data"])): ?>
                     <p>Actualmente no hay guías</p>
                 <?php else: ?>
@@ -74,11 +64,14 @@
                 <h3>Temas</h3>
                 <hr>    
                 <div class="topics">
-                    <p><a href="#" class="tema">Seguridad</a></p>
-                    <p><a href="#" class="tema">Aviones</a></p>
-                    <p><a href="#" class="tema">Piezas</a></p>
-                    <p><a href="#" class="tema">Vuelos</a></p>
-                    <p><a href="#" class="tema">Reparaciones</a></p>
+                    <p><a href="index.php?controller=guia&action=list&tema=Seguridad" class="tema">Seguridad</a></p>
+                    <p><a href="index.php?controller=guia&action=list&tema=Aviones" class="tema">Aviones</a></p>
+                    <p><a href="index.php?controller=guia&action=list&tema=Piezas" class="tema">Piezas</a></p>
+                    <p><a href="index.php?controller=guia&action=list&tema=Vuelos" class="tema">Vuelos</a></p>
+                    <p><a href="index.php?controller=guia&action=list&tema=Reparaciones" class="tema">Reparaciones</a></p>
+                    <p><a href="index.php?controller=guia&action=list&tema=MasRecientes" class="tema">Más recientes</a></p>
+                    <p><a href="index.php?controller=guia&action=list&tema=MasAntiguos" class="tema">Más antiguos</a></p>
+                    <p><a href="index.php?controller=guia&action=list&tema=MasPopulares" class="tema">Más populares</a></p>
                 </div>
             </div>
         </div>

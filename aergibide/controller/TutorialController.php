@@ -12,6 +12,14 @@ class TutorialController {
     }
     public function list(){
         $this->view= "list";
+        if(isset($_GET['tema'])){
+            if($_GET['tema'] == 'MasRecientes'){
+                return $this->model->getTutorialesByFecha('DESC');
+            }
+            else if($_GET['tema'] == 'MasAntiguos'){
+                return $this->model->getTutorialesByFecha('ASC'); 
+            }
+        }
         return $this->model->getTutorialesByTema();
     }
     public function create(){
