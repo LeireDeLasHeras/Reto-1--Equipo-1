@@ -13,7 +13,18 @@ class GuiaController {
 
     public function list(){
         $this->view= "list";
-        return $this->model->getAllGuias();
+        if(isset($_GET['tema'])) {
+            if($_GET['tema'] == 'MasRecientes') {
+                return $this->model->getGuiasByFecha('DESC');
+            }
+            else if($_GET['tema'] == 'MasAntiguos') {
+                return $this->model->getGuiasByFecha('ASC');
+            } else {
+                return $this->model->getGuiasByTema();
+            }
+        } else {
+            return $this->model->getAllGuias();
+        }
     }
 
     public function view() {
@@ -67,6 +78,5 @@ class GuiaController {
         $id = $_GET["id"];
         return $this->model->borrarGuia($id);
     }
-    
     
 }

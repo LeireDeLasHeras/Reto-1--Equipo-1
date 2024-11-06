@@ -13,10 +13,31 @@ class PreguntaController {
     public function list(){
         $this->view= "list";
 
-        $data = [
-            'pregunta' => $this->model->getPreguntasByTema(),
-            'guardadas' => $this->model->getPreguntasGuardadasUsuario()
-        ];
+        if(isset($_GET['tema'])){
+            if($_GET['tema'] == 'MasRecientes'){
+                $data = [
+                    'pregunta' => $this->model->getPreguntasByFecha('DESC'),
+                    'guardadas' => $this->model->getPreguntasGuardadasUsuario()
+                ];
+            }
+            else if($_GET['tema'] == 'MasAntiguos'){
+                $data = [
+                    'pregunta' => $this->model->getPreguntasByFecha('ASC'),
+                    'guardadas' => $this->model->getPreguntasGuardadasUsuario()
+                ];
+            }
+            else {
+                $data = [
+                    'pregunta' => $this->model->getPreguntasByTema(),
+                    'guardadas' => $this->model->getPreguntasGuardadasUsuario()
+                ];
+            }
+        } else {
+            $data = [
+                'pregunta' => $this->model->getPreguntasByTema(),
+                'guardadas' => $this->model->getPreguntasGuardadasUsuario()
+            ];
+        }
 
         return $data;
     }

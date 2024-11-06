@@ -18,14 +18,14 @@ class Guia
     public function getAllGuias()
     {
 
-        $sql = "SELECT titulo, descripcion, fecha, nickname, fichero, Guia.idUsuario, Guia.idGuia FROM Guia, Usuario WHERE Guia.idUsuario = Usuario.idUsuario";
+        $sql = "SELECT titulo, descripcion, fecha, tema, nickname, fichero, Guia.idUsuario, Guia.idGuia FROM Guia, Usuario WHERE Guia.idUsuario = Usuario.idUsuario";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute();
         return $stmt->fetchAll();
     }
     
     public function getGuiaById($id){
-        $sql = "SELECT titulo, descripcion, fecha, nickname, fichero, Guia.idUsuario, Guia.idGuia FROM Guia, Usuario WHERE Guia.idUsuario = Usuario.idUsuario AND Guia.idGuia = ?";
+        $sql = "SELECT titulo, descripcion, fecha, tema, nickname, fichero, Guia.idUsuario, Guia.idGuia FROM Guia, Usuario WHERE Guia.idUsuario = Usuario.idUsuario AND Guia.idGuia = ?";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute([$id]);
         return $stmt->fetch();
@@ -41,11 +41,11 @@ class Guia
         $idUsuario = $_SESSION['user_data']['idUsuario'];
    
         try {
-            $sql = "INSERT INTO Guia (titulo, descripcion, fecha, idUsuario, fichero) VALUES (?, ?, ?, ?, ?)";
+            $sql = "INSERT INTO Guia (titulo, descripcion, fecha, tema, idUsuario, fichero) VALUES (?, ?, ?, ?, ?, ?)";
             $stmt = $this->connection->prepare($sql);
     
             $fechaActual = date('Y-m-d');
-            $stmt->execute([$titulo, $descripcion, $fechaActual, $idUsuario, $filePath]);
+            $stmt->execute([$titulo, $descripcion, $fechaActual, $tema, $idUsuario, $filePath]);
     
             $id = $this->connection->lastInsertId();
     
@@ -83,5 +83,25 @@ class Guia
         }
 
     }
-    
+    public function getGuiasByTema()
+    {
+        if(isset($_GET['tema'])){
+            $tema = $_GET['tema'];
+            $sql = "SELECT idGuia, titulo, descripcion, fecha, tema, nickname, fichero, Guia.idUsuario FROM Guia, Usuario WHERE Guia.idUsuario = Usuario.idUsuario AND tema = ?";
+            $stmt = $this->connection->prepare($sql);
+            $stmt->execute([$tema]);
+            return $stmt->fetchAll();
+        }else{
+            $sql = "SELECT idGuia, titulo, descripcion, fecha, tema, nickname, fichero, Guia.idUsuario FROM Guia, Usuario WHERE Guia.idUsuario = Usuario.idUsuario";
+            $stmt = $this->connection->prepare($sql);
+            $stmt->execute();
+            return $stmt->fetchAll();        
+        }
+    }
+    public function getGuiasByFecha($order) {
+        $sql = "SELECT idGuia, titulo, descripcion, fecha, tema, nickname, fichero, Guia.idUsuario FROM Guia, Usuario WHERE Guia.idUsuario = Usuario.idUsuario ORDER BY fecha $order";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
 }

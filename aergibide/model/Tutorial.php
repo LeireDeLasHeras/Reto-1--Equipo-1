@@ -30,6 +30,13 @@ class Tutorial
             return $stmt->fetchAll();        
         }
     }
+    public function getTutorialesByFecha($order) {
+        $sql = "SELECT Tutorial.idUsuario, Tutorial.idTutorial, titulo, tema, descripcion, enlace, fecha, nickname FROM Tutorial, Usuario WHERE Tutorial.idUsuario = Usuario.idUsuario ORDER BY fecha $order";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
+  
     public function getTutorialById($id){
         $sql = "SELECT t.*, u.nickname FROM " . $this->table . " t JOIN Usuario u ON t.idUsuario = u.idUsuario WHERE t.idTutorial = ?";
         $stmt = $this->connection->prepare($sql);

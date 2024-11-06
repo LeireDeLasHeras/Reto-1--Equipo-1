@@ -31,6 +31,12 @@ class Pregunta
         }
     }
 
+    public function getPreguntasByFecha($order) {
+        $sql = "SELECT idPregunta, titulo, descripcion, fecha, nickname, Pregunta.idUsuario FROM Pregunta, Usuario WHERE Pregunta.idUsuario = Usuario.idUsuario ORDER BY fecha $order";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
 
     public function getRespuestasByPreguntaId($idPregunta){
         $sql = "SELECT r.idRespuesta, r.descripcion, r.fecha, u.nickname 
