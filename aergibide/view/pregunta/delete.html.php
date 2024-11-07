@@ -11,7 +11,7 @@
             <div class="content-left-borrar">
                 <h1>Eliminar pregunta</h1>
                 <br>
-                <p>Estas seguro que quieres eliminar la pregunta?</p>
+                <p>¿Estas seguro que quieres eliminar la pregunta?</p>
                 <br>
                 <form class="borrar" action="index.php?controller=pregunta&action=delete&id=<?php echo $_GET["id"]; ?>" method="post">
                     <input type="submit" name="delete" value="Sí, eliminar">

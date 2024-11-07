@@ -26,6 +26,9 @@
                         <option value="publicaciones">Publicaciones</option>
                         <option value="guardadas">Guardadas</option>
                         <option value="logout">Cerrar Sesión</option>
+                        <?php if ($_SESSION['user_data']['tipo']=='admin'): ?>
+                            <option value="users">Gestionar Usuarios</option>
+                        <?php endif; ?>
                 </select></span>
                 <!--<div class="user-avatar"></div>-->
             </div>

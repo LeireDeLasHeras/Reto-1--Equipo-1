@@ -18,6 +18,9 @@ document.addEventListener('DOMContentLoaded', function() {
             case 'logout':
                 window.location.href = 'index.php?controller=user&action=logout';
                 break;
+            case 'users':
+                window.location.href = 'index.php?controller=user&action=list';
+                break;
             default:
                 console.log('Opción no válida');
         }
