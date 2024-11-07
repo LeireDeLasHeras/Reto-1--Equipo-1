@@ -4,26 +4,41 @@
     <title>Tutoriales</title>
     <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/comunes_style.css">
+    <script src="assets/js/scroll.js"></script>
 </head>
 <body> 
     <div class="container">
         <div class="main-content">
             <div class="content-left">
-                <?php if(empty($dataToView["data"])): ?>
+                <?php if(empty($dataToView["data"]["tutorial"])): ?>
                     <p style="color: white;">Aún no hay tutoriales de este tema</p>
                 <?php else: ?>
-                    <?php foreach($dataToView["data"] as $tutorial): ?>
+                    <?php foreach($dataToView["data"]["tutorial"] as $tutorial): ?>
                         <div class="post">
                             <h3 class="title">
                                 <a style="text-decoration: none; color: white; transition: color 0.2s;" onmouseover="this.style.color='#63D471'" onmouseout="this.style.color='white'" href="index.php?controller=tutorial&action=view&id=<?php echo $tutorial['idTutorial']; ?>">
                                     <?php echo $tutorial["titulo"]; ?>
                                 </a>
 
+                                <?php
+                                $saved = false;
+                                foreach ($dataToView["data"]["guardados"] as $guardado):
+                                    if ($guardado["idTutorial"] == $tutorial["idTutorial"]):
+                                        $saved = true;
+                                        break;
+                                    endif;
+                                endforeach;
+                                ?> 
 
-                                <button class="bookmark">
-                                    <img src="assets/img/logo_guardar_l.png" alt="Icono Bookmark">
-                                </button>
-                                <?php if($tutorial['idUsuario'] == $_SESSION['user_data']['idUsuario']): ?>
+                                <a class="bookmark"
+                                    href="index.php?controller=tutorial&action=<?php echo $saved ? 'unsave' : 'save'; ?>&id=<?php echo $tutorial['idTutorial']; ?><?php if (isset($_GET['tema'])): ?>&tema=<?php echo $_GET['tema']; ?><?php endif; ?>"
+                                    onmouseover="this.querySelector('.bookmark-icon').src='assets/img/logo_guardar_r.png';"
+                                    onmouseout="this.querySelector('.bookmark-icon').src='assets/img/logo_guardar_<?php echo $saved ? 'r' : 'l'; ?>.png';">
+
+                                    <img class="bookmark-icon" src="assets/img/logo_guardar_<?php echo $saved ? 'r' : 'l'; ?>.png" alt="Icono Bookmark guardado">
+                                </a>
+
+                                <?php if($tutorial['idUsuario'] == $_SESSION['user_data']['idUsuario'] || $_SESSION['user_data']['tipo'] == 'admin'): ?>
                                     <button class="eliminar" onclick="window.location.href='index.php?controller=tutorial&action=delete&id=<?php echo $tutorial['idTutorial']; ?>'">
                                         <img class="eliminar-img" src="assets/img/logo_borrar.png" alt="Icono Borrar">
                                         <img class="eliminar-img-hover" src="assets/img/logo_borrar_rojo.png" alt="Icono Borrar">
@@ -40,10 +55,36 @@
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                                 referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></p>
                             <p class="num-like">
-                                <button class="boton-like">
-                                    <img src="assets/img/logo_cora_l.png" alt="Icono Like">
-                                </button>000
+                                <?php
+                                $liked = false;
+                                foreach ($dataToView["data"]["favoritos"] as $favorita):
+                                    if ($favorita["idTutorial"] == $tutorial["idTutorial"]):
+                                        $liked = true;
+                                        break;
+                                    endif;
+                                endforeach;
+                                ?>
+                                <a class="boton-like"
+                                    href="index.php?controller=tutorial&action=<?php echo $liked ? 'unlike' : 'like'; ?>&id=<?php echo $tutorial['idTutorial']; ?><?php if (isset($_GET['tema'])): ?>&tema=<?php echo $_GET['tema']; ?><?php endif; ?>"
+                                    onmouseover="this.querySelector('.like-icon').src='assets/img/logo_cora_r.png';"
+                                    onmouseout="this.querySelector('.like-icon').src='assets/img/logo_cora_<?php echo $liked ? 'r' : 'l'; ?>.png';">
+
+                                    <img class="like-icon" src="assets/img/logo_cora_<?php echo $liked ? 'r' : 'l'; ?>.png" alt="Icono Like">
+                                </a>
+
+                                <?php
+                                $contadorLikes = 0;
+                                foreach ($dataToView["data"]["favoritosGenerales"] as $favoritaGeneral):
+                                    if ($favoritaGeneral["idTutorial"] == $tutorial["idTutorial"]):
+                                        $contadorLikes++;
+                                    endif;
+                                endforeach;
+                                ?>
+                                <?php if ($contadorLikes > 0): echo $contadorLikes;
+                                endif; ?>
+
                             </p>
+                            <br>
                             <hr style="width: 90%;">
                         </div>
                     <?php endforeach; ?>
