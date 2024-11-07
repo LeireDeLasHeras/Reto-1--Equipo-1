@@ -8,16 +8,15 @@
 <body>
     <div class="container">
         <div class="main-content">
-            <div class="content-left">
+            <div class="content-left-vistaGuia">
                 <h1><?php echo $dataToView ["data"] ["titulo"]; ?></h1>
                 <p><a href="index.php?controller=user&action=publicaciones&tipo=todas&idUsuario=<?php echo $dataToView["data"]["idUsuario"]; ?>">
                     <?php echo $dataToView["data"]["nickname"]; ?>
                 </a></p>
                 <p><?php echo $dataToView ["data"] ["fecha"]; ?></p>
-                <br>
                 <p style="text-align: justify;"><?php echo $dataToView ["data"] ["descripcion"]; ?></p>
                 <a href="<?php echo $dataToView ["data"] ["fichero"]; ?>" target="_blank">
-                    <button class="download-button">Descargar</button>
+                    <button class="download-button-viewGuia">Descargar</button>
                 </a>
             </div>
         </div>

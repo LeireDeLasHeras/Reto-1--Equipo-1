@@ -13,13 +13,17 @@ class Respuesta{
         $this->connection = $dbObj->conection;
     }
 
-    public function crearRespuesta(){
+        public function crearRespuesta($param){
+            $respuesta = isset($param['respuesta']) ? $param['respuesta'] : '';
+            $filePath = isset($param['file_path']) ? $param['file_path'] : ''; 
+
         if(isset($_POST['respuesta'])){
             try {
-                $stmt = $this->connection->prepare("INSERT INTO Respuesta (fecha, descripcion, idUsuario, idPregunta) VALUES (:fecha, :descripcion, :idUsuario, :idPregunta)");
+                $stmt = $this->connection->prepare("INSERT INTO Respuesta (fecha, descripcion, fichero, idUsuario, idPregunta) VALUES (:fecha, :descripcion, :fichero, :idUsuario, :idPregunta)");
                 $result = $stmt->execute([
                     ':fecha' => date('Y-m-d'), 
                     ':descripcion' => $_POST['respuesta'],
+                    ':fichero' => $filePath,
                     ':idUsuario' => $_SESSION['user_data']['idUsuario'],
                     ':idPregunta' => $_GET['id']
                 ]);

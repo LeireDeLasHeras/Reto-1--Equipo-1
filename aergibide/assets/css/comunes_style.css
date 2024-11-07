@@ -328,7 +328,7 @@ body {
 
 /* Estilos para PaginaGuias */
 
-.download-button {
+.download-button, .download-button-viewGuia {
     background-color: #4E5166; 
     color: white; 
     font-size: 12px;
@@ -342,12 +342,17 @@ body {
     margin-top: 10px;
 }
 
-.download-button:hover {
+.download-button-viewGuia{
+    background-color: white;
+    color: #4E5166;
+}
+
+.download-button:hover, .download-button-viewGuia:hover {
     background-color: #63D471; 
     transform: translateY(-3px); 
 }
 
-.download-button:active {
+.download-button:active, .download-button-viewGuia:active {
     transform: translateY(0); 
 }
 
@@ -401,12 +406,117 @@ body {
 .content-left-borrar .borrar input[type="submit"]:hover,
 .content-left-borrar .borrar input[type="button"]:hover {
     background-color: #63D471; /* Color de fondo al pasar el mouse */
-    transform: translateY(-2px); /* Efecto de elevación */
+    transform: translateY(-3px); /* Efecto de elevación */
 }
 
 .content-left-borrar .borrar input[type="submit"]:active,
 .content-left-borrar .borrar input[type="button"]:active {
     transform: translateY(0); /* Vuelve al nivel original al hacer clic */
+}
+
+/* Estilo páginas View */
+
+.content-left-vistaPregunta,
+.content-left-vistaTutorial,
+.content-left-vistaGuia {
+    padding: 20px;
+    width: fit-content;
+    min-width: 300px;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #4E5166;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    margin-top: 10px;
+    margin-bottom: 10px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    height: fit-content;
+}
+
+.content-left-vistaPregunta h1,
+.content-left-vistaTutorial h1,
+.content-left-vistaGuia h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: white;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    margin-bottom: 20px;
+}
+
+.content-left-vistaPregunta p,
+.content-left-vistaTutorial p,
+.content-left-vistaGuia p {
+    color: white;
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 15px;
+    font-style: italic;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.content-left-vistaPregunta a,
+.content-left-vistaTutorial a,
+.content-left-vistaGuia a {
+    color: white;
+    text-decoration: none;
+    font-size: 120%;
+    font-weight: 500;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.content-left-vistaPregunta a:hover {
+    color: #4CAF50;
+}
+
+.content-left-vistaPregunta .respuestas {
+    margin-top: 50px;
+}
+
+.content-left-vistaPregunta .respuestas h2 {
+    font-size: 20px;
+    color: white;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #eee;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+/* Estilo para separar las respuestas */
+.content-left-vistaPregunta .respuestas p:nth-of-type(3n+4) {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.content-left-vistaPregunta .add-respuesta {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.content-left-vistaPregunta .add-respuesta button {
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    padding: 12px 25px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.content-left-vistaPregunta .add-respuesta button:hover {
+    background-color: #63D471;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
 
 
