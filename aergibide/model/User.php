@@ -122,6 +122,37 @@ class User
         return $idUsuario;
     }
 
+    public function getUsuarios(){
+        $sql = "SELECT * FROM Usuario";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll();  
+    }
+
+    public function hacerAdmin($id){
+        $sql = "UPDATE Usuario SET tipo = 'admin' WHERE idUsuario = ?";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute([$id]);
+        header('Location: index.php?controller=user&action=list'. '#scrollPosition');
+        exit();
+    }
+
+    public function hacerNormal($id){
+        $sql = "UPDATE Usuario SET tipo = 'normal' WHERE idUsuario = ?";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute([$id]);
+        header('Location: index.php?controller=user&action=list'. '#scrollPosition');
+        exit();
+    }
+    public function borrarUsuario($id){
+        if(isset($_POST['delete'])){
+            $sql = "DELETE FROM Usuario WHERE idUsuario = ?";
+            $stmt = $this->connection->prepare($sql);
+            $stmt->execute([$id]);
+            header('Location: index.php?controller=user&action=list'. '#scrollPosition');
+            exit();
+        }
+    }
     public function login(){
         $post = filter_input_array(INPUT_POST, FILTER_SANITIZE_SPECIAL_CHARS);
     
