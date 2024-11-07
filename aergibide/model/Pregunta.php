@@ -47,7 +47,7 @@ class Pregunta
     }
 
     public function getRespuestasByPreguntaId($idPregunta){
-        $sql = "SELECT r.idRespuesta, r.descripcion, r.fecha, u.nickname, r.idUsuario
+        $sql = "SELECT r.idRespuesta, r.descripcion, r.fecha, u.nickname, r.idUsuario, r.fichero
                 FROM Respuesta r 
                 INNER JOIN Usuario u ON r.idUsuario = u.idUsuario 
                 WHERE r.idPregunta = ?
