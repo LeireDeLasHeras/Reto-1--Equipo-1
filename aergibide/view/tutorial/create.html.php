@@ -4,7 +4,7 @@
     <div class="main-content">              
         <div class="contenido">
                 <div class="formulario-post">
-                    <form action="index.php?controller=tutorial&action=save" method="POST">
+                    <form action="index.php?controller=tutorial&action=create" method="POST">
                         <label for="titulo">T&iacute;tulo:</label>
                         <input type="text" id="titulo" name="titulo" placeholder="Escribe el título">
                     

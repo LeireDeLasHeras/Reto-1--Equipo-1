@@ -13,7 +13,6 @@
             <div class="content-left">
 
                 <?php if (empty($dataToView["data"]["pregunta"])): ?>      
-
                     <p style="color: white;">Aún no hay preguntas de este tema</p>
                 <?php else: ?>
                     <?php foreach ($dataToView["data"]["pregunta"] as $pregunta): ?>
@@ -31,7 +30,7 @@
                                         break;
                                     endif;
                                 endforeach;
-                                ?>
+                                ?> 
 
                                 <a class="bookmark"
                                     href="index.php?controller=pregunta&action=<?php echo $saved ? 'unsave' : 'save'; ?>&id=<?php echo $pregunta['idPregunta']; ?><?php if (isset($_GET['tema'])): ?>&tema=<?php echo $_GET['tema']; ?><?php endif; ?>"
@@ -41,7 +40,7 @@
                                     <img class="bookmark-icon" src="assets/img/logo_guardar_<?php echo $saved ? 'r' : 'l'; ?>.png" alt="Icono Bookmark guardado">
                                 </a>
 
-                                <?php if ($pregunta['idUsuario'] == $_SESSION['user_data']['idUsuario']): ?>
+                                <?php if ($pregunta['idUsuario'] == $_SESSION['user_data']['idUsuario'] || $_SESSION['user_data']['tipo'] == 'admin') : ?>
                                     <button class="eliminar" onclick="window.location.href='index.php?controller=pregunta&action=delete&id=<?php echo $pregunta['idPregunta']; ?>'">
                                         <img class="eliminar-img" src="assets/img/logo_borrar.png" alt="Icono Borrar">
                                         <img class="eliminar-img-hover" src="assets/img/logo_borrar_rojo.png" alt="Icono Borrar">
@@ -57,7 +56,7 @@
                                     if ($favorita["idPregunta"] == $pregunta["idPregunta"]):
                                         $liked = true;
                                         break;
-                                    endif;
+                                    endif; 
                                 endforeach;
                                 ?>
                                 <a class="boton-like"

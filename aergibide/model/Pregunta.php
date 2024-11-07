@@ -84,7 +84,7 @@ class Pregunta
         $stmt->execute([$id]);
         return $stmt->fetch();
     }
-
+ 
 
     public function crearPregunta(){
         if(isset($_POST['titulo']) && isset($_POST['descripcion']) && isset($_POST['tema'])){
@@ -112,17 +112,6 @@ class Pregunta
 
     public function getPreguntasByUserId($userId) {
         $sql = "SELECT * FROM Pregunta WHERE idUsuario = ?";
-        $stmt = $this->connection->prepare($sql);
-        $stmt->execute([$userId]);
-        return $stmt->fetchAll();
-
-    }
-    public function getPreguntasGuardadasByUserId($userId) {
-        $sql = "SELECT Pregunta.* 
-        FROM PreguntasGuardadas 
-        JOIN Pregunta ON PreguntasGuardadas.idPregunta = Pregunta.idPregunta 
-        WHERE PreguntasGuardadas.idUsuario = ?
-        ";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute([$userId]);
         return $stmt->fetchAll();
@@ -171,5 +160,14 @@ class Pregunta
         exit();
     }
 
-
+    public function getPreguntasGuardadasByUserId($userId) {
+        $sql = "SELECT Pregunta.* 
+        FROM PreguntasGuardadas 
+        JOIN Pregunta ON PreguntasGuardadas.idPregunta = Pregunta.idPregunta 
+        WHERE PreguntasGuardadas.idUsuario = ?
+        ";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute([$userId]);
+        return $stmt->fetchAll();
+    }
 }

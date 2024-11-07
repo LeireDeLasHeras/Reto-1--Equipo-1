@@ -13,19 +13,51 @@ class GuiaController {
 
     public function list(){
         $this->view= "list";
-        if(isset($_GET['tema'])) {
-            if($_GET['tema'] == 'MasRecientes') {
-                return $this->model->getGuiasByFecha('DESC');
+
+        if(isset($_GET['tema'])){
+            if($_GET['tema'] == 'MasRecientes'){
+                $data = [
+                    'guia' => $this->model->getGuiasByFecha('DESC'),
+                    'guardadas' => $this->model->getGuiasGuardadasUsuario(),
+                    'favoritas' => $this->model->getGuiasFavoritasUsuario(),
+                    'favoritasGenerales' => $this->model->getGuiasFavoritasGenerales()
+                ];
             }
-            else if($_GET['tema'] == 'MasAntiguos') {
-                return $this->model->getGuiasByFecha('ASC');
-            } else {
-                return $this->model->getGuiasByTema();
+            else if($_GET['tema'] == 'MasAntiguos'){
+                $data = [
+                    'guia' => $this->model->getGuiasByFecha('ASC'),
+                    'guardadas' => $this->model->getGuiasGuardadasUsuario(),
+                    'favoritas' => $this->model->getGuiasFavoritasUsuario(),
+                    'favoritasGenerales' => $this->model->getGuiasFavoritasGenerales()
+                ];
+            }
+            else if($_GET['tema'] == 'MasPopulares'){
+                $data = [
+                    'guia' => $this->model->getGuiasByLikes(),
+                    'guardadas' => $this->model->getGuiasGuardadasUsuario(),
+                    'favoritas' => $this->model->getGuiasFavoritasUsuario(),
+                    'favoritasGenerales' => $this->model->getGuiasFavoritasGenerales()
+                ];
+            }
+            else {
+                $data = [
+                    'guia' => $this->model->getGuiasByTema(),
+                    'guardadas' => $this->model->getGuiasGuardadasUsuario(),
+                    'favoritas' => $this->model->getGuiasFavoritasUsuario(),
+                    'favoritasGenerales' => $this->model->getGuiasFavoritasGenerales()
+                ];
             }
         } else {
-            return $this->model->getAllGuias();
+            $data = [
+                'guia' => $this->model->getGuiasByTema(),
+                'guardadas' => $this->model->getGuiasGuardadasUsuario(),
+                'favoritas' => $this->model->getGuiasFavoritasUsuario(),
+                'favoritasGenerales' => $this->model->getGuiasFavoritasGenerales()
+            ];
         }
+        return $data;
     }
+   
 
     public function view() {
         $this->view= "view";
@@ -77,6 +109,26 @@ class GuiaController {
         $this->view= "delete";
         $id = $_GET["id"];
         return $this->model->borrarGuia($id);
+    }
+
+    public function save(){
+        $id = $_GET["id"];
+        return $this->model->guardarGuia($id);
+    }
+
+    public function unsave(){
+        $id = $_GET["id"];
+        return $this->model->borrarGuardada($id);
+    }
+
+    public function like(){
+        $id = $_GET["id"];
+        return $this->model->like($id);
+    }
+
+    public function unlike(){
+        $id = $_GET["id"];
+        return $this->model->unlike($id);
     }
     
 }

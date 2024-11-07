@@ -11,7 +11,7 @@ class PreguntaController {
     }
 
     public function list(){
-        $this->view= "list";
+        $this->view= "list"; 
       
         if(isset($_GET['tema'])){
             if($_GET['tema'] == 'MasRecientes'){
