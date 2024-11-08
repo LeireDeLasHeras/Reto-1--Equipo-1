@@ -23,7 +23,7 @@
                     <select class="user-options" name="opciones" id="opciones">
                         <option value="user"disabled selected><?php echo $_SESSION['user_data']['nickname']; ?></option>
                         <option value="editar">Editar Perfil</option>
-                        <option value="publicaciones">Publicaciones</option>
+                        <option value="publicaciones">Mis Publicaciones</option>
                         <option value="guardadas">Guardadas</option>
                         <option value="logout">Cerrar Sesión</option>
                         <?php if ($_SESSION['user_data']['tipo']=='admin'): ?>
