@@ -105,7 +105,6 @@
 
             <div class="sidebar">
                 <h3>Temas</h3>
-                <hr>    
                 <div class="topics">
                     <p><a href="index.php?controller=guia&action=list" class="tema">Todos</a><xº/p>
                     <p><a href="index.php?controller=guia&action=list&tema=Seguridad" class="tema">Seguridad</a></p>
@@ -115,7 +114,6 @@
                     <p><a href="index.php?controller=guia&action=list&tema=Reparaciones" class="tema">Reparaciones</a></p>
                 </div>
                 <h3>Ordenar</h3>
-                <hr>
                 <div class="topics">
                     <p><a href="index.php?controller=guia&action=list&tema=MasRecientes" class="tema">Más recientes</a></p>
                     <p><a href="index.php?controller=guia&action=list&tema=MasAntiguos" class="tema">Más antiguos</a></p>

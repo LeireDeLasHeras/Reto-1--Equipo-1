@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="assets/css/formulario_styles.css">
+<link rel="stylesheet" href="assets/css/comunes_style.css">
 <div class="container">
     <div class="main-content">              
         <div class="contenido">
@@ -12,8 +12,9 @@
                         
                         <div class="form-buttons">
                             <button type="button" class="cancel-button">Cancelar</button>
-                            <input style="color: white;" type="submit" class="submit-button" value="Publicar">
+                            <input type="submit" class="submit-button" value="Publicar">
                         </div>
+                        <script src="assets/js/crear_respuesta.js"></script>
                     </form>
                 </div>      
             </div>
