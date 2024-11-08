@@ -34,8 +34,8 @@ document.addEventListener('DOMContentLoaded', function () {
         limpiarMensajesError();
         let esValido = true;
 
-        if (respuestaInput.value.length < 500) {
-            mostrarMensajeError(respuestaInput, "La respuesta debe tener al menos 500 caracteres");
+        if (respuestaInput.value.length > 500) {
+            mostrarMensajeError(respuestaInput, "La longitud máxima es de 500 caracteres");
             esValido = false;
         }
 
