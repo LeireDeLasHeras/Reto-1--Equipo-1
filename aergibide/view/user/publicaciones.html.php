@@ -11,16 +11,16 @@
         <div class="main-content">
             <div class="content-left">
                 <?php if ($dataToView['data']['usuario']['idUsuario'] == $_SESSION['user_data']['idUsuario']): ?>
-                    <h1>Mis Publicaciones</h1>
+                    <h1 class="titulo">Mis Publicaciones</h1>
                 <?php else: ?>
-                    <h1>Publicaciones de <?php echo $dataToView['data']['usuario']['nickname']; ?></h1>
+                    <h1 class="titulo">Publicaciones de <?php echo $dataToView['data']['usuario']['nickname']; ?></h1>
                 <?php endif; ?>
                 <hr>
 
                 <?php if ($tipo == 'todas' || $tipo == 'preguntas'): ?>
-                    <h2>Preguntas</h2>
+                    <h2 class="seccion" >Preguntas</h2>
                     <?php if (empty($dataToView['data']['preguntas'])): ?>
-                        <p>No hay preguntas publicadas.</p>
+                        <p class="default">No hay preguntas publicadas.</p>
                     <?php else: ?>
                         <ul>
                             <?php foreach ($dataToView['data']['preguntas'] as $pregunta): ?>
@@ -35,7 +35,7 @@
                 <?php endif; ?>
 
                 <?php if ($tipo == 'todas' || $tipo == 'tutoriales'): ?>
-                    <h2>Tutoriales</h2>
+                    <h2 class="seccion">Tutoriales</h2>
                     <?php if (empty($dataToView['data']['tutoriales'])): ?>
                         <p>No has publicado ningún tutorial.</p>
                     <?php else: ?>
@@ -50,7 +50,7 @@
                 <?php endif; ?>
 
                 <?php if ($tipo == 'todas' || $tipo == 'guias'): ?>
-                    <h2>Guias</h2>
+                    <h2 class="seccion">Guias</h2>
                     <?php if (empty($dataToView['data']['guias'])): ?>
                         <p>No has publicado ninguna guía.</p>
                     <?php else: ?>
@@ -70,10 +70,10 @@
                 <h3>Tipos</h3>
                 <hr>
                 <div class="topics">
-                    <p><a href="index.php?controller=user&action=publicaciones&tipo=todas" class="tipo">Todos</a></p>
-                    <p><a href="index.php?controller=user&action=publicaciones&tipo=preguntas" class="tipo">Preguntas</a></p>
-                    <p><a href="index.php?controller=user&action=publicaciones&tipo=tutoriales" class="tipo">Tutoriales</a></p>
-                    <p><a href="index.php?controller=user&action=publicaciones&tipo=guias" class="tipo">Guias</a></p>
+                    <p><a href="index.php?controller=user&action=publicaciones&tipo=todas" class="tema">Todos</a></p>
+                    <p><a href="index.php?controller=user&action=publicaciones&tipo=preguntas" class="tema">Preguntas</a></p>
+                    <p><a href="index.php?controller=user&action=publicaciones&tipo=tutoriales" class="tema">Tutoriales</a></p>
+                    <p><a href="index.php?controller=user&action=publicaciones&tipo=guias" class="tema">Guias</a></p>
                 </div>
             </div>
         </div>
