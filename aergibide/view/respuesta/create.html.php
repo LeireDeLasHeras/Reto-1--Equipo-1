@@ -3,7 +3,7 @@
     <div class="main-content">              
         <div class="contenido">
                 <div class="formulario-post">
-                    <form action="index.php?controller=respuesta&action=create&id=<?php echo $_GET['id']; ?>" method="POST">
+                    <form action="index.php?controller=respuesta&action=create&id=<?php echo $_GET['id']; ?>" method="POST" enctype="multipart/form-data">
                         <label for="respuesta">Respuesta:</label>
                         <textarea id="respuesta" name="respuesta" placeholder="Escribe una respuesta..."></textarea>               
                         
