@@ -16,8 +16,15 @@ require_once $controller_path;
 $controllerName = $_GET["controller"]."Controller";
 $controller = new $controllerName();
 
+$isAjaxRequest = isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'] === 'XMLHttpRequest';
+
 $dataToView["data"] = array();
 if(method_exists($controller, $_GET["action"])) $dataToView["data"] = $controller -> {$_GET["action"]}();
+
+if($isAjaxRequest){
+    echo json_encode($dataToView["data"]);
+    exit();
+}
 
 if ($_GET["action"] != "login" && $_GET["action"] != "register") {
     require_once "view/layout/header.php";

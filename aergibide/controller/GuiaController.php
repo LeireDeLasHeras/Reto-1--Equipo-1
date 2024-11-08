@@ -2,7 +2,7 @@
 
 require_once "model/Guia.php";
 
-class GuiaController {
+class GuiaController { 
     public $view;
     public $model;
 
@@ -62,7 +62,12 @@ class GuiaController {
     public function view() {
         $this->view= "view";
         $id = $_GET["id"];
-        return $this->model->getGuiaById($id);
+        $data = [   
+            'guia' => $this->model->getGuiaById($id),
+            'isSaved' => $this->model->isSaved($id),
+            'isLiked' => $this->model->isLiked($id)
+        ];
+        return $data;
     }
 
     public function create() {
@@ -111,24 +116,52 @@ class GuiaController {
         return $this->model->borrarGuia($id);
     }
 
-    public function save(){
-        $id = $_GET["id"];
-        return $this->model->guardarGuia($id);
+    public function save() {
+        $idGuia = $_GET['id'];    
+        $idUsuario = $_SESSION['user_data']['idUsuario'];
+
+        $result = $this -> model -> save($idUsuario, $idGuia);
+        $response  = [
+            'success' => $result
+        ];  
+
+        return json_encode($response);
     }
 
     public function unsave(){
-        $id = $_GET["id"];
-        return $this->model->borrarGuardada($id);
+        $idGuia = $_GET['id'];    
+        $idUsuario = $_SESSION['user_data']['idUsuario'];
+
+        $result = $this -> model -> unsave($idUsuario, $idGuia);
+        $response  = [
+            'success' => $result
+        ];  
+
+        return json_encode($response);
     }
 
     public function like(){
-        $id = $_GET["id"];
-        return $this->model->like($id);
+        $idGuia = $_GET['id'];    
+        $idUsuario = $_SESSION['user_data']['idUsuario'];
+
+        $result = $this -> model -> like($idUsuario, $idGuia);
+        $response  = [
+            'success' => $result
+        ];  
+
+        return json_encode($response);
     }
 
     public function unlike(){
-        $id = $_GET["id"];
-        return $this->model->unlike($id);
+        $idGuia = $_GET['id'];    
+        $idUsuario = $_SESSION['user_data']['idUsuario'];
+
+        $result = $this -> model -> unlike($idUsuario, $idGuia);
+        $response  = [
+            'success' => $result
+        ];  
+
+        return json_encode($response);
     }
     
 }

@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="assets/css/comunes_style.css">
     <script src="assets/js/scroll.js"></script>
 </head>
-<body>
+<body> 
     <div class="container">
         <div class="main-content">
             <div class="content-left">
@@ -33,12 +33,8 @@
                                 endforeach;
                                 ?> 
 
-                                <a class="bookmark"
-                                    href="index.php?controller=guia&action=<?php echo $saved ? 'unsave' : 'save'; ?>&id=<?php echo $guia['idGuia']; ?><?php if (isset($_GET['tema'])): ?>&tema=<?php echo $_GET['tema']; ?><?php endif; ?>"
-                                    onmouseover="this.querySelector('.bookmark-icon').src='assets/img/logo_guardar_r.png';"
-                                    onmouseout="this.querySelector('.bookmark-icon').src='assets/img/logo_guardar_<?php echo $saved ? 'r' : 'l'; ?>.png';">
-
-                                    <img class="bookmark-icon" src="assets/img/logo_guardar_<?php echo $saved ? 'r' : 'l'; ?>.png" alt="Icono Bookmark guardado">
+                                <a class="bookmark" href="#" id-data="<?php echo $guia['idGuia']; ?>" isSaved="<?php echo $saved ? 'true' : 'false'; ?>" controller-data="guia">
+                                    <img src="assets/img/logo_guardar_<?php echo $saved ? 'r' : 'l'; ?>.png" alt="Icono de marcador guardado">
                                 </a>
 
 
@@ -72,24 +68,22 @@
                                     endif; 
                                 endforeach;
                                 ?>
-                                <a class="boton-like"
-                                    href="index.php?controller=guia&action=<?php echo $liked ? 'unlike' : 'like'; ?>&id=<?php echo $guia['idGuia']; ?><?php if (isset($_GET['tema'])): ?>&tema=<?php echo $_GET['tema']; ?><?php endif; ?>"
-                                    onmouseover="this.querySelector('.like-icon').src='assets/img/logo_cora_r.png';"
-                                    onmouseout="this.querySelector('.like-icon').src='assets/img/logo_cora_<?php echo $liked ? 'r' : 'l'; ?>.png';">
-
+                                
+                                <a class="boton-like" href="#" id-data="<?php echo $guia['idGuia']; ?>" isLiked="<?php echo $liked ? 'true' : 'false'; ?>" controller-data="guia">
                                     <img class="like-icon" src="assets/img/logo_cora_<?php echo $liked ? 'r' : 'l'; ?>.png" alt="Icono Like">
                                 </a>
 
-                                <?php
+                                <!-- 
                                 $contadorLikes = 0;
-                                foreach ($dataToView["data"]["favoritasGenerales"] as $favoritaGeneral):
+                                foreach ($dataToView["data"]["favoritosGenerales"] as $favoritaGeneral):
                                     if ($favoritaGeneral["idGuia"] == $guia["idGuia"]):
                                         $contadorLikes++;
                                     endif;
                                 endforeach;
-                                ?>
-                                <?php if ($contadorLikes > 0): echo $contadorLikes;
-                                endif; ?>
+                                -->
+                                
+                                <!-- <span class="contador-likes"><?php if ($contadorLikes > 0): echo $contadorLikes;
+                                endif; ?></span> -->
 
                             </p>
                             <br>
@@ -122,4 +116,6 @@
             </div>
         </div>
     </div>
+    <script src="assets/js/bookmark.js"></script>
+    <script src="assets/js/like.js"></script> 
 </body>

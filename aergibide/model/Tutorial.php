@@ -140,37 +140,32 @@ class Tutorial
         return $stmt->fetchAll();
     }
 
-    public function guardarTutorial($id){
-        $sql = 'INSERT INTO TutorialesGuardados (idTutorial, idUsuario) VALUES (?,?)';
+    public function save($idUsuario, $idTutorial){
+        $sql = 'INSERT INTO TutorialesGuardados (idUsuario, idTutorial) VALUES (?,?)';
         $stmt = $this->connection->prepare($sql);
-        $stmt->execute([$id,$_SESSION['user_data']['idUsuario']]);
-        header('Location: index.php?controller=tutorial&action=list' . (isset($_GET['tema']) ? '&tema=' . $_GET['tema'] : '') . '#scrollPosition');
-        exit();
+        return $stmt->execute([$idUsuario, $idTutorial]);
     }
 
-    public function borrarGuardado($id){
-        $sql = 'DELETE FROM TutorialesGuardados WHERE idTutorial = ? AND idUsuario = ?';
+    public function unsave($idUsuario, $idTutorial){
+        $sql = 'DELETE FROM TutorialesGuardados WHERE idUsuario = ? AND idTutorial = ?';
         $stmt = $this->connection->prepare($sql);
-        $stmt->execute([$id,$_SESSION['user_data']['idUsuario']]);
-        header('Location: index.php?controller=tutorial&action=list' . (isset($_GET['tema']) ? '&tema=' . $_GET['tema'] : '') . '#scrollPosition');
-        exit();
+        return $stmt->execute([$idUsuario, $idTutorial]);
     }
 
-    public function like($id) {
-        $sql = 'INSERT INTO TutorialesFavoritos (idTutorial, idUsuario) VALUES (?,?)';
+    public function like($idUsuario, $idTutorial) {
+        $sql = 'INSERT INTO TutorialesFavoritos (idUsuario, idTutorial) VALUES (?,?)';
         $stmt = $this->connection->prepare($sql);
-        $stmt->execute([$id,$_SESSION['user_data']['idUsuario']]);
-        header('Location: index.php?controller=tutorial&action=list' . (isset($_GET['tema']) ? '&tema=' . $_GET['tema'] : '') . '#scrollPosition');
-        exit();
+        return $stmt->execute([$idUsuario, $idTutorial]);
+    } 
+
+    public function unlike($idUsuario, $idTutorial) {
+        $sql = 'DELETE FROM TutorialesFavoritos WHERE idUsuario = ? AND idTutorial = ?';
+        $stmt = $this->connection->prepare($sql);
+        return $stmt->execute([$idUsuario, $idTutorial]);
     }
 
-    public function unlike($id) {
-        $sql = 'DELETE FROM TutorialesFavoritos WHERE idTutorial = ? AND idUsuario = ?';
-        $stmt = $this->connection->prepare($sql);
-        $stmt->execute([$id,$_SESSION['user_data']['idUsuario']]);
-        header('Location: index.php?controller=tutorial&action=list' . (isset($_GET['tema']) ? '&tema=' . $_GET['tema'] : '') . '#scrollPosition');
-        exit();
-    }
+    
+    
 
     public function getTutorialesByLikes(){
         $sql = "SELECT t.titulo, t.descripcion, t.fecha, u.nickname, tf.idTutorial, tf.idUsuario, t.tema, t.enlace FROM TutorialesFavoritos tf JOIN Tutorial t ON tf.idTutorial = t.idTutorial JOIN Usuario u ON t.idUsuario = u.idUsuario GROUP BY tf.idTutorial ORDER BY COUNT(tf.idTutorial) DESC";
@@ -179,4 +174,24 @@ class Tutorial
         $resultados = $stmt->fetchAll();    
         return !empty($resultados) ? $resultados : null;
     }  
+
+    public function isSaved($id){
+        $sql = "SELECT * FROM TutorialesGuardados WHERE idTutorial = ? AND idUsuario = ?";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute([$id,$_SESSION['user_data']['idUsuario']]);
+        if($stmt->rowCount() > 0){
+            return true;
+        }
+        return false;
+    }
+
+    public function isLiked($id){
+        $sql = "SELECT * FROM TutorialesFavoritos WHERE idTutorial = ? AND idUsuario = ?";  
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute([$id,$_SESSION['user_data']['idUsuario']]);
+        if($stmt->rowCount() > 0){
+            return true;
+        }
+        return false;
+    }
 }

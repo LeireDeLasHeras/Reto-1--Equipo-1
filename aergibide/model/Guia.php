@@ -105,38 +105,6 @@ class Guia
         return $stmt->fetchAll();
     }
 
-    public function guardarGuia($id){
-        $sql = 'INSERT INTO GuiasGuardadas (idGuia, idUsuario) VALUES (?,?)';
-        $stmt = $this->connection->prepare($sql);
-        $stmt->execute([$id,$_SESSION['user_data']['idUsuario']]);
-        header('Location: index.php?controller=guia&action=list' . (isset($_GET['tema']) ? '&tema=' . $_GET['tema'] : '') . '#scrollPosition');
-        exit();
-    }
-
-    public function borrarGuardada($id){
-        $sql = 'DELETE FROM GuiasGuardadas WHERE idGuia = ? AND idUsuario = ?';
-        $stmt = $this->connection->prepare($sql);
-        $stmt->execute([$id,$_SESSION['user_data']['idUsuario']]);
-        header('Location: index.php?controller=guia&action=list' . (isset($_GET['tema']) ? '&tema=' . $_GET['tema'] : '') . '#scrollPosition');
-        exit();
-    }
-
-    public function like($id) {
-        $sql = 'INSERT INTO GuiasFavoritas (idGuia, idUsuario) VALUES (?,?)';
-        $stmt = $this->connection->prepare($sql);
-        $stmt->execute([$id,$_SESSION['user_data']['idUsuario']]);
-        header('Location: index.php?controller=guia&action=list' . (isset($_GET['tema']) ? '&tema=' . $_GET['tema'] : '') . '#scrollPosition');
-        exit();
-    }
-
-    public function unlike($id) {
-        $sql = 'DELETE FROM GuiasFavoritas WHERE idGuia = ? AND idUsuario = ?';
-        $stmt = $this->connection->prepare($sql);
-        $stmt->execute([$id,$_SESSION['user_data']['idUsuario']]);
-        header('Location: index.php?controller=guia&action=list' . (isset($_GET['tema']) ? '&tema=' . $_GET['tema'] : '') . '#scrollPosition');
-        exit();
-    }
-
     public function getGuiasGuardadasUsuario(){
         $sql = "SELECT idGuia FROM GuiasGuardadas WHERE idUsuario = ?";
         $stmt = $this->connection->prepare($sql);
@@ -166,4 +134,42 @@ class Guia
         $resultados = $stmt->fetchAll();    
         return !empty($resultados) ? $resultados : null;
     }   
+
+    public function save($idUsuario, $idGuia){
+        $sql = 'INSERT INTO GuiasGuardadas (idUsuario, idGuia) VALUES (?,?)';
+        $stmt = $this->connection->prepare($sql);
+        return $stmt->execute([$idUsuario, $idGuia]);
+    }
+
+    public function unsave($idUsuario, $idGuia){
+        $sql = 'DELETE FROM GuiasGuardadas WHERE idUsuario = ? AND idGuia = ?';
+        $stmt = $this->connection->prepare($sql);
+        return $stmt->execute([$idUsuario, $idGuia]);
+    }
+
+    public function like($idUsuario, $idGuia) {
+        $sql = 'INSERT INTO GuiasFavoritas (idUsuario, idGuia) VALUES (?,?)';
+        $stmt = $this->connection->prepare($sql);
+        return $stmt->execute([$idUsuario, $idGuia]);
+    } 
+
+    public function unlike($idUsuario, $idGuia) {
+        $sql = 'DELETE FROM GuiasFavoritas WHERE idUsuario = ? AND idGuia = ?';
+        $stmt = $this->connection->prepare($sql);
+        return $stmt->execute([$idUsuario, $idGuia]);
+    }
+
+    public function isSaved($idGuia){
+        $sql = 'SELECT * FROM GuiasGuardadas WHERE idUsuario = ? AND idGuia = ?';
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute([$_SESSION['user_data']['idUsuario'], $idGuia]);
+        return $stmt->fetch();
+    }
+
+    public function isLiked($idGuia){
+        $sql = 'SELECT * FROM GuiasFavoritas WHERE idUsuario = ? AND idGuia = ?';
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute([$_SESSION['user_data']['idUsuario'], $idGuia]);
+        return $stmt->fetch();
+    }
 }

@@ -484,12 +484,6 @@ body {
 }
 
 /* Estilo para separar las respuestas */
-.content-left-vistaPregunta .respuestas p:nth-of-type(4n+5) {
-    margin-top: 30px;
-    padding-top: 20px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
 .content-left-vistaPregunta .add-respuesta {
     display: flex;
     justify-content: center;

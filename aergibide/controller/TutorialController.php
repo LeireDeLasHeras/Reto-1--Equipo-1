@@ -70,26 +70,60 @@ class TutorialController {
     public function view(){
         $this->view= "view";
         $id = $_GET["id"];
-        return $this->model->getTutorialById($id);
+        $data = [
+            'tutorial' => $this->model->getTutorialById($id),
+            'isSaved' => $this->model->isSaved($id),
+            'isLiked' => $this->model->isLiked($id)
+        ];
+        return $data;
     }
+
     
-    public function save(){
-        $id = $_GET["id"];
-        return $this->model->guardarTutorial($id);
+    public function save() {
+        $idTutorial = $_GET['id'];    
+        $idUsuario = $_SESSION['user_data']['idUsuario'];
+
+        $result = $this -> model -> save($idUsuario, $idTutorial);
+        $response  = [
+            'success' => $result
+        ];  
+
+        return json_encode($response);
     }
 
     public function unsave(){
-        $id = $_GET["id"];
-        return $this->model->borrarGuardado($id);
+        $idTutorial = $_GET['id'];    
+        $idUsuario = $_SESSION['user_data']['idUsuario'];
+
+        $result = $this -> model -> unsave($idUsuario, $idTutorial);
+        $response  = [
+            'success' => $result
+        ];  
+
+        return json_encode($response);
     }
 
     public function like(){
-        $id = $_GET["id"];
-        return $this->model->like($id);
+        $idTutorial = $_GET['id'];    
+        $idUsuario = $_SESSION['user_data']['idUsuario'];
+
+        $result = $this -> model -> like($idUsuario, $idTutorial);
+        $response  = [
+            'success' => $result
+        ];  
+
+        return json_encode($response);
     }
 
     public function unlike(){
-        $id = $_GET["id"];
-        return $this->model->unlike($id);
+        $idTutorial = $_GET['id'];    
+        $idUsuario = $_SESSION['user_data']['idUsuario'];
+
+        $result = $this -> model -> unlike($idUsuario, $idTutorial);
+        $response  = [
+            'success' => $result
+        ];  
+
+        return json_encode($response);
     }
 }

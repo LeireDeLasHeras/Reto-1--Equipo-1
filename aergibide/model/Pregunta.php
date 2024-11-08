@@ -3,7 +3,7 @@ class Pregunta
 {
     private $table = "Pregunta";
     private $connection;
-
+ 
     public function __construct()
     {
         $this->getConection(); 
@@ -54,6 +54,20 @@ class Pregunta
                 ORDER BY r.fecha DESC";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute([$idPregunta]);
+        return $stmt->fetchAll();
+    }
+
+    public function getRespuestasGuardadasUsuario(){
+        $sql = "SELECT idRespuesta FROM RespuestasGuardadas WHERE idUsuario = ?";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute([$_SESSION['user_data']['idUsuario']]);
+        return $stmt->fetchAll();
+    }
+
+    public function getRespuestasFavoritasUsuario(){
+        $sql = "SELECT idRespuesta FROM RespuestasFavoritas WHERE idUsuario = ?";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute([$_SESSION['user_data']['idUsuario']]);
         return $stmt->fetchAll();
     }
 
@@ -128,38 +142,6 @@ class Pregunta
         }
     }
 
-    public function guardarPregunta($id){
-        $sql = 'INSERT INTO PreguntasGuardadas (idPregunta, idUsuario) VALUES (?,?)';
-        $stmt = $this->connection->prepare($sql);
-        $stmt->execute([$id,$_SESSION['user_data']['idUsuario']]);
-        header('Location: index.php?controller=pregunta&action=list' . (isset($_GET['tema']) ? '&tema=' . $_GET['tema'] : '') . '#scrollPosition');
-        exit();
-    }
-
-    public function borrarGuardada($id){
-        $sql = 'DELETE FROM PreguntasGuardadas WHERE idPregunta = ? AND idUsuario = ?';
-        $stmt = $this->connection->prepare($sql);
-        $stmt->execute([$id,$_SESSION['user_data']['idUsuario']]);
-        header('Location: index.php?controller=pregunta&action=list' . (isset($_GET['tema']) ? '&tema=' . $_GET['tema'] : '') . '#scrollPosition');
-        exit();
-    }
-
-    public function like($id) {
-        $sql = 'INSERT INTO PreguntasFavoritas (idPregunta, idUsuario) VALUES (?,?)';
-        $stmt = $this->connection->prepare($sql);
-        $stmt->execute([$id,$_SESSION['user_data']['idUsuario']]);
-        header('Location: index.php?controller=pregunta&action=list' . (isset($_GET['tema']) ? '&tema=' . $_GET['tema'] : '') . '#scrollPosition');
-        exit();
-    }
-
-    public function unlike($id) {
-        $sql = 'DELETE FROM PreguntasFavoritas WHERE idPregunta = ? AND idUsuario = ?';
-        $stmt = $this->connection->prepare($sql);
-        $stmt->execute([$id,$_SESSION['user_data']['idUsuario']]);
-        header('Location: index.php?controller=pregunta&action=list' . (isset($_GET['tema']) ? '&tema=' . $_GET['tema'] : '') . '#scrollPosition');
-        exit();
-    }
-
     public function getPreguntasGuardadasByUserId($userId) {
         $sql = "SELECT Pregunta.* 
         FROM PreguntasGuardadas 
@@ -169,5 +151,49 @@ class Pregunta
         $stmt = $this->connection->prepare($sql);
         $stmt->execute([$userId]);
         return $stmt->fetchAll();
+    }
+
+    public function isSaved($id){
+        $sql = "SELECT * FROM PreguntasGuardadas WHERE idPregunta = ? AND idUsuario = ?";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute([$id,$_SESSION['user_data']['idUsuario']]);
+        if($stmt->rowCount() > 0){
+            return true;
+        }
+        return false;
+    }
+
+    public function isLiked($id){
+        $sql = "SELECT * FROM PreguntasFavoritas WHERE idPregunta = ? AND idUsuario = ?";  
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute([$id,$_SESSION['user_data']['idUsuario']]);
+        if($stmt->rowCount() > 0){
+            return true;
+        }
+        return false;
+    }
+
+    public function save($idUsuario, $idPregunta){
+        $sql = 'INSERT INTO PreguntasGuardadas (idUsuario, idPregunta) VALUES (?,?)';
+        $stmt = $this->connection->prepare($sql);
+        return $stmt->execute([$idUsuario, $idPregunta]);
+    }
+
+    public function unsave($idUsuario, $idPregunta){
+        $sql = 'DELETE FROM PreguntasGuardadas WHERE idUsuario = ? AND idPregunta = ?';
+        $stmt = $this->connection->prepare($sql);
+        return $stmt->execute([$idUsuario, $idPregunta]);
+    }
+
+    public function like($idUsuario, $idPregunta) {
+        $sql = 'INSERT INTO PreguntasFavoritas (idUsuario, idPregunta) VALUES (?,?)';
+        $stmt = $this->connection->prepare($sql);
+        return $stmt->execute([$idUsuario, $idPregunta]);
+    } 
+
+    public function unlike($idUsuario, $idPregunta) {
+        $sql = 'DELETE FROM PreguntasFavoritas WHERE idUsuario = ? AND idPregunta = ?';
+        $stmt = $this->connection->prepare($sql);
+        return $stmt->execute([$idUsuario, $idPregunta]);
     }
 }

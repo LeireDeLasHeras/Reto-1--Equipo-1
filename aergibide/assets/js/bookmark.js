@@ -1,21 +1,30 @@
-function toggleBookmark(idPregunta, isSaved) {
-    const action = isSaved ? 'borrarGuardada' : 'guardarPregunta';
-    
-    fetch(`index.php?controller=pregunta&action=${action}&id=${idPregunta}`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json;charset=UTF-8'
-        }
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Error en la solicitud: ' + response.statusText);
-        }
-        return response.json();
-    })
-    .catch(error => {
-        console.error('Error en la solicitud AJAX:', error);
-    });
-}
+document.addEventListener("DOMContentLoaded", function() {
+    var favoritos = document.getElementsByClassName("bookmark");
+    for (var i = 0; i < favoritos.length; i++) {
+        favoritos[i].addEventListener("click", function(event) {
+            event.preventDefault();
+            var id = this.getAttribute('id-data');
+            var controller = this.getAttribute('controller-data');
+            var xhr = new XMLHttpRequest();
+            var action = this.getAttribute('isSaved') === 'true' ? 'unsave' : 'save';
+            var elemento = this;
 
-// revisar
+            xhr.open('POST', 'index.php?controller=' + controller + '&action=' + action + '&id=' + id);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+            xhr.onload = function() {
+                if (this.status === 200) {
+                    console.log(this.responseText);
+                    if (action === 'save') {
+                        elemento.setAttribute('isSaved', 'true');
+                        elemento.innerHTML = '<img src="assets/img/logo_guardar_r.png" alt="Icono Bookmark guardado">';
+                    } else {
+                        elemento.setAttribute('isSaved', 'false');
+                        elemento.innerHTML = '<img src="assets/img/logo_guardar_l.png" alt="Icono Bookmark no guardado">';
+                    }
+                }
+            };
+            xhr.send();
+        }); 
+    }
+});
