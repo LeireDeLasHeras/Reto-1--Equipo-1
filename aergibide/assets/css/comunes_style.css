@@ -7,7 +7,7 @@
 body {
     font-family: 'Be Vietnam Pro', sans-serif;
     background-color: #f0f0f0;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -15,8 +15,8 @@ body {
 
 .container {
     width: 100%;
-    height: 100vh;
-    background-color: white;
+    min-height: 100vh;
+    background-color: #7C90A0;
     display: flex;
     flex-direction: column;
 }
@@ -111,14 +111,6 @@ body {
     height: 2.5%;
 }
 
-.search-bar input {
-    width: 200px;
-    height: 40px;
-    border-radius: 50px;
-    border: none;
-    padding-left: 10px;
-    background-color: #9FABB5;
-}
 .user-options {
     margin-left: 10px;
     height: 40px;
@@ -519,8 +511,47 @@ body {
     box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
 
-/*Estilos Pagina Publicaciones*/
-    
+/*Estilos Pagina Publicaciones y List Usuarios*/
+.titulo{
+    color: white;
+}
+.username{
+    padding-left: 1.25em;
+}
+.seccion{
+    color: white;
+    padding-left: 1em;
+}
+.container-u-p ul li,
+.container-u-p p {
+    color: white;
+    list-style: none;
+    padding-left: 2em;
+    line-height: 30px;
+}
+.container-u-p a{
+    color: white;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.container-u-p a:hover{
+    color: #63D471;
+}
+.admin-switch{
+    margin-left: 2em;
+}
 
+.user-card {
+    background-color: #4E5166;
+    padding: 20px;
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}  
 
-
+.usuarios-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Tres columnas */
+    gap: 20px; /* Espacio entre las tarjetas */
+    padding: 20px; /* Espacio alrededor del contenedor */
+}       
