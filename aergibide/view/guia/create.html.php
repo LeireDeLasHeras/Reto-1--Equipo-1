@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="assets/css/formulario_styles.css">
+<link rel="stylesheet" href="assets/css/comunes_style.css">
 <script src="assets/js/crear_guia.js"></script>
 <div class="container">
     <div class="main-content">              
