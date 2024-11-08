@@ -49,5 +49,59 @@ class RespuestaController{
             return $id;
         }
     }
+
+    public function delete(){
+        $this->view = "delete";
+        $idRespuesta = $_GET["idRespuesta"];
+        $idPregunta = $_GET["idPregunta"];
+        return $this->model->borrarRespuesta($idRespuesta, $idPregunta);
+    }
     
+    public function save() {
+        $idRespuesta = $_GET['id'];    
+        $idUsuario = $_SESSION['user_data']['idUsuario'];
+
+        $result = $this -> model -> save($idUsuario, $idRespuesta);
+        $response  = [
+            'success' => $result
+        ];  
+
+        return json_encode($response);
+    }
+
+    public function unsave(){
+        $idRespuesta = $_GET['id'];    
+        $idUsuario = $_SESSION['user_data']['idUsuario'];
+
+        $result = $this -> model -> unsave($idUsuario, $idRespuesta);
+        $response  = [
+            'success' => $result
+        ];  
+
+        return json_encode($response);
+    }
+
+    public function like(){
+        $idRespuesta = $_GET['id'];    
+        $idUsuario = $_SESSION['user_data']['idUsuario'];
+
+        $result = $this -> model -> like($idUsuario, $idRespuesta);
+        $response  = [
+            'success' => $result
+        ];  
+
+        return json_encode($response);
+    }
+
+    public function unlike(){
+        $idRespuesta = $_GET['id'];    
+        $idUsuario = $_SESSION['user_data']['idUsuario'];
+
+        $result = $this -> model -> unlike($idUsuario, $idRespuesta);
+        $response  = [
+            'success' => $result
+        ];  
+
+        return json_encode($response);
+    }
 }

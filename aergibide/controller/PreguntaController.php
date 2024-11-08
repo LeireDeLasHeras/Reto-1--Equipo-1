@@ -63,6 +63,10 @@ class PreguntaController {
         
         $data = [
             'pregunta' => $this->model->getPreguntaById($id),
+            'isSaved' => $this->model->isSaved($id),
+            'isLiked' => $this->model->isLiked($id),
+            'respuestasGuardadas' => $this->model->getRespuestasGuardadasUsuario(),
+            'respuestasFavoritas' => $this->model->getRespuestasFavoritasUsuario(),
             'respuestas' => $this->model->getRespuestasByPreguntaId($id)
         ];
         
@@ -80,23 +84,51 @@ class PreguntaController {
         return $this->model->borrarPregunta($id);
     }
 
-    public function save(){
-        $id = $_GET["id"];
-        return $this->model->guardarPregunta($id);
+    public function save() {
+        $idPregunta = $_GET['id'];    
+        $idUsuario = $_SESSION['user_data']['idUsuario'];
+
+        $result = $this -> model -> save($idUsuario, $idPregunta);
+        $response  = [
+            'success' => $result
+        ];  
+
+        return json_encode($response);
     }
 
     public function unsave(){
-        $id = $_GET["id"];
-        return $this->model->borrarGuardada($id);
+        $idPregunta = $_GET['id'];    
+        $idUsuario = $_SESSION['user_data']['idUsuario'];
+
+        $result = $this -> model -> unsave($idUsuario, $idPregunta);
+        $response  = [
+            'success' => $result
+        ];  
+
+        return json_encode($response);
     }
 
     public function like(){
-        $id = $_GET["id"];
-        return $this->model->like($id);
+        $idPregunta = $_GET['id'];    
+        $idUsuario = $_SESSION['user_data']['idUsuario'];
+
+        $result = $this -> model -> like($idUsuario, $idPregunta);
+        $response  = [
+            'success' => $result
+        ];  
+
+        return json_encode($response);
     }
 
     public function unlike(){
-        $id = $_GET["id"];
-        return $this->model->unlike($id);
+        $idPregunta = $_GET['id'];    
+        $idUsuario = $_SESSION['user_data']['idUsuario'];
+
+        $result = $this -> model -> unlike($idUsuario, $idPregunta);
+        $response  = [
+            'success' => $result
+        ];  
+
+        return json_encode($response);
     }
 }

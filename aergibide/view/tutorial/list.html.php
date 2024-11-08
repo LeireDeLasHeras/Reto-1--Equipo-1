@@ -30,12 +30,8 @@
                                 endforeach;
                                 ?> 
 
-                                <a class="bookmark"
-                                    href="index.php?controller=tutorial&action=<?php echo $saved ? 'unsave' : 'save'; ?>&id=<?php echo $tutorial['idTutorial']; ?><?php if (isset($_GET['tema'])): ?>&tema=<?php echo $_GET['tema']; ?><?php endif; ?>"
-                                    onmouseover="this.querySelector('.bookmark-icon').src='assets/img/logo_guardar_r.png';"
-                                    onmouseout="this.querySelector('.bookmark-icon').src='assets/img/logo_guardar_<?php echo $saved ? 'r' : 'l'; ?>.png';">
-
-                                    <img class="bookmark-icon" src="assets/img/logo_guardar_<?php echo $saved ? 'r' : 'l'; ?>.png" alt="Icono Bookmark guardado">
+                                <a class="bookmark" href="#" id-data="<?php echo $tutorial['idTutorial']; ?>" isSaved="<?php echo $saved ? 'true' : 'false'; ?>" controller-data="tutorial">
+                                    <img src="assets/img/logo_guardar_<?php echo $saved ? 'r' : 'l'; ?>.png" alt="Icono Bookmark guardado">
                                 </a>
 
                                 <?php if($tutorial['idUsuario'] == $_SESSION['user_data']['idUsuario'] || $_SESSION['user_data']['tipo'] == 'admin'): ?>
@@ -64,24 +60,22 @@
                                     endif;
                                 endforeach;
                                 ?>
-                                <a class="boton-like"
-                                    href="index.php?controller=tutorial&action=<?php echo $liked ? 'unlike' : 'like'; ?>&id=<?php echo $tutorial['idTutorial']; ?><?php if (isset($_GET['tema'])): ?>&tema=<?php echo $_GET['tema']; ?><?php endif; ?>"
-                                    onmouseover="this.querySelector('.like-icon').src='assets/img/logo_cora_r.png';"
-                                    onmouseout="this.querySelector('.like-icon').src='assets/img/logo_cora_<?php echo $liked ? 'r' : 'l'; ?>.png';">
-
+                                
+                                <a class="boton-like" href="#" id-data="<?php echo $tutorial['idTutorial']; ?>" isLiked="<?php echo $liked ? 'true' : 'false'; ?>" controller-data="tutorial">
                                     <img class="like-icon" src="assets/img/logo_cora_<?php echo $liked ? 'r' : 'l'; ?>.png" alt="Icono Like">
                                 </a>
 
-                                <?php
+                                <!-- 
                                 $contadorLikes = 0;
                                 foreach ($dataToView["data"]["favoritosGenerales"] as $favoritaGeneral):
                                     if ($favoritaGeneral["idTutorial"] == $tutorial["idTutorial"]):
                                         $contadorLikes++;
                                     endif;
                                 endforeach;
-                                ?>
-                                <?php if ($contadorLikes > 0): echo $contadorLikes;
-                                endif; ?>
+                                -->
+                                
+                                <!-- <span class="contador-likes"><?php if ($contadorLikes > 0): echo $contadorLikes;
+                                endif; ?></span> -->
 
                             </p>
                             <br>
@@ -113,4 +107,6 @@
             </div>
         </div>
     </div>
+    <script src="assets/js/bookmark.js"></script>
+    <script src="assets/js/like.js"></script>
 </body>
