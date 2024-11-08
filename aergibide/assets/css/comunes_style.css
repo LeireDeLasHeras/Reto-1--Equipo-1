@@ -29,6 +29,10 @@ body {
     height: 90px;
     padding: 0 20px;
     color: white;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
 }
 
 .navbar .menu {
@@ -82,6 +86,7 @@ body {
     display: flex;
     flex-grow: 1;
     background-color: #7C90A0;
+    padding-top: 90px;
 }
 
 .content-left {
@@ -181,17 +186,14 @@ body {
     background-color: #798C9C;
     padding: 20px;
     color: white;
+        
 }
 
 .sidebar h3 {
     text-align: center;
     font-size: 1.7em;
-}
-
-.sidebar hr {
-    border: 1px solid white;
-    margin: 10px 0;
-}
+    border-bottom: 3px solid white;
+    }
 
 .sidebar .topics {
     text-align: center;
@@ -214,11 +216,12 @@ body {
 .footer {
     background-color: #4E5166;
     height: 100px;
-    bottom: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
+    position: absolute;
+    bottom: 0;
 }
 
 /* Estilos para PaginaPreguntas */
@@ -398,10 +401,9 @@ body {
     cursor: pointer;
     margin: 5px;
     transition: background-color 0.3s;
+    background-color: #798C9C;
+    color: white;
 }
-
-
-
 
 .content-left-borrar .borrar input[type="submit"]:hover,
 .content-left-borrar .borrar input[type="button"]:hover {
@@ -518,6 +520,134 @@ body {
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
+
+/* Formularios */
+
+.formulario-post {
+    background-color: #4E5166;
+    padding: 30px;
+    width: 50%;
+    margin: 0 auto;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+.formulario-post form {
+    display: flex;
+    flex-direction: column;
+}
+
+.formulario-post label {
+    color: white;
+    margin-bottom: 5px;
+    font-size: 1.2em;
+}
+
+.formulario-post input, .formulario-post select, .formulario-post textarea{
+    margin-bottom: 20px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    background-color: #9FABB5;
+    color: black;
+}
+
+.formulario-post select {
+    background-color: #9FABB5;
+}
+
+.formulario-post textarea {
+    height: 100px;
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: ri;
+}
+
+.cancel-button,
+.submit-button {
+    background-color: #9FABB5;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1em;
+    color: white;
+    cursor: pointer;
+    width: 120px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.submit-button:hover,
+.cancel-button:hover {
+    background-color: #7C90A0;
+}
+
+
+.error-container {
+    background-color: white; 
+    color: #333;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    font-size: 0.9em;
+    position: relative;
+    width: 100%; 
+    max-width: 300px;
+    border: 1px solid lightgray; 
+    box-sizing: border-box;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.icono-error {
+    font-size: 1.2em;
+    margin-right: 8px;
+    color: #FFA500;
+}
+
+.texto-error {
+    font-weight: normal;
+}
+
+.error-container:after {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    border-width: 0 10px 10px 10px;
+    border-style: solid;
+    border-color: transparent transparent white transparent; 
+}
+
+/* Estilos para los botones de submit y cancelar en el formulario */
+.form-buttons .submit-button,
+.form-buttons .cancel-button {
+    background-color: #798C9C; /* Color de fondo inicial */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.form-buttons .submit-button:hover,
+.form-buttons .cancel-button:hover {
+    background-color: #63D471; /* Color de fondo al pasar el mouse */
+    transform: translateY(-3px); /* Efecto de elevación */
+}
+
+.form-buttons .submit-button:active,
+.form-buttons .cancel-button:active {
+    transform: translateY(0); /* Vuelve al nivel original al hacer clic */
+}
+
+
+
 
 
 

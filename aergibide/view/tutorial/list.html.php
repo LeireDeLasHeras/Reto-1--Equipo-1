@@ -92,10 +92,8 @@
                 <div class="add-post">
                     <a href="index.php?controller=tutorial&action=create"><button class="add-icon"><img src="assets/img/logo_anadir.png" alt="Icono Añadir"></button></a>                </div>
             </div>
-
             <div class="sidebar">
                 <h3>Temas</h3>
-                <hr>    
                 <div class="topics">
                     <p><a href="index.php?controller=tutorial&action=list" class="tema">Todos</a></p>
                     <p><a href="index.php?controller=tutorial&action=list&tema=Seguridad" class="tema">Seguridad</a></p>
@@ -104,7 +102,6 @@
                     <p><a href="index.php?controller=tutorial&action=list&tema=Vuelos" class="tema">Vuelos</a></p>
                 </div>
                 <h3>Ordenar</h3>
-                <hr>
                 <div class="topics">
                     <p><a href="index.php?controller=tutorial&action=list&tema=MasRecientes" class="tema">Más recientes</a></p>
                     <p><a href="index.php?controller=tutorial&action=list&tema=MasAntiguos" class="tema">Más antiguos</a></p>
