@@ -42,24 +42,11 @@
                                 <?php endif; ?> 
 
                                 <?php
-                                $respuestaGuardada = false;
-                                foreach($dataToView["data"]["respuestasGuardadas"] as $respuestaGuardada):
-                                    if($respuesta["idRespuesta"] == $respuestaGuardada["idRespuesta"]):
-                                        $respuestaGuardada = true;
-                                    endif;
-                                endforeach;
+                                $respuestaGuardada = in_array($respuesta["idRespuesta"], array_column($dataToView["data"]["respuestasGuardadas"], "idRespuesta"));
+                                $respuestaFavorita = in_array($respuesta["idRespuesta"], array_column($dataToView["data"]["respuestasFavoritas"], "idRespuesta"));
                                 ?>
 
                                 <a style="float: right;" class="bookmark" href="#" id-data="<?php echo $respuesta["idRespuesta"]; ?>" isSaved="<?php echo $respuestaGuardada ? 'true' : 'false'; ?>" controller-data="respuesta"><img src="assets/img/logo_guardar_<?php echo $respuestaGuardada ? 'r' : 'l'; ?>.png" alt="Icono Bookmark guardado"></a>
-
-                                <?php
-                                $respuestaFavorita = false;
-                                foreach($dataToView["data"]["respuestasFavoritas"] as $respuestaFavorita):
-                                    if($respuesta["idRespuesta"] == $respuestaFavorita["idRespuesta"]):
-                                        $respuestaFavorita = true;
-                                    endif;
-                                endforeach;
-                                ?>
 
                                 <a style="float: right;" class="boton-like" href="#" id-data="<?php echo $respuesta["idRespuesta"]; ?>" isLiked="<?php echo $respuestaFavorita ? 'true' : 'false'; ?>" controller-data="respuesta"><img src="assets/img/logo_cora_<?php echo $respuestaFavorita ? 'r' : 'l'; ?>.png" alt="Icono Like"></a>
 

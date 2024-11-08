@@ -49,6 +49,9 @@ class Guia
     
             $id = $this->connection->lastInsertId();
     
+            // Llamada al método view para visualizar la guía creada
+           header('Location: index.php?controller=guia&action=view&id=' . $id);
+    
             return $id; 
         } catch (PDOException $e) {
             print_r($e->getMessage());

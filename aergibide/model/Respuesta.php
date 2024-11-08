@@ -27,8 +27,9 @@ class Respuesta{
                     ':fichero' => $param['file_path'], 
                     ':idUsuario' => $_SESSION['user_data']['idUsuario'],
                     ':idPregunta' => $_GET['id']
-                ]);
+                ]);   
     
+                //print zahor qawds son cambios pa que se entregue la rama coñi 
                 if ($result) {
                     header('Location: index.php?controller=pregunta&action=view&id=' . $_GET['id']);
                     exit();

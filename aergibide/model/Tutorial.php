@@ -82,7 +82,7 @@ class Tutorial
             ]);
             
             if($result) {
-                header('Location: index.php?controller=tutorial&action=list');
+                header('Location: index.php?controller=tutorial&action=view&id=' . $this->connection->lastInsertId());
                 exit();
             }
             return "Error al crear el tutorial";

@@ -47,11 +47,13 @@ class Pregunta
     }
 
     public function getRespuestasByPreguntaId($idPregunta){
-        $sql = "SELECT r.idRespuesta, r.descripcion, r.fecha, u.nickname, r.idUsuario, r.fichero
+        $sql = "SELECT r.idRespuesta, r.descripcion, r.fecha, u.nickname, r.idUsuario, r.fichero, COUNT(rf.idRespuesta) AS popularidad
                 FROM Respuesta r 
                 INNER JOIN Usuario u ON r.idUsuario = u.idUsuario 
+                LEFT JOIN RespuestasFavoritas rf ON r.idRespuesta = rf.idRespuesta
                 WHERE r.idPregunta = ?
-                ORDER BY r.fecha DESC";
+                GROUP BY r.idRespuesta
+                ORDER BY popularidad DESC, r.fecha DESC";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute([$idPregunta]);
         return $stmt->fetchAll();
@@ -113,7 +115,7 @@ class Pregunta
                 ]);
                 
                 if($result) {
-                    header('Location: index.php?controller=pregunta&action=list');
+                    header('Location: index.php?controller=pregunta&action=view&id=' . $this->connection->lastInsertId()    );
                     exit();
                 }
                 return false;
@@ -139,8 +141,10 @@ class Pregunta
             $stmt->execute([$id]);
             header('Location: index.php?controller=pregunta&action=list');
             exit();
-        }
+        }                                       
     }
+
+    
 
     public function getPreguntasGuardadasByUserId($userId) {
         $sql = "SELECT Pregunta.* 

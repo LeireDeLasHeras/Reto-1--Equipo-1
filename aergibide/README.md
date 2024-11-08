@@ -34,6 +34,6 @@ Oier Albeniz -> oier.albeniz@ikasle.egibide.org
 Leire de las Heras -> leire.delasheras@ikasle.egibide.org
 Joseba Fernández -> joseba.fernandez@ikasle.egibide.org
 
-Octubre/Noviembre de 2024
+Octubre/Noviembre de 2024, Vitoria-Gasteiz
 
 Todos los derechos reservados.
