@@ -6,7 +6,7 @@ class User
     private $connection;
 
     public function __construct()
-    {
+    { 
         $this->getConection();
     }
 
@@ -38,7 +38,6 @@ class User
     public function register()
     {
         if (isset($_POST['submit'])){
-            // Verificar si el correo ya existe en la base de datos
             if ($this->getUserByEmail($_POST['correo'])) {
                 return "El correo ya está registrado.";
             }

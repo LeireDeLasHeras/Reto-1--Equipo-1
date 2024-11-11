@@ -1,5 +1,13 @@
-document.addEventListener("DOMContentLoaded", function() {
-    var favoritos = document.getElementsByClassName("bookmark");
+/**
+ * Script para manejar los bookmarks de la aplicación
+ * de manera asíncrona.
+ * 
+ * @author Oier Albeniz
+ * @author Leire de las Heras
+ * @author Joseba Fernández
+ */
+
+var favoritos = document.getElementsByClassName("bookmark");
     for (var i = 0; i < favoritos.length; i++) {
         favoritos[i].addEventListener("click", function(event) {
             event.preventDefault();
@@ -24,7 +32,6 @@ document.addEventListener("DOMContentLoaded", function() {
                     }
                 }
             };
-            xhr.send();
-        }); 
-    }
-});
+        xhr.send();
+    }); 
+}
