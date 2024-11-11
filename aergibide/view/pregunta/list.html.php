@@ -72,8 +72,6 @@
                                 endif; ?></span> -->
 
                             </p>
-                            <br>
-                            <hr style="width: 90%;">
                         </div>
                     <?php endforeach; ?>
                 <?php endif; ?>
