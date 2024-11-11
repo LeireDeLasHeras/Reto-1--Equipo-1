@@ -9,7 +9,7 @@
     <?php $tipo = $_GET['tipo'] ?>
     <div class="container">
         <div class="main-content">
-            <div class="content-left">
+            <div class="content-left-publicacion-guardados">
                 <h1 class="titulo">Mis publicaciones guardadas</h1>
                 <?php if ($tipo == 'todas' || $tipo == 'preguntas'): ?>
                     <h2 class="seccion">Preguntas</h2>
@@ -54,9 +54,9 @@
                     <?php endif; ?>
                 <?php endif; ?>
                 <?php if ($tipo == 'todas' || $tipo == 'respuestas'): ?>
-                    <h2>Respuestas</h2>
+                    <h2 class="seccion">Respuestas</h2>
                     <?php if (empty($dataToView['data']['respuestas'])): ?>
-                        <p>No has guardado ninguna respuesta.</p>
+                        <p class="no-guardadas">No has guardado ninguna respuesta.</p>
                     <?php else: ?>
                         <ul>
                             <?php foreach ($dataToView['data']['respuestas'] as $respuesta): ?>
