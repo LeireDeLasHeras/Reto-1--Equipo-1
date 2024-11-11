@@ -402,10 +402,10 @@ body {
 .content-left-borrar {
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Centra verticalmente */
-    align-items: center; /* Centra horizontalmente */
-    text-align: center; /* Centra el texto en el medio */
-    position: fixed; /* Permite que el contenido permanezca en el centro al hacer scroll */
+    justify-content: center; 
+    align-items: center; 
+    text-align: center; 
+    position: fixed; 
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -554,7 +554,7 @@ body {
 }
 
 
-/*Estilos Pagina Publicaciones y List Usuarios*/
+/*Estilo List Usuarios*/
 .titulo{
     color: white;
 }
@@ -594,10 +594,83 @@ body {
 
 .usuarios-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Tres columnas */
-    gap: 20px; /* Espacio entre las tarjetas */
-    padding: 20px; /* Espacio alrededor del contenedor */
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 20px; 
+    padding: 100px; 
 }  
+
+/* Estilo Pagina Publicaciones */
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.main-content {
+    display: flex;
+    width: 80%;
+    max-width: 1200px;
+}
+
+.titulo {
+    font-size: 2em;
+    color: #FFFFFF;
+    margin-bottom: 20px;
+}
+
+.seccion {
+    font-size: 1.5em;
+    color: #FFFFFF;
+    margin: 30px 0 20px;
+    border-bottom: 2px solid #FFFFFF;
+    padding-bottom: 5px;
+}
+
+.content-left {
+    left: 3%;
+}
+
+.content-left ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.content-left li {
+    margin: 8px 0;
+}
+
+.content-left a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    margin-left: 3em;
+}
+
+.content-left a:hover {
+    color: #63D471; 
+}
+
+.default {
+    font-style: italic;
+    color: white;
+}
+.no-guardadas {
+    color: white;
+    font-style: italic;
+    margin-left: 3em;
+}
+
+/* Adaptación para pantallas pequeñas */
+@media (max-width: 768px) {
+    .main-content {
+        flex-direction: column;
+        width: 90%;
+    }
+
+    .content-left, .sidebar {
+        margin: 0 0 20px 0;
+    }
+}
 
 /* Formularios */
 
