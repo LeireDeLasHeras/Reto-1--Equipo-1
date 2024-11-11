@@ -10,7 +10,7 @@
  */
 ?>
 
-<div class="main-content">              
+<div class="main-content-formulario">              
     <div class="contenido">
         <div class="formulario-post">
             
