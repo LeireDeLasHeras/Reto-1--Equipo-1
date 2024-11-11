@@ -10,7 +10,7 @@
     <?php $tipo = $_GET['tipo'] ?>
     <div class="container">
         <div class="main-content">
-            <div class="content-left">
+            <div class="content-left-publicacion-guardados">
                 <?php if ($dataToView['data']['usuario']['idUsuario'] == $_SESSION['user_data']['idUsuario']): ?>
                     <h1 class="titulo">Mis Publicaciones</h1>
                 <?php else: ?>
