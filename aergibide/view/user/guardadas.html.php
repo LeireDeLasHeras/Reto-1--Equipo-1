@@ -10,12 +10,11 @@
     <div class="container">
         <div class="main-content">
             <div class="content-left">
-                <h1>Mis publicaciones guardadas</h1>
-                <hr>
+                <h1 class="titulo">Mis publicaciones guardadas</h1>
                 <?php if ($tipo == 'todas' || $tipo == 'preguntas'): ?>
-                    <h2>Preguntas</h2>
+                    <h2 class="seccion">Preguntas</h2>
                     <?php if (empty($dataToView['data']['preguntas'])): ?>
-                        <p>No has guardado ninguna pregunta.</p>
+                        <p class="no-guardadas">No has guardado ninguna pregunta.</p>
                     <?php else: ?>
                         <ul>
                             <?php foreach ($dataToView['data']['preguntas'] as $pregunta): ?>
@@ -30,9 +29,9 @@
                 <?php endif; ?>
 
                 <?php if ($tipo == 'todas' || $tipo == 'tutoriales'): ?>
-                    <h2>Tutoriales</h2>
+                    <h2 class="seccion">Tutoriales</h2>
                     <?php if (empty($dataToView['data']['tutoriales'])): ?>
-                        <p>No has guardado ningún tutorial.</p>
+                        <p class="no-guardadas">No has guardado ningún tutorial.</p>
                     <?php else: ?>
                         <ul>
                             <?php foreach ($dataToView['data']['tutoriales'] as $tutorial): ?>
@@ -43,9 +42,9 @@
                 <?php endif; ?>
 
                 <?php if ($tipo == 'todas' || $tipo == 'guias'): ?>
-                    <h2>Guias</h2>
+                    <h2 class="seccion">Guias</h2>
                     <?php if (empty($dataToView['data']['guias'])): ?>
-                        <p>No has guardado ninguna guía.</p>
+                        <p class="no-guardadas">No has guardado ninguna guía.</p>
                     <?php else: ?>
                         <ul>
                             <?php foreach ($dataToView['data']['guias'] as $guia): ?>
@@ -54,16 +53,31 @@
                         </ul>
                     <?php endif; ?>
                 <?php endif; ?>
+                <?php if ($tipo == 'todas' || $tipo == 'respuestas'): ?>
+                    <h2>Respuestas</h2>
+                    <?php if (empty($dataToView['data']['respuestas'])): ?>
+                        <p>No has guardado ninguna respuesta.</p>
+                    <?php else: ?>
+                        <ul>
+                            <?php foreach ($dataToView['data']['respuestas'] as $respuesta): ?>
+                                <li>
+                                    <a href="index.php?controller=pregunta&action=view&id=<?php echo $respuesta['idPregunta']; ?>">
+                                    <?php echo strlen($respuesta['descripcion']) > 15 ? substr($respuesta['descripcion'], 0, 15) . '...' : $respuesta['descripcion']; ?>
+                                    </a>
+                                </li>
+                            <?php endforeach; ?>
+                        </ul>
+                    <?php endif; ?>
+                <?php endif; ?>
             </div>
 
             <div class="sidebar">
                 <h3>Tipos</h3>
-                <hr>    
                 <div class="topics">
-                    <p><a href="index.php?controller=user&action=guardadas&tipo=todas" class="tipo">Todos</a></p>
-                    <p><a href="index.php?controller=user&action=guardadas&tipo=preguntas" class="tipo">Preguntas</a></p>
-                    <p><a href="index.php?controller=user&action=guardadas&tipo=tutoriales" class="tipo">Tutoriales</a></p>
-                    <p><a href="index.php?controller=user&action=guardadas&tipo=guias" class="tipo">Guias</a></p>
+                    <p><a href="index.php?controller=user&action=guardadas&tipo=todas" class="tema">Todos</a></p>
+                    <p><a href="index.php?controller=user&action=guardadas&tipo=preguntas" class="tema">Preguntas</a></p>
+                    <p><a href="index.php?controller=user&action=guardadas&tipo=tutoriales" class="tema">Tutoriales</a></p>
+                    <p><a href="index.php?controller=user&action=guardadas&tipo=guias" class="tema">Guias</a></p>
                 </div>
             </div>
         </div>

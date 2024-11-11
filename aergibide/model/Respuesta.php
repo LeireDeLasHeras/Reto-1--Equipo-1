@@ -96,4 +96,23 @@ class Respuesta{
         $stmt = $this->connection->prepare($sql);
         return $stmt->execute([$idUsuario, $idRespuesta]);
     }
+
+    public function getRespuestasByUserId($userId) {
+        $sql = "SELECT * FROM Respuesta WHERE idUsuario = ?";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute([$userId]);
+        return $stmt->fetchAll();
+    }
+
+    public function getRespuestasGuardadasByUserId($userId) {
+        $sql = "SELECT Respuesta.* 
+        FROM RespuestasGuardadas 
+        JOIN Respuesta ON RespuestasGuardadas.idRespuesta = Respuesta.idRespuesta
+        WHERE RespuestasGuardadas.idUsuario = ?
+        ";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute([$userId]);
+        return $stmt->fetchAll();
+    }  
 }
+

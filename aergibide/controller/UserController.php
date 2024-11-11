@@ -3,8 +3,9 @@
 require_once "model/User.php";
 require_once "model/Pregunta.php";
 require_once "model/Tutorial.php";
-require_once "model/Guia.php";
- 
+require_once "model/Guia.php"; 
+require_once "model/Respuesta.php";
+
 class UserController
 {
     public $view;
@@ -86,15 +87,18 @@ class UserController
         $preguntaModel = new Pregunta();
         $guiaModel = new Guia();
         $tutorialModel = new Tutorial();
+        $respuestaModel = new Respuesta();
 
         $preguntasPublicadas = $preguntaModel->getPreguntasByUserId($userId);
         $guiasPublicadas = $guiaModel->getGuiasByUserId($userId);
         $tutorialesPublicados = $tutorialModel->getTutorialesByUserId($userId);
+        $respuestasPublicadas = $respuestaModel->getRespuestasByUserId($userId);
 
         return [
             'preguntas' => $preguntasPublicadas,
             'guias' => $guiasPublicadas,
             'tutoriales' => $tutorialesPublicados,
+            'respuestas'=> $respuestasPublicadas,
             'usuario' => $usuario
         ];
     }
@@ -106,16 +110,19 @@ class UserController
         $preguntaModel = new Pregunta();
         $guiaModel = new Guia();
         $tutorialModel = new Tutorial();
+        $respuestaModel = new Respuesta();
 
         $preguntasGuardadas = $preguntaModel->getPreguntasGuardadasByUserId($userId);
         $guiasGuardadas = $guiaModel->getGuiasGuardadasByUserId($userId);
         $tutorialesGuardados = $tutorialModel->getTutorialesGuardadosByUserId($userId);
+        $respuestasGuardadas = $respuestaModel->getRespuestasGuardadasByUserId($userId);
 
 
         return [
             'preguntas' => $preguntasGuardadas,
             'guias' => $guiasGuardadas,
             'tutoriales' => $tutorialesGuardados,
+            'respuestas' => $respuestasGuardadas,
         ];
     }
     public function list()
