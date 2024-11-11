@@ -122,11 +122,18 @@ body {
     background-color: #4E5166;
     border-radius: 5px;
     border: none;
-    padding: 0 10px;
     color: white;
     font-size: 1.1em;
+    text-align: center;
+    outline: none;
+    padding: 10px;
+    -webkit-appearance: none; /* Para Chrome y Safari */
+    -moz-appearance: none; /* Para Firefox */
+    appearance: none; /* Para navegadores modernos */
 }
-
+.user-options:hover {
+    text-decoration: underline;
+}
 .order-button {
     margin-left: 10px;
     height: 40px;
@@ -608,7 +615,7 @@ body {
 
 .main-content {
     display: flex;
-    width: 80%;
+    width: 100%;
     max-width: 1200px;
 }
 
@@ -714,7 +721,7 @@ body {
 
 .form-buttons {
     display: flex;
-    justify-content: ri;
+    justify-content: space-evenly;
 }
 
 .cancel-button,

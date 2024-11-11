@@ -39,7 +39,6 @@
                         <option value="publicaciones">Mis Publicaciones</option>
                         <option value="guardadas">Guardadas</option>
                         <option value="logout">Cerrar Sesi&oacute;n</option>
-                        
                         <?php 
                         // Carga las opciones de administrador si el usuario lo es
                         if ($_SESSION['user_data']['tipo']=='admin'): ?>
