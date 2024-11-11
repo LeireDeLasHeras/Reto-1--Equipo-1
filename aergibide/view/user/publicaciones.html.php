@@ -15,8 +15,6 @@
                 <?php else: ?>
                     <h1 class="titulo">Publicaciones de <?php echo $dataToView['data']['usuario']['nickname']; ?></h1>
                 <?php endif; ?>
-                <hr>
-
                 <?php if ($tipo == 'todas' || $tipo == 'preguntas'): ?>
                     <h2 class="seccion" >Preguntas</h2>
                     <?php if (empty($dataToView['data']['preguntas'])): ?>
@@ -68,8 +66,7 @@
 
             <div class="sidebar">
                 <h3>Tipos</h3>
-                <hr>
-                <div class="topics">
+                    <div class="topics">
                     <p><a href="index.php?controller=user&action=publicaciones&tipo=todas" class="tema">Todos</a></p>
                     <p><a href="index.php?controller=user&action=publicaciones&tipo=preguntas" class="tema">Preguntas</a></p>
                     <p><a href="index.php?controller=user&action=publicaciones&tipo=tutoriales" class="tema">Tutoriales</a></p>
