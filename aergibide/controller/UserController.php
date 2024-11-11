@@ -3,7 +3,7 @@
 require_once "model/User.php";
 require_once "model/Pregunta.php";
 require_once "model/Tutorial.php";
-require_once "model/Guia.php";
+require_once "model/Guia.php"; 
 require_once "model/Respuesta.php";
 
 class UserController

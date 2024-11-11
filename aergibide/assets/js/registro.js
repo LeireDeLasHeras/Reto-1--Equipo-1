@@ -1,3 +1,11 @@
+/**
+ * Script para validar el formulario de registro.
+ * 
+ * @author Oier Albeniz
+ * @author Leire de las Heras
+ * @author Joseba Fernández
+ */
+
 document.addEventListener('DOMContentLoaded', function () {
     const form = document.querySelector('form');
     const nicknameInput = document.getElementById('nickname');

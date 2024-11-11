@@ -9,7 +9,7 @@
         <main>
             <div class="logo">
                 <img class="logo_aergibide" src="assets/img/logo_aergibide.png" alt="Logo Aergibide">
-            </div>
+            </div> 
 
             <form action="" method="POST">
                 <label for="correo">Correo electrónico:</label>

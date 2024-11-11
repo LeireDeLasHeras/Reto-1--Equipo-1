@@ -1,3 +1,11 @@
+/**
+ * Script para validar el formulario de creación de guías.
+ * 
+ * @author Oier Albeniz
+ * @author Leire de las Heras
+ * @author Joseba Fernández
+ */
+
 document.addEventListener('DOMContentLoaded', function () {
     const form = document.querySelector('form');
     const tituloInput = document.getElementById('titulo');

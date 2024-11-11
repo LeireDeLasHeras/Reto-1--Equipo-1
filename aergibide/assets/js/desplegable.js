@@ -1,3 +1,11 @@
+/**
+ * Script para manejar el desplegable de la barra de navegación.
+ * 
+ * @author Oier Albeniz
+ * @author Leire de las Heras
+ * @author Joseba Fernández
+ */
+
 document.addEventListener('DOMContentLoaded', function() {
     var userOptions = document.getElementById('opciones');
     userOptions.addEventListener('change', function() {

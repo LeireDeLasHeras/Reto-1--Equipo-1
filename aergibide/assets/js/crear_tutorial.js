@@ -1,3 +1,11 @@
+/**
+ * Script para validar el formulario de creación de tutoriales.
+ * 
+ * @author Oier Albeniz
+ * @author Leire de las Heras
+ * @author Joseba Fernández
+ */
+
 document.addEventListener('DOMContentLoaded', function () {
     const form = document.querySelector('form');
     const tituloInput = document.getElementById('titulo');
@@ -51,13 +59,10 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     form.addEventListener('submit', function (event) {
-        event.preventDefault(); // Prevenir el envío del formulario por defecto
+        event.preventDefault();
         limpiarMensajesError();
         let esValido = true;
 
-        // Validaciones de título, descripción y tema (mantén estas como estaban)
-
-        // Validar y procesar el enlace de YouTube
         if (!enlaceInput.value) {
             mostrarMensajeError(enlaceInput, "Debe proporcionar un enlace de YouTube");
             esValido = false;
@@ -67,18 +72,15 @@ document.addEventListener('DOMContentLoaded', function () {
                 mostrarMensajeError(enlaceInput, "El enlace debe ser una URL válida de YouTube");
                 esValido = false;
             } else {
-                // Reemplazar el valor del input con solo el ID del video
                 enlaceInput.value = videoId;
             }
         }
 
         if (esValido) {
-            form.submit(); // Enviar el formulario si todo es válido
+            form.submit();
         }
     });
 
-
-    // Manejar el botón de cancelar
     const cancelButton = document.querySelector('.cancel-button');
     if (cancelButton) {
         cancelButton.addEventListener('click', function() {

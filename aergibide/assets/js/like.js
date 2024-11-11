@@ -1,3 +1,12 @@
+/**
+ * Script para manejar los likes de la aplicación
+ * de manera asíncrona.
+ * 
+ * @author Oier Albeniz
+ * @author Leire de las Heras
+ * @author Joseba Fernández
+ */
+
 document.addEventListener("DOMContentLoaded", function() {
     var likes = document.getElementsByClassName("boton-like");
 

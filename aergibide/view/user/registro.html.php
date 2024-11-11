@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="assets/css/registro_style.css">
     <script src="assets/js/registro.js" ></script>
 </head>
-<body>
+<body> 
     <main>
         <div class="logo">
             <img class="logo_aergibide" src="assets/img/logo_aergibide.png" alt="Logo Aergibide">
