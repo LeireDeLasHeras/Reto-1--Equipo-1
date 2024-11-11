@@ -218,6 +218,14 @@ body {
     bottom: 0;
 }
 
+/* Estilos para linea blanca debajo de boton like */
+
+.num-like {
+    margin-bottom: 5px; 
+    border-bottom: 1px solid white;
+    padding-bottom: 20px; 
+}
+
 /* Estilos para PaginaPreguntas */
 
 .bookmark {
@@ -322,6 +330,42 @@ body {
 .video-details p {
     margin-bottom: 5px;
 }
+.contenido {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.contenido iframe {
+    flex: 1;
+    max-width: 420px;
+}
+
+.contenido .details {
+    margin-top: 10px;
+    flex: 2;
+    color: white;
+    font-size: 1em;
+    padding: 15px;
+}
+
+.details p {
+    margin: 10px 0; 
+    padding: 5px 0;
+    border-bottom: 1px solid white;
+}
+
+.details p:last-child {
+    border-bottom: none;
+}
+
+.details p:first-of-type {
+    font-weight: bold;
+    font-size: 1.1em; 
+    color: #63D471; 
+}
+
+
 
 /* Estilos para PaginaGuias */
 

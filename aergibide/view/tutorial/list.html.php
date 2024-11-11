@@ -41,15 +41,19 @@
                                     </button>
                                 <?php endif; ?>
                             </h3>
-                            <p><?php echo $tutorial["tema"]; ?></p>
-                            <p><?php echo $tutorial["fecha"]; ?></p>
-                            <p><?php echo $tutorial["nickname"]; ?></p>
-                            <p><?php echo $tutorial["descripcion"]; ?></p>
-
-                            <p><iframe width="420" height="235" src="https://www.youtube.com/embed/<?php echo $tutorial["enlace"]; ?>"
-                                title="YouTube video player" frameborder="0" 
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></p>
+                            <div class="contenido">
+                                <iframe width="420" height="235" src="https://www.youtube.com/embed/<?php echo $tutorial["enlace"]; ?>"
+                                    title="YouTube video player" frameborder="0" 
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                                
+                                <div class="details">
+                                    <p><?php echo $tutorial["tema"]; ?></p>
+                                    <p><?php echo $tutorial["fecha"]; ?></p>
+                                    <p><?php echo $tutorial["nickname"]; ?></p>
+                                    <p><?php echo $tutorial["descripcion"]; ?></p>
+                                </div>
+                            </div>
                             <p class="num-like">
                                 <?php
                                 $liked = false;
@@ -78,8 +82,6 @@
                                 endif; ?></span> -->
 
                             </p>
-                            <br>
-                            <hr style="width: 90%;">
                         </div>
                     <?php endforeach; ?>
                 <?php endif; ?>
