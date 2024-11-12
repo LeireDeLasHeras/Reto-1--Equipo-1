@@ -22,9 +22,9 @@
             <h2 class="seccion">Preguntas</h2>
             <?php if (empty($dataToView['data']['preguntas'])): ?>
                 <?php if ($dataToView['data']['usuario']['idUsuario'] == $_SESSION['user_data']['idUsuario']): ?>
-                    <p>No has publicado ninguna pregunta.</p>
+                    <p class="no-guardadas">No has publicado ninguna pregunta.</p>
                 <?php else: ?>
-                    <p><?php echo $dataToView['data']['usuario']['nickname']; ?> no ha publicado ninguna pregunta.</p>
+                    <p class="no-guardadas"><?php echo $dataToView['data']['usuario']['nickname']; ?> no ha publicado ninguna pregunta.</p>
                 <?php endif; ?>
             <?php else: ?>
                 <ul>
@@ -42,9 +42,9 @@
             <h2 class="seccion">Tutoriales</h2>
             <?php if (empty($dataToView['data']['tutoriales'])): ?>
                 <?php if ($dataToView['data']['usuario']['idUsuario'] == $_SESSION['user_data']['idUsuario']): ?>
-                    <p>No has publicado ningún tutorial.</p>
+                    <p class="no-guardadas">No has publicado ningún tutorial.</p>
                 <?php else: ?>
-                    <p><?php echo $dataToView['data']['usuario']['nickname']; ?> no ha publicado ningún tutorial.</p>
+                    <p class="no-guardadas"><?php echo $dataToView['data']['usuario']['nickname']; ?> no ha publicado ningún tutorial.</p>
                 <?php endif; ?>
             <?php else: ?>
                 <ul>
@@ -60,9 +60,9 @@
             <h2 class="seccion">Guias</h2>
             <?php if (empty($dataToView['data']['guias'])): ?>
                 <?php if ($dataToView['data']['usuario']['idUsuario'] == $_SESSION['user_data']['idUsuario']): ?>
-                    <p>No has publicado ninguna guía.</p>
+                    <p class="no-guardadas">No has publicado ninguna guía.</p>
                 <?php else: ?>
-                    <p><?php echo $dataToView['data']['usuario']['nickname']; ?> no ha publicado ninguna guía.</p>
+                    <p class="no-guardadas"><?php echo $dataToView['data']['usuario']['nickname']; ?> no ha publicado ninguna guía.</p>
                 <?php endif; ?>
             <?php else: ?>
                 <ul>
@@ -78,9 +78,9 @@
             <h2 class="seccion">Respuestas</h2>
             <?php if (empty($dataToView['data']['respuestas'])): ?>
                 <?php if ($dataToView['data']['usuario']['idUsuario'] == $_SESSION['user_data']['idUsuario']): ?>
-                    <p>No has publicado ninguna respuesta.</p>
+                    <p class="no-guardadas">No has publicado ninguna respuesta.</p>
                 <?php else: ?>
-                    <p><?php echo $dataToView['data']['usuario']['nickname']; ?> no ha publicado ninguna respuesta.</p>
+                    <p class="no-guardadas"><?php echo $dataToView['data']['usuario']['nickname']; ?> no ha publicado ninguna respuesta.</p>
                 <?php endif; ?>
             <?php else: ?>
                 <ul>
