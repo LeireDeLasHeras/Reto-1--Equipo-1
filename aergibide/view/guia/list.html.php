@@ -50,7 +50,7 @@
                                 
                             </h3>
                             <p><?php echo htmlspecialchars($guia["nickname"]); ?><br><?php echo htmlspecialchars($guia["fecha"]); ?></p><br>
-                            <p><?php echo htmlspecialchars($guia["descripcion"]); ?></p>
+                            <p><?php echo strlen($guia['descripcion']) > 75 ? substr($guia['descripcion'], 0, 75) . '...' : $guia['descripcion']; ?></p>
 
                             <!-- Botón para descargar el archivo directamente -->
                             <?php if (!empty($guia["fichero"])): ?>

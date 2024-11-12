@@ -35,7 +35,11 @@
                     <?php else: ?>
                         <ul>
                             <?php foreach ($dataToView['data']['tutoriales'] as $tutorial): ?>
-                                <li><?php echo $tutorial['titulo']; ?></li>
+                                <li>
+                                    <a href="index.php?controller=tutorial&action=view&id=<?php echo $tutorial['idTutorial']; ?>">
+                                    <?php echo $tutorial['titulo']; ?>
+                                    </a>
+                                </li>
                             <?php endforeach; ?>
                         </ul>
                     <?php endif; ?>
@@ -48,7 +52,11 @@
                     <?php else: ?>
                         <ul>
                             <?php foreach ($dataToView['data']['guias'] as $guia): ?>
-                                <li><?php echo $guia['titulo']; ?></li>
+                                <li>
+                                    <a href="index.php?controller=guia&action=view&id=<?php echo $guia['idGuia']; ?>">
+                                    <?php echo $guia['titulo']; ?>
+                                    </a>
+                                </li>
                             <?php endforeach; ?>
                         </ul>
                     <?php endif; ?>

@@ -56,8 +56,9 @@
                         <?php endif; ?>
 
                     </h3>
+                    
                     <div class="contenido-tutorial">
-                        <iframe width="420" height="235" src="https://www.youtube.com/embed/<?php echo $tutorial["enlace"]; ?>"
+                        <iframe width="300" height="168" src="https://www.youtube.com/embed/<?php echo $tutorial["enlace"]; ?>"
                             title="YouTube video player" frameborder="0" 
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                             referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -66,7 +67,7 @@
                             <p><?php echo $tutorial["tema"]; ?></p>
                             <p><?php echo $tutorial["fecha"]; ?></p>
                             <p><?php echo $tutorial["nickname"]; ?></p>
-                            <p><?php echo $tutorial["descripcion"]; ?></p>
+                            <p><?php echo strlen($tutorial['descripcion']) > 75 ? substr($tutorial['descripcion'], 0, 75) . '...' : $tutorial['descripcion']; ?></p>
                         </div>
                     </div>
 

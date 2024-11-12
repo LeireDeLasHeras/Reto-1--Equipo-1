@@ -122,11 +122,18 @@ body {
     background-color: #4E5166;
     border-radius: 5px;
     border: none;
-    padding: 0 10px;
     color: white;
     font-size: 1.1em;
+    text-align: center;
+    outline: none;
+    padding: 10px;
+    -webkit-appearance: none; /* Para Chrome y Safari */
+    -moz-appearance: none; /* Para Firefox */
+    appearance: none; /* Para navegadores modernos */
 }
-
+.user-options:hover {
+    text-decoration: underline;
+}
 .order-button {
     margin-left: 10px;
     height: 40px;
@@ -302,30 +309,6 @@ body {
 }
 
 /* Estilos para PaginaTutoriales */
-.video-content {
-    display: flex;
-    background-color: #7C90A0;
-    padding: 20px;
-    margin-bottom: 20px;
-    align-items: center;
-    border: 1px solid #D9D9D9;
-}
-
-.video-placeholder {
-    width: 60%;
-    height: auto;
-    background-color: #E0E0E0;
-    border: 1px solid #D9D9D9;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.video-placeholder img {
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-}
 
 .video-details {
     width: 40%;
@@ -360,7 +343,7 @@ body {
 }
 
 .details-tutorial p {
-    margin: 10px 0; 
+
     padding: 5px 0;
     border-bottom: 1px solid white;
 }
@@ -618,7 +601,7 @@ body {
 
 .main-content {
     display: flex;
-    width: 80%;
+    width: 100%;
     max-width: 1200px;
 }
 
@@ -733,7 +716,7 @@ body {
 
 .form-buttons {
     display: flex;
-    justify-content: ri;
+    justify-content: space-evenly;
 }
 
 .cancel-button,
