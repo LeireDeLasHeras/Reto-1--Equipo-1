@@ -85,7 +85,7 @@ label {
     background-color: #fff;
 }
 
-.boton_registro {
+.boton_registro, .boton_cancelar_registro {
     background-color: #4E5166;
     border-radius: 6px;
     text-align: center;
@@ -104,7 +104,7 @@ label {
     cursor: pointer;
 }
 
-.boton_registro:hover {
+.boton_registro:hover, .boton_cancelar_registro:hover {
     background-color: #414352;
 }
 
