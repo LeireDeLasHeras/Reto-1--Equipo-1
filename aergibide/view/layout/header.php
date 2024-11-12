@@ -26,9 +26,9 @@
             <img class="logo" src="assets/img/logo_aergibide.png" alt="Logo Aergibide">
             <nav class="menu">
                 <ul>
-                    <li><a href="index.php?controller=pregunta&action=list" class="menu-item">PREGUNTAS</a></li>
-                    <li><a href="index.php?controller=tutorial&action=list" class="menu-item">TUTORIALES</a></li>               
-                    <li><a href="index.php?controller=guia&action=list" class="menu-item">GU&Iacute;AS</a></li>
+                <a href="index.php?controller=pregunta&action=list" class="menu-item"><li>PREGUNTAS</li></a>
+                <a href="index.php?controller=tutorial&action=list" class="menu-item"><li>TUTORIALES</li></a>               
+                <a href="index.php?controller=guia&action=list" class="menu-item"><li>GU&Iacute;AS</li></a>
                 </ul>
             </nav>
             <div class="user-info">

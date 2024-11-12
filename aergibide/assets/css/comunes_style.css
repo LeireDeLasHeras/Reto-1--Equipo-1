@@ -45,10 +45,10 @@ body {
 }
 
 .navbar .menu li {
-    padding: 2em; 
+    padding: 1.6em 7em; 
 }
 
-.navbar .menu li:hover {
+.navbar .menu li:hover{
     background-color: #63D471;
 }
 
@@ -58,7 +58,6 @@ body {
 }
 
 .menu-item {
-    margin: 0 100px; 
     font-size: 20px;
     text-align: center;
     text-decoration: none;
@@ -169,7 +168,7 @@ body {
 .add-post {
     position: fixed;
     top: 620px; 
-    right: 380px;
+    right: 440px;
     z-index: 100;
 }
 
@@ -719,7 +718,7 @@ body {
 
 .form-buttons {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: right;
 }
 
 .cancel-button,
