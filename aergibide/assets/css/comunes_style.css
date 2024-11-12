@@ -693,6 +693,13 @@ body {
 
 /* Formularios */
 
+.main-content-formulario{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding-top: 5em;
+}
 .formulario-post {
     background-color: #4E5166;
     padding: 30px;
