@@ -815,3 +815,7 @@ body {
 .form-buttons .cancel-button:active {
     transform: translateY(0); /* Vuelve al nivel original al hacer clic */
 }
+
+.main-content-user-edit {
+    padding-top: 5em;
+}
