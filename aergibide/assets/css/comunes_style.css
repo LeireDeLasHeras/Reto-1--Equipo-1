@@ -352,11 +352,8 @@ body {
 }
 
 .details-tutorial p:first-of-type {
-    font-weight: bold;
     font-size: 1.1em; 
-    color: #63D471; 
 }
-
 
 
 /* Estilos para PaginaGuias */
@@ -453,7 +450,7 @@ body {
 .content-left-vistaGuia {
     padding: 20px;
     width: fit-content;
-    min-width: 300px;
+    min-width: 700px;
     max-width: 800px;
     margin: 0 auto;
     background-color: #4E5166;
@@ -464,6 +461,11 @@ body {
     word-wrap: break-word;
     overflow-wrap: break-word;
     height: fit-content;
+}
+
+.content-left-vistaTutorial{
+    min-width: 660px;
+    max-width: 660px;
 }
 
 .content-left-vistaPregunta h1,
@@ -522,8 +524,9 @@ body {
 /* Estilo para separar las respuestas */
 .content-left-vistaPregunta .add-respuesta {
     display: flex;
-    justify-content: center;
+    justify-content: right;
     margin-top: 30px;
+    margin-bottom: -25px;
 }
 
 .content-left-vistaPregunta .add-respuesta button {
@@ -800,4 +803,20 @@ body {
 
 .main-content-user-edit {
     padding-top: 5em;
+}
+
+.main-content-vistaPregunta,
+.main-content-vistaTutorial,
+.main-content-vistaGuia {
+    padding-top: 6em;
+}
+
+#bookmark-view, #like-view, #eliminar-view {
+    float: right;
+}
+
+.respuesta {
+    margin-top: 1em;
+    border-bottom: 1px solid #ccc;
+    padding: 1em;
 }
