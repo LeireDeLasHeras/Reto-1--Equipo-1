@@ -50,7 +50,7 @@
 
                     </h3>
                     <p><?php echo $pregunta["nickname"]; ?><br><?php echo $pregunta["fecha"]; ?></p><br>
-                    <p ><?php echo $pregunta["descripcion"]; ?></p>
+                    <p ><?php echo strlen($pregunta['descripcion']) > 75 ? substr($pregunta['descripcion'], 0, 75) . '...' : $pregunta['descripcion']; ?></p>
 
                     <p class="num-like">
 
