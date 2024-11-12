@@ -44,10 +44,9 @@ if ($_GET["action"] != "login" && $_GET["action"] != "register") {
 
 require_once "view/".$_GET["controller"]."/".$controller->view.".html.php";
 
-/*
-FOOTER QUITADO POR QUE DA PROBLEMAS CUANDO EL CONTENIDO ES MAYOR QUE LA PANTALLA
+
+//FOOTER QUITADO POR QUE DA PROBLEMAS CUANDO EL CONTENIDO ES MAYOR QUE LA PANTALLA
 
 if ($_GET["action"] != "login" && $_GET["action"] != "register") {
     require_once "view/layout/footer.php";
 }
-*/

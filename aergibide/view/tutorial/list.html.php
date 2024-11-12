@@ -67,7 +67,7 @@
                             <p><?php echo $tutorial["tema"]; ?></p>
                             <p><?php echo $tutorial["fecha"]; ?></p>
                             <p><?php echo $tutorial["nickname"]; ?></p>
-                            <p><?php echo strlen($tutorial['descripcion']) > 75 ? substr($tutorial['descripcion'], 0, 75) . '...' : $tutorial['descripcion']; ?></p>
+                            <p><?php echo strlen($tutorial['descripcion']) > 40 ? substr($tutorial['descripcion'], 0, 40) . '...' : $tutorial['descripcion']; ?></p>
                         </div>
                     </div>
 

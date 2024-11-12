@@ -60,7 +60,7 @@
                 <p class="no-guardadas">No has guardado ninguna guía.</p>
             <?php else: ?>
                 <ul>
-                    <?php foreach ($dataToView['dat a']['guias'] as $guia): ?>
+                    <?php foreach ($dataToView['data']['guias'] as $guia): ?>
                         <li>
                             <a href="index.php?controller=guia&action=view&id=<?php echo $guia['idGuia']; ?>">
                                 <?php echo $guia['titulo']; ?>
