@@ -233,7 +233,7 @@ body {
     width: 100%;
     z-index: 100;
 }
-.main-content-vistaPregunta, .main-content-vistaGuia, .main-content-vistaTutorial {
+.main-content-vistaPregunta, .main-content-vistaGuia, .main-content-vistaTutorial, .main-content-user-edit {
     min-height: calc(100vh - 75px); /* Asegura que el contenido ocupe al menos el 100% de la altura de la ventana menos la altura del footer */
 }
 
