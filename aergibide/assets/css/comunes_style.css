@@ -167,7 +167,7 @@ body {
 
 .add-post {
     position: fixed;
-    top: 620px; 
+    top: 600px; 
     right: 440px;
     z-index: 100;
 }
@@ -225,13 +225,12 @@ body {
 
 .footer {
     background-color: #4E5166;
-    height: 100px;
+    height: 75px;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-    position: absolute;
-    bottom: 0;
+    z-index: 100;
 }
 
 /* Estilos para linea blanca debajo de boton like */
