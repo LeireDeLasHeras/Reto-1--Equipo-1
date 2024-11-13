@@ -13,8 +13,6 @@
 <div class="main-content-formulario">              
     <div class="contenido">
         <div class="formulario-post">
-            
-            <script src="assets/js/crear_tutorial.js"></script>
 
             <form action="index.php?controller=tutorial&action=create" method="POST">
                 <label for="titulo">T&iacute;tulo:</label>
@@ -43,3 +41,4 @@
         </div>      
     </div>
 </div>
+<script src="assets/js/crear_tutorial.js"></script>

@@ -63,6 +63,16 @@ document.addEventListener('DOMContentLoaded', function () {
         limpiarMensajesError();
         let esValido = true;
 
+        if (tituloInput.value.length < 10) {
+            mostrarMensajeError(tituloInput, "El título debe tener al menos 10 caracteres");
+            esValido = false;
+        }
+
+        if (descripcionInput.value.length < 20) {
+            mostrarMensajeError(descripcionInput, "La descripción debe tener al menos 20 caracteres");
+            esValido = false;
+        }
+
         if (!enlaceInput.value) {
             mostrarMensajeError(enlaceInput, "Debe proporcionar un enlace de YouTube");
             esValido = false;

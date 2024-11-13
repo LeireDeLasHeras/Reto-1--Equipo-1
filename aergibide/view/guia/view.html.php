@@ -34,7 +34,7 @@
         <p><?php echo $dataToView["data"]["guia"]["fecha"]; ?></p>
         <p><?php echo $dataToView["data"]["guia"]["descripcion"]; ?></p>
 
-        <?php if (!empty($guia["fichero"])): ?>
+        <?php if (!empty($dataToView["data"]["guia"]["fichero"])): ?>
             <a href="<?php echo $dataToView["data"]["guia"]["fichero"]; ?>" target="_blank">
                 <button class="download-button-viewGuia">Descargar</button>
             </a>
