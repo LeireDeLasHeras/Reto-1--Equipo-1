@@ -29,11 +29,11 @@ $controller = new $controllerName();
 
 // Variable para manejar peticiones asincronas
 $isAjaxRequest = isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'] === 'XMLHttpRequest';
-
 $dataToView["data"] = array();
 if(method_exists($controller, $_GET["action"])) $dataToView["data"] = $controller -> {$_GET["action"]}();
 
 if($isAjaxRequest){
+    header('Content-Type: application/json');
     echo json_encode($dataToView["data"]);
     exit();
 }

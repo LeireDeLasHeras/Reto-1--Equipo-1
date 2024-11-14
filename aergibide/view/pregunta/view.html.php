@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Vista del detalle de una pregunta
  * y sus respuestas
@@ -8,15 +9,15 @@
  * @author Joseba Fernandez
  * 
  * @copyright (c) 2024, Oier Albeniz, Leire de las Heras, Joseba Fernandez
- */ 
+ */
 ?>
 
 <div class="main-content-vistaPregunta">
     <div class="content-left-vistaPregunta">
 
-        <?php 
+        <?php
         //Comprueba si el usuario es el creador de la pregunta o es admin para cargar el icono de borrar
-        if($dataToView["data"]["pregunta"]["idUsuario"] == $_SESSION['user_data']['idUsuario'] || $_SESSION['user_data']['tipo'] == 'admin'): ?>
+        if ($dataToView["data"]["pregunta"]["idUsuario"] == $_SESSION['user_data']['idUsuario'] || $_SESSION['user_data']['tipo'] == 'admin'): ?>
             <button id="eliminar-view" class="eliminar" onclick="window.location.href='index.php?controller=pregunta&action=delete&id=<?php echo $dataToView["data"]["pregunta"]["idPregunta"]; ?>'">
                 <img class="eliminar-img" src="assets/img/logo_borrar.png" alt="Icono Borrar">
                 <img class="eliminar-img-hover" src="assets/img/logo_borrar_rojo.png" alt="Icono Borrar">
@@ -43,7 +44,7 @@
         <p><?php echo $dataToView["data"]["pregunta"]["fecha"]; ?></p>
         <p><?php echo $dataToView["data"]["pregunta"]["descripcion"]; ?></p>
         <div class="respuestas">
-        <div class="add-respuesta">
+            <div class="add-respuesta">
                 <a href="index.php?controller=respuesta&action=create&id=<?php echo $dataToView["data"]["pregunta"]["idPregunta"]; ?>">
                     <button>
                         Añadir Respuesta
@@ -51,20 +52,20 @@
                 </a>
             </div>
             <h2>Respuestas</h2>
-            
-            <?php if(empty($dataToView["data"]["respuestas"])): ?>
+
+            <?php if (empty($dataToView["data"]["respuestas"])): ?>
                 <p>Alguien responderá esta pregunta pronto</p>
             <?php else: ?>
-                <?php foreach($dataToView["data"]["respuestas"] as $respuesta): ?>
+                <?php foreach ($dataToView["data"]["respuestas"] as $respuesta): ?>
                     <div class="respuesta">
-                        <?php 
+                        <?php
                         //Comprueba si el usuario es el creador de la respuesta o es admin para cargar el icono de borrar
-                        if($respuesta["idUsuario"] == $_SESSION['user_data']['idUsuario'] || $_SESSION['user_data']['tipo'] == 'admin' || $respuesta["idUsuario"] == $_SESSION['user_data']['idUsuario']): ?>
+                        if ($respuesta["idUsuario"] == $_SESSION['user_data']['idUsuario'] || $_SESSION['user_data']['tipo'] == 'admin' || $respuesta["idUsuario"] == $_SESSION['user_data']['idUsuario']): ?>
                             <button id="eliminar-view" class="eliminar" onclick="window.location.href='index.php?controller=respuesta&action=delete&idRespuesta=<?php echo $respuesta["idRespuesta"]; ?>&idPregunta=<?php echo $dataToView["data"]["pregunta"]["idPregunta"]; ?>'">
                                 <img class="eliminar-img" src="assets/img/logo_borrar.png" alt="Icono Borrar">
                                 <img class="eliminar-img-hover" src="assets/img/logo_borrar_rojo.png" alt="Icono Borrar">
                             </button>
-                        <?php endif; ?> 
+                        <?php endif; ?>
 
                         <?php
                         //Comprueba si la respuesta está guardada para cargar el icono de bookmark guardado o no
@@ -91,7 +92,7 @@
                             <p>
                                 <a href="<?php echo htmlentities($respuesta['fichero']); ?>" download>
                                     <button class="download-button">Descargar</button>
-                                </a>    
+                                </a>
                             </p>
                         <?php else: ?>
                             <p>No hay archivos asociados a esta respuesta.</p>

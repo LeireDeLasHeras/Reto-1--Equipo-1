@@ -60,7 +60,7 @@ class PreguntaController {
     public function view() {
         $this->view = "view";
         $id = $_GET["id"];
-        
+                     
         $data = [
             'pregunta' => $this->model->getPreguntaById($id),
             'isSaved' => $this->model->isSaved($id),
@@ -72,6 +72,7 @@ class PreguntaController {
         
         return $data;
     }
+    
 
     public function create(){
         $this->view= "create";
@@ -109,26 +110,30 @@ class PreguntaController {
     }
 
     public function like(){
-        $idPregunta = $_GET['id'];    
+        $idPregunta = $_POST['id'];    
         $idUsuario = $_SESSION['user_data']['idUsuario'];
-
-        $result = $this -> model -> like($idUsuario, $idPregunta);
-        $response  = [
-            'success' => $result
+    
+        $result = $this->model->like($idUsuario, $idPregunta);
+        $newLikeCount = $this->model->getLikeCount($idPregunta); // Método que obtendrá el nuevo conteo de likes
+        $response = [
+            'success' => $result,
+            'newLikeCount' => $newLikeCount
         ];  
-
-        return json_encode($response);
+    
+        return $response;
     }
-
+    
     public function unlike(){
-        $idPregunta = $_GET['id'];    
+        $idPregunta = $_POST['id'];    
         $idUsuario = $_SESSION['user_data']['idUsuario'];
-
-        $result = $this -> model -> unlike($idUsuario, $idPregunta);
-        $response  = [
-            'success' => $result
+    
+        $result = $this->model->unlike($idUsuario, $idPregunta);
+        $newLikeCount = $this->model->getLikeCount($idPregunta); // Método que obtendrá el nuevo conteo de likes
+        $response = [
+            'success' => $result,
+            'newLikeCount' => $newLikeCount
         ];  
-
-        return json_encode($response);
+    
+        return $response;
     }
 }

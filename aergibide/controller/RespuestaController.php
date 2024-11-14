@@ -82,7 +82,7 @@ class RespuestaController{
     }
 
     public function like(){
-        $idRespuesta = $_GET['id'];    
+        $idRespuesta = $_POST['id'];    
         $idUsuario = $_SESSION['user_data']['idUsuario'];
 
         $result = $this -> model -> like($idUsuario, $idRespuesta);
@@ -90,11 +90,11 @@ class RespuestaController{
             'success' => $result
         ];  
 
-        return json_encode($response);
+        return $response;
     }
 
     public function unlike(){
-        $idRespuesta = $_GET['id'];    
+        $idRespuesta = $_POST['id'];    
         $idUsuario = $_SESSION['user_data']['idUsuario'];
 
         $result = $this -> model -> unlike($idUsuario, $idRespuesta);
@@ -102,6 +102,6 @@ class RespuestaController{
             'success' => $result
         ];  
 
-        return json_encode($response);
+        return $response;
     }
 }
