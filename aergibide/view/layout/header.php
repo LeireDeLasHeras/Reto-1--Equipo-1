@@ -23,7 +23,7 @@
 <body>
     <div class="container">
         <div class="navbar">
-            <img class="logo" src="assets/img/logo_aergibide.png" alt="Logo Aergibide">
+            <a href="index.php?controller=pregunta&action=list"><img class="logo" src="assets/img/logo_aergibide.png" alt="Logo Aergibide"></a>
             <nav class="menu">
                 <ul>
                 <a href="index.php?controller=pregunta&action=list" class="menu-item"><li>PREGUNTAS</li></a>

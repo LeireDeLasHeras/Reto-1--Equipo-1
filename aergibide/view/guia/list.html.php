@@ -14,7 +14,7 @@
     <div class="content-left">
         
                 <?php if (empty($dataToView["data"]["guia"])): ?>
-                    <p>Actualmente no hay gu&iacute;as</p>
+                    <p class="empty-data">A&uacute;n no hay gu&iacute;as</p>
                 <?php else: ?>
                     <?php foreach ($dataToView["data"]["guia"] as $guia): ?>
                         <div class="post">
