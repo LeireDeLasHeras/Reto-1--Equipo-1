@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Vista para crear una guía.
  * 
@@ -10,7 +11,7 @@
  */
 ?>
 
-<div class="main-content-formulario">              
+<div class="main-content-formulario">
     <div class="contenido">
         <div class="formulario-post">
 
@@ -30,7 +31,7 @@
                 </select>
 
                 <label for="descripcion">Descripci&oacute;n:</label>
-                <textarea id="descripcion" name="descripcion" placeholder="Escribe una descripci&oacute;n..."></textarea>               
+                <textarea id="descripcion" name="descripcion" placeholder="Escribe una descripci&oacute;n..."></textarea>
 
                 <label for="archivos">A&ntilde;adir archivos:</label>
                 <input type="file" id="archivos" name="archivos">
@@ -39,7 +40,7 @@
                     <button type="button" class="cancel-button">Cancelar</button>
                     <input type="submit" class="submit-button" value="Publicar">
                 </div>
-            </form>    
+            </form>
 
         </div>
     </div>

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Vista para el registro de usuario
  * 

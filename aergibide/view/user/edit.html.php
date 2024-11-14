@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Vista para editar un usuario
  * 
@@ -36,6 +37,3 @@
         </div>
     </div>
 </div>
-
-
-    

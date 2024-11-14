@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Vista para listar los usuarios
  * 

@@ -2,106 +2,101 @@
 
 require_once "model/Respuesta.php";
 
-class RespuestaController{
+class RespuestaController
+{
     public $view;
     public $model;
 
-    public function __construct(){
+    // Inicializa la vista y el modelo de Respuesta.
+    public function __construct()
+    {
         $this->view = "";
         $this->model = new Respuesta();
     }
 
-    
-
-    public function create(){
+    // Crea una nueva respuesta con posible archivo adjunto.
+    public function create()
+    {
         $this->view = "create";
-    
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $filePath = null;
-          
+
+            // Maneja la subida de archivos.
             if (isset($_FILES['archivos']) && $_FILES['archivos']['error'] === UPLOAD_ERR_OK) {
                 $fileTmpPath = $_FILES['archivos']['tmp_name'];
                 $fileName = $_FILES['archivos']['name'];
                 $uploadFileDir = './uploads/respuestas/pdf/';
                 $destPath = $uploadFileDir . $fileName;
-    
+
                 if (!is_dir($uploadFileDir)) {
                     mkdir($uploadFileDir, 0777, true);
                 }
-    
+
                 if (move_uploaded_file($fileTmpPath, $destPath)) {
-                    $filePath = $destPath;  
+                    $filePath = $destPath;
                 } else {
                     $_GET["response"] = false;
                     return;
                 }
             }
-    
+
+            // Recibe y procesa los datos del formulario.
             $param = $_POST;
             $param['file_path'] = $filePath;
             $id = $this->model->crearRespuesta($param);
-    
-            if ($id) {
-                $_GET["response"] = true;
-            } else {
-                $_GET["response"] = false;
-            }
+
+            $_GET["response"] = $id ? true : false;
             return $id;
         }
     }
 
-    public function delete(){
+    // Elimina una respuesta específica.
+    public function delete()
+    {
         $this->view = "delete";
         $idRespuesta = $_GET["idRespuesta"];
         $idPregunta = $_GET["idPregunta"];
         return $this->model->borrarRespuesta($idRespuesta, $idPregunta);
     }
-    
-    public function save() {
-        $idRespuesta = $_GET['id'];    
+
+    // Guarda una respuesta como favorita para el usuario.
+    public function save()
+    {
+        $idRespuesta = $_GET['id'];
         $idUsuario = $_SESSION['user_data']['idUsuario'];
 
-        $result = $this -> model -> save($idUsuario, $idRespuesta);
-        $response  = [
-            'success' => $result
-        ];  
-
-        return json_encode($response);
+        $result = $this->model->save($idUsuario, $idRespuesta);
+        return json_encode(['success' => $result]);
     }
 
-    public function unsave(){
-        $idRespuesta = $_GET['id'];    
+    // Elimina una respuesta de las guardadas del usuario.
+    public function unsave()
+    {
+        $idRespuesta = $_GET['id'];
         $idUsuario = $_SESSION['user_data']['idUsuario'];
 
-        $result = $this -> model -> unsave($idUsuario, $idRespuesta);
-        $response  = [
-            'success' => $result
-        ];  
-
-        return json_encode($response);
+        $result = $this->model->unsave($idUsuario, $idRespuesta);
+        return json_encode(['success' => $result]);
     }
 
-    public function like(){
-        $idRespuesta = $_POST['id'];    
+    // Marca una respuesta con "like".
+    public function like()
+    {
+        $idRespuesta = $_POST['id'];
         $idUsuario = $_SESSION['user_data']['idUsuario'];
 
-        $result = $this -> model -> like($idUsuario, $idRespuesta);
-        $response  = [
-            'success' => $result
-        ];  
-
-        return $response;
+        $result = $this->model->like($idUsuario, $idRespuesta);
+        return ['success' => $result];
     }
 
-    public function unlike(){
-        $idRespuesta = $_POST['id'];    
+    // Elimina el "like" de una respuesta.
+    public function unlike()
+    {
+        $idRespuesta = $_POST['id'];
         $idUsuario = $_SESSION['user_data']['idUsuario'];
 
-        $result = $this -> model -> unlike($idUsuario, $idRespuesta);
-        $response  = [
-            'success' => $result
-        ];  
-
-        return $response;
+        $result = $this->model->unlike($idUsuario, $idRespuesta);
+        return ['success' => $result];
     }
 }

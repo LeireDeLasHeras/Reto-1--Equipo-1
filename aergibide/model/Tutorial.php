@@ -2,7 +2,7 @@
 
 class Tutorial
 {
-    private $table = "Tutorial";
+
     private $connection;
 
     public function __construct()
@@ -52,7 +52,7 @@ class Tutorial
         $stmt->execute();
         return $stmt->fetchAll();
     }
-    
+
 
     public function getTutorialById($id)
     {
@@ -66,7 +66,7 @@ class Tutorial
         $stmt->execute([$id]);
         return $stmt->fetch(); // Devuelve el tutorial con el número de likes
     }
-    
+
     public function crearTutorial()
     {
 
@@ -215,7 +215,7 @@ class Tutorial
         $resultados = $stmt->fetchAll();
         return !empty($resultados) ? $resultados : null;
     }
-    
+
 
     public function isSaved($id)
     {

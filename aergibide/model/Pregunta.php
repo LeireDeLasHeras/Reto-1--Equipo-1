@@ -1,7 +1,6 @@
 <?php
 class Pregunta
 {
-    private $table = "Pregunta";
     private $connection;
 
     public function __construct()

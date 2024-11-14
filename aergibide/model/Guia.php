@@ -2,7 +2,7 @@
 
 class Guia
 {
-    private $table = "Guia";
+
     private $connection;
 
     public function __construct()
@@ -15,7 +15,7 @@ class Guia
         $dbObj = new Db();
         $this->connection = $dbObj->conection;
     }
-    //Hace falta el getAllGuias?
+
     public function getAllGuias()
     {
 
@@ -91,31 +91,31 @@ class Guia
         }
     }
     public function getGuiasByTema()
-{
-    if (isset($_GET['tema'])) {
-        $tema = $_GET['tema'];
-        $sql = "SELECT g.idGuia, g.titulo, g.descripcion, g.fecha, g.tema, u.nickname, g.fichero, g.idUsuario,
+    {
+        if (isset($_GET['tema'])) {
+            $tema = $_GET['tema'];
+            $sql = "SELECT g.idGuia, g.titulo, g.descripcion, g.fecha, g.tema, u.nickname, g.fichero, g.idUsuario,
                        COUNT(gf.idGuia) as like_count
                 FROM Guia g
                 JOIN Usuario u ON g.idUsuario = u.idUsuario
                 LEFT JOIN GuiasFavoritas gf ON g.idGuia = gf.idGuia
                 WHERE g.tema = ?
                 GROUP BY g.idGuia";
-        $stmt = $this->connection->prepare($sql);
-        $stmt->execute([$tema]);
-        return $stmt->fetchAll();
-    } else {
-        $sql = "SELECT g.idGuia, g.titulo, g.descripcion, g.fecha, g.tema, u.nickname, g.fichero, g.idUsuario,
+            $stmt = $this->connection->prepare($sql);
+            $stmt->execute([$tema]);
+            return $stmt->fetchAll();
+        } else {
+            $sql = "SELECT g.idGuia, g.titulo, g.descripcion, g.fecha, g.tema, u.nickname, g.fichero, g.idUsuario,
                        COUNT(gf.idGuia) as like_count
                 FROM Guia g
                 JOIN Usuario u ON g.idUsuario = u.idUsuario
                 LEFT JOIN GuiasFavoritas gf ON g.idGuia = gf.idGuia
                 GROUP BY g.idGuia";
-        $stmt = $this->connection->prepare($sql);
-        $stmt->execute();
-        return $stmt->fetchAll();
+            $stmt = $this->connection->prepare($sql);
+            $stmt->execute();
+            return $stmt->fetchAll();
+        }
     }
-}
 
 
     public function getGuiasByFecha($order)
@@ -210,11 +210,10 @@ class Guia
         return $stmt->fetch();
     }
     public function getLikeCount($idGuia)
-{
-    $sql = "SELECT COUNT(*) as likeCount FROM GuiasFavoritas WHERE idGuia = ?";
-    $stmt = $this->connection->prepare($sql);
-    $stmt->execute([$idGuia]);
-    return $stmt->fetchColumn(); // Retorna el conteo de likes
-}
-
+    {
+        $sql = "SELECT COUNT(*) as likeCount FROM GuiasFavoritas WHERE idGuia = ?";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute([$idGuia]);
+        return $stmt->fetchColumn(); // Retorna el conteo de likes
+    }
 }

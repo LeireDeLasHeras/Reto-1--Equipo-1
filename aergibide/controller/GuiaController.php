@@ -1,34 +1,39 @@
 <?php
 require_once "model/Guia.php";
 
-class GuiaController { 
+class GuiaController
+{
     public $view;
     public $model;
 
-    public function __construct(){
+    // Constructor que inicializa la vista y el modelo.
+    public function __construct()
+    {
         $this->view = "";
         $this->model = new Guia();
     }
 
-    public function list(){
+    // Función que lista las guías según el filtro de tema.
+    public function list()
+    {
         $this->view = "list";
 
-        if(isset($_GET['tema'])){
-            if($_GET['tema'] == 'MasRecientes'){
+        if (isset($_GET['tema'])) {
+            if ($_GET['tema'] == 'MasRecientes') {
                 $data = [
                     'guia' => $this->model->getGuiasByFecha('DESC'),
                     'guardadas' => $this->model->getGuiasGuardadasUsuario(),
                     'favoritas' => $this->model->getGuiasFavoritasUsuario(),
                     'favoritasGenerales' => $this->model->getGuiasFavoritasGenerales()
                 ];
-            } else if($_GET['tema'] == 'MasAntiguos'){
+            } else if ($_GET['tema'] == 'MasAntiguos') {
                 $data = [
                     'guia' => $this->model->getGuiasByFecha('ASC'),
                     'guardadas' => $this->model->getGuiasGuardadasUsuario(),
                     'favoritas' => $this->model->getGuiasFavoritasUsuario(),
                     'favoritasGenerales' => $this->model->getGuiasFavoritasGenerales()
                 ];
-            } else if($_GET['tema'] == 'MasPopulares'){
+            } else if ($_GET['tema'] == 'MasPopulares') {
                 $data = [
                     'guia' => $this->model->getGuiasByLikes(),
                     'guardadas' => $this->model->getGuiasGuardadasUsuario(),
@@ -54,11 +59,13 @@ class GuiaController {
         return $data;
     }
 
-    public function view() {
-        $this->view= "view";
+    // Función que muestra los detalles de una guía específica.
+    public function view()
+    {
+        $this->view = "view";
         $id = $_GET["id"];
-        
-        $data = [   
+
+        $data = [
             'guia' => $this->model->getGuiaById($id),
             'isSaved' => $this->model->isSaved($id),
             'isLiked' => $this->model->isLiked($id)
@@ -66,9 +73,11 @@ class GuiaController {
         return $data;
     }
 
-    public function create() {
+    // Función que crea una nueva guía.
+    public function create()
+    {
         $this->view = "create";
-    
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $filePath = null;
             if (isset($_FILES['archivos']) && $_FILES['archivos']['error'] === UPLOAD_ERR_OK) {
@@ -76,7 +85,7 @@ class GuiaController {
                 $fileName = $_FILES['archivos']['name'];
                 $uploadFileDir = './uploads/guias/pdf/';
                 $destPath = $uploadFileDir . $fileName;
-            
+
                 if (!is_dir($uploadFileDir)) {
                     mkdir($uploadFileDir, 0777, true);
                 }
@@ -87,80 +96,89 @@ class GuiaController {
                     return;
                 }
             }
-        
+
             $param = $_POST;
             $param['file_path'] = $filePath;
-        
+
             $id = $this->model->crearGuia($param);
-        
+
             if ($id) {
                 $_GET["response"] = true;
             } else {
                 $_GET["response"] = false;
             }
-        
+
             return $id;
         } else {
             return;
         }
     }
 
-    public function delete(){
+    // Función que elimina una guía.
+    public function delete()
+    {
         $this->view = "delete";
         $id = $_GET["id"];
         return $this->model->borrarGuia($id);
     }
 
-    public function save() {
-        $idGuia = $_GET['id'];    
+    // Función que guarda una guía como favorita para un usuario.
+    public function save()
+    {
+        $idGuia = $_GET['id'];
         $idUsuario = $_SESSION['user_data']['idUsuario'];
 
         $result = $this->model->save($idUsuario, $idGuia);
         $response  = [
             'success' => $result
-        ];  
+        ];
 
         return json_encode($response);
     }
 
-    public function unsave(){
-        $idGuia = $_GET['id'];    
+    // Función que elimina una guía de las guardadas de un usuario.
+    public function unsave()
+    {
+        $idGuia = $_GET['id'];
         $idUsuario = $_SESSION['user_data']['idUsuario'];
 
         $result = $this->model->unsave($idUsuario, $idGuia);
         $response  = [
             'success' => $result
-        ];  
+        ];
 
         return json_encode($response);
     }
 
-    public function like() {
-        $idGuia = $_POST['id'];    
+    // Función que marca una guía como "like" para un usuario.
+    public function like()
+    {
+        $idGuia = $_POST['id'];
         $idUsuario = $_SESSION['user_data']['idUsuario'];
-    
+
         $result = $this->model->like($idUsuario, $idGuia);
         $newLikeCount = $this->model->getLikeCount($idGuia); // Método para obtener el conteo actualizado
         $response = [
             'success' => $result,
             'newLikeCount' => $newLikeCount
-        ];  
-    
+        ];
+
         return $response;
     }
-    
-    public function unlike() {
-        $idGuia = $_POST['id'];    
+
+    // Función que elimina el "like" de una guía.
+    public function unlike()
+    {
+        $idGuia = $_POST['id'];
         $idUsuario = $_SESSION['user_data']['idUsuario'];
-    
+
         $result = $this->model->unlike($idUsuario, $idGuia);
         $newLikeCount = $this->model->getLikeCount($idGuia); // Método para obtener el conteo actualizado
         $response = [
             'success' => $result,
             'newLikeCount' => $newLikeCount
-        ];  
-    
+        ];
+
         return $response;
     }
-
 }

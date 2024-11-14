@@ -12,8 +12,8 @@
 ?>
 
 <div class="main-content">
-    <div class="content-left">        
-        <?php if (empty($dataToView["data"]["pregunta"])): ?>      
+    <div class="content-left">
+        <?php if (empty($dataToView["data"]["pregunta"])): ?>
             <p class="empty-data">A&uacute;n no hay preguntas</p>
         <?php else: ?>
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Vista para el login de usuario
  * 
@@ -16,7 +17,7 @@
 <main>
     <div class="logo">
         <img class="logo_aergibide" src="assets/img/logo_aergibide.png" alt="Logo Aergibide">
-    </div> 
+    </div>
     <form action="" method="POST">
         <label for="correo">Correo electrónico:</label>
         <input type="text" id="correo" class="input_correo" name="correo" required>
@@ -28,4 +29,3 @@
         <a href="index.php?controller=user&action=register" class="boton_registro">Registrarme</a>
     </form>
 </main>
-
