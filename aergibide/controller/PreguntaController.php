@@ -18,7 +18,6 @@ class PreguntaController
     {
         $this->view = "list";
 
-        // Verifica el tema para aplicar el filtro adecuado
         if (isset($_GET['tema'])) {
             if ($_GET['tema'] == 'MasRecientes') {
                 $data = [
@@ -71,9 +70,6 @@ class PreguntaController
             'pregunta' => $this->model->getPreguntaById($id),
             'isSaved' => $this->model->isSaved($id),
             'isLiked' => $this->model->isLiked($id),
-            'respuestasGuardadas' => $this->model->getRespuestasGuardadasUsuario(),
-            'respuestasFavoritas' => $this->model->getRespuestasFavoritasUsuario(),
-            'respuestas' => $this->model->getRespuestasByPreguntaId($id)
         ];
 
         return $data;
