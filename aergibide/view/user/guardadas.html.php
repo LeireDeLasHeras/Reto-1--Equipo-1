@@ -97,6 +97,7 @@
             <p><a href="index.php?controller=user&action=guardadas&tipo=preguntas" class="tema">Preguntas</a></p>
             <p><a href="index.php?controller=user&action=guardadas&tipo=tutoriales" class="tema">Tutoriales</a></p>
             <p><a href="index.php?controller=user&action=guardadas&tipo=guias" class="tema">Guias</a></p>
+            <p><a href="index.php?controller=user&action=guardadas&tipo=respuestas" class="tema">Respuestas</a></p>
         </div>
     </div>
 </div>
