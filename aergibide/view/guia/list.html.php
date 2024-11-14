@@ -78,6 +78,7 @@
                                 <a class="boton-like" href="#" id-data="<?php echo $guia['idGuia']; ?>" isLiked="<?php echo $liked ? 'true' : 'false'; ?>" controller-data="guia">
                                     <img class="like-icon" src="assets/img/logo_cora_<?php echo $liked ? 'r' : 'l'; ?>.png" alt="Icono Like">
                                 </a>
+                                <span class="like-count" id="like-count-<?php echo $guia['idGuia']; ?>"><?php echo $guia['like_count']; ?></span>
                             </p>
                         </div>
 

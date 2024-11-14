@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Vista para listar los tutoriales.
  * 
@@ -33,36 +34,36 @@
                                 break;
                             endif;
                         endforeach;
-                        ?> 
+                        ?>
 
-                        <a class="bookmark" href="#" 
-                           id-data="<?php echo $tutorial['idTutorial']; ?>" 
-                           isSaved="<?php echo $saved ? 'true' : 'false'; ?>" 
-                           controller-data="tutorial">
-                            <img src="assets/img/logo_guardar_<?php echo $saved ? 'r' : 'l'; ?>.png" 
-                                 alt="Icono Bookmark guardado">
+                        <a class="bookmark" href="#"
+                            id-data="<?php echo $tutorial['idTutorial']; ?>"
+                            isSaved="<?php echo $saved ? 'true' : 'false'; ?>"
+                            controller-data="tutorial">
+                            <img src="assets/img/logo_guardar_<?php echo $saved ? 'r' : 'l'; ?>.png"
+                                alt="Icono Bookmark guardado">
                         </a>
 
-                        <?php 
+                        <?php
                         //Comprueba si el usuario es el creador del tutorial o es admin para cargar el icono de borrar
                         if ($tutorial['idUsuario'] == $_SESSION['user_data']['idUsuario'] || $_SESSION['user_data']['tipo'] == 'admin'): ?>
-                            <button class="eliminar" 
-                                    onclick="window.location.href='index.php?controller=tutorial&action=delete&id=<?php echo $tutorial['idTutorial']; ?>'">
-                                <img class="eliminar-img" src="assets/img/logo_borrar.png" 
-                                     alt="Icono Borrar">
-                                <img class="eliminar-img-hover" src="assets/img/logo_borrar_rojo.png" 
-                                     alt="Icono Borrar">
+                            <button class="eliminar"
+                                onclick="window.location.href='index.php?controller=tutorial&action=delete&id=<?php echo $tutorial['idTutorial']; ?>'">
+                                <img class="eliminar-img" src="assets/img/logo_borrar.png"
+                                    alt="Icono Borrar">
+                                <img class="eliminar-img-hover" src="assets/img/logo_borrar_rojo.png"
+                                    alt="Icono Borrar">
                             </button>
                         <?php endif; ?>
 
                     </h3>
-                    
+
                     <div class="contenido-tutorial">
                         <iframe width="300" height="168" src="https://www.youtube.com/embed/<?php echo $tutorial["enlace"]; ?>"
-                            title="YouTube video player" frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                             referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                                
+
                         <div class="details-tutorial">
                             <p><?php echo $tutorial["tema"]; ?></p>
                             <p><?php echo $tutorial["fecha"]; ?></p>
@@ -82,14 +83,12 @@
                             endif;
                         endforeach;
                         ?>
-                        
-                        <a class="boton-like" href="#" 
-                           id-data="<?php echo $tutorial['idTutorial']; ?>" 
-                           isLiked="<?php echo $liked ? 'true' : 'false'; ?>" 
-                           controller-data="tutorial">
-                            <img class="like-icon" src="assets/img/logo_cora_<?php echo $liked ? 'r' : 'l'; ?>.png" 
-                                 alt="Icono Like">
+                        <a class="boton-like" href="#" id-data="<?php echo $tutorial['idTutorial']; ?>" isLiked="<?php echo $liked ? 'true' : 'false'; ?>" controller-data="tutorial">
+                            <img class="like-icon" src="assets/img/logo_cora_<?php echo $liked ? 'r' : 'l'; ?>.png"
+                                alt="Icono Like">
                         </a>
+                        <span class="like-count" id="like-count-<?php echo $tutorial['idTutorial']; ?>"><?php echo $tutorial['like_count']; ?></span>
+
                     </p>
 
                 </div>

@@ -19,6 +19,7 @@ var favoritos = document.getElementsByClassName("bookmark");
 
             xhr.open('POST', 'index.php?controller=' + controller + '&action=' + action + '&id=' + id);
             xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest'); // Agrega esta línea
 
             xhr.onload = function() {
                 if (this.status === 200) {
