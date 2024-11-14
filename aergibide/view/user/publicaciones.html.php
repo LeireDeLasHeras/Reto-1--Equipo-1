@@ -102,8 +102,8 @@
             <p><a href="index.php?controller=user&action=publicaciones&tipo=todas" class="tema">Todos</a></p>
             <p><a href="index.php?controller=user&action=publicaciones&tipo=preguntas" class="tema">Preguntas</a></p>
             <p><a href="index.php?controller=user&action=publicaciones&tipo=tutoriales" class="tema">Tutoriales</a></p>
-            <p><a href="index.php?controller=user$action=publicaciones&tipo=guias" class="tema">Guias</a></p>
-            <p><a href="index.php?controller=user$action=publicaciones&tipo=respuestas" class="tema">Respuestas</a></p>
+            <p><a href="index.php?controller=user&action=publicaciones&tipo=guias" class="tema">Guias</a></p>
+            <p><a href="index.php?controller=user&action=publicaciones&tipo=respuestas" class="tema">Respuestas</a></p>
         </div>
     </div>
 </div>
