@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Vista para mostrar las publicaciones de un usuario
  * 

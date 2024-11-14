@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Vista para eliminar una respuesta.
  * 
@@ -20,4 +21,3 @@
         </form>
     </div>
 </div>
-        

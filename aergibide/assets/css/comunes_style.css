@@ -36,19 +36,19 @@ body {
 }
 
 .navbar .menu {
-    display: flex; 
+    display: flex;
 }
 
 .navbar .menu ul {
-    display: flex; 
-    list-style-type: none; 
+    display: flex;
+    list-style-type: none;
 }
 
 .navbar .menu li {
-    padding: 1.6em 7em; 
+    padding: 1.6em 7em;
 }
 
-.navbar .menu li:hover{
+.navbar .menu li:hover {
     background-color: #63D471;
 }
 
@@ -81,6 +81,7 @@ body {
     border-radius: 50%;
     margin-left: -70px;
 }
+
 .main-content {
     display: flex;
     flex-grow: 1;
@@ -96,7 +97,7 @@ body {
 }
 
 .contenido {
-    width:100%;
+    width: 100%;
     background-color: #7C90A0;
     position: relative;
     padding: 20px;
@@ -126,13 +127,18 @@ body {
     text-align: center;
     outline: none;
     padding: 10px;
-    -webkit-appearance: none; /* Para Chrome y Safari */
-    -moz-appearance: none; /* Para Firefox */
-    appearance: none; /* Para navegadores modernos */
+    -webkit-appearance: none;
+    /* Para Chrome y Safari */
+    -moz-appearance: none;
+    /* Para Firefox */
+    appearance: none;
+    /* Para navegadores modernos */
 }
+
 .user-options:hover {
     text-decoration: underline;
 }
+
 .order-button {
     margin-left: 10px;
     height: 40px;
@@ -160,6 +166,7 @@ body {
     text-decoration: none;
     font-weight: bold;
 }
+
 .content-left a:hover {
     color: #63D471;
 }
@@ -167,7 +174,7 @@ body {
 
 .add-post {
     position: fixed;
-    top: 80vh; 
+    top: 80vh;
     right: 60vh;
     z-index: 100;
 }
@@ -175,7 +182,7 @@ body {
 .add-icon {
     width: 60px;
     height: 60px;
-    position: fixed; 
+    position: fixed;
     background: none;
     border: none;
     margin-right: 7.5px;
@@ -184,10 +191,10 @@ body {
 }
 
 .add-icon img {
-    width: 100%; 
+    width: 100%;
     height: 100%;
-    background-color: transparent;  
-}  
+    background-color: transparent;
+}
 
 .sidebar {
     width: 20%;
@@ -203,7 +210,7 @@ body {
     text-align: center;
     font-size: 1.7em;
     border-bottom: 3px solid white;
-    }
+}
 
 .sidebar .topics {
     text-align: center;
@@ -233,16 +240,21 @@ body {
     width: 100%;
     z-index: 100;
 }
-.main-content-vistaPregunta, .main-content-vistaGuia, .main-content-vistaTutorial, .main-content-user-edit {
-    min-height: calc(100vh - 75px); /* Asegura que el contenido ocupe al menos el 100% de la altura de la ventana menos la altura del footer */
+
+.main-content-vistaPregunta,
+.main-content-vistaGuia,
+.main-content-vistaTutorial,
+.main-content-user-edit {
+    min-height: calc(100vh - 75px);
+    /* Asegura que el contenido ocupe al menos el 100% de la altura de la ventana menos la altura del footer */
 }
 
 /* Estilos para linea blanca debajo de boton like */
 
 .num-like {
-    margin-bottom: 5px; 
+    margin-bottom: 5px;
     border-bottom: 1px solid white;
-    padding-bottom: 20px; 
+    padding-bottom: 20px;
 }
 
 /* Estilos para PaginaPreguntas */
@@ -255,10 +267,10 @@ body {
 }
 
 .bookmark img {
-    width: 24px; 
+    width: 24px;
     height: 24px;
-    background-color: transparent;  
-}   
+    background-color: transparent;
+}
 
 .eliminar {
     background: none;
@@ -268,7 +280,7 @@ body {
 }
 
 .eliminar img {
-    width: 26px; 
+    width: 26px;
     height: 26px;
 }
 
@@ -298,10 +310,10 @@ body {
 }
 
 .boton-like img {
-    width: 20px; 
+    width: 20px;
     height: 20px;
-    background-color: transparent;  
-}   
+    background-color: transparent;
+}
 
 .post {
     background-color: #7C90A0;
@@ -325,6 +337,7 @@ body {
 .video-details p {
     margin-bottom: 5px;
 }
+
 .contenido-tutorial {
     display: flex;
     align-items: flex-start;
@@ -355,38 +368,41 @@ body {
 }
 
 .details-tutorial p:first-of-type {
-    font-size: 1.1em; 
+    font-size: 1.1em;
 }
 
 
 /* Estilos para PaginaGuias */
 
-.download-button, .download-button-viewGuia {
-    background-color: #4E5166; 
-    color: white; 
+.download-button,
+.download-button-viewGuia {
+    background-color: #4E5166;
+    color: white;
     font-size: 12px;
     font-weight: bold;
     border: none;
-    border-radius: 5px; 
+    border-radius: 5px;
     padding: 6px 10px;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.3s;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); 
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     margin-top: 10px;
 }
 
-.download-button-viewGuia{
+.download-button-viewGuia {
     background-color: white;
     color: #4E5166;
 }
 
-.download-button:hover, .download-button-viewGuia:hover {
-    background-color: #63D471; 
-    transform: translateY(-3px); 
+.download-button:hover,
+.download-button-viewGuia:hover {
+    background-color: #63D471;
+    transform: translateY(-3px);
 }
 
-.download-button:active, .download-button-viewGuia:active {
-    transform: translateY(0); 
+.download-button:active,
+.download-button-viewGuia:active {
+    transform: translateY(0);
 }
 
 
@@ -394,10 +410,10 @@ body {
 .content-left-borrar {
     display: flex;
     flex-direction: column;
-    justify-content: center; 
-    align-items: center; 
-    text-align: center; 
-    position: fixed; 
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -437,13 +453,16 @@ body {
 
 .content-left-borrar .borrar input[type="submit"]:hover,
 .content-left-borrar .borrar input[type="button"]:hover {
-    background-color: #63D471; /* Color de fondo al pasar el mouse */
-    transform: translateY(-3px); /* Efecto de elevación */
+    background-color: #63D471;
+    /* Color de fondo al pasar el mouse */
+    transform: translateY(-3px);
+    /* Efecto de elevación */
 }
 
 .content-left-borrar .borrar input[type="submit"]:active,
 .content-left-borrar .borrar input[type="button"]:active {
-    transform: translateY(0); /* Vuelve al nivel original al hacer clic */
+    transform: translateY(0);
+    /* Vuelve al nivel original al hacer clic */
 }
 
 /* Estilo páginas View */
@@ -466,7 +485,7 @@ body {
     height: fit-content;
 }
 
-.content-left-vistaTutorial{
+.content-left-vistaTutorial {
     min-width: 660px;
     max-width: 660px;
 }
@@ -542,27 +561,30 @@ body {
     cursor: pointer;
     border-radius: 4px;
     transition: all 0.3s ease;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .content-left-vistaPregunta .add-respuesta button:hover {
     background-color: #63D471;
     transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 
 /*Estilo List Usuarios*/
-.titulo{
+.titulo {
     color: white;
 }
-.username{
+
+.username {
     padding-left: 1.25em;
 }
-.seccion{
+
+.seccion {
     color: white;
     padding-left: 1em;
 }
+
 .container-u-p ul li,
 .container-u-p p {
     color: white;
@@ -570,15 +592,18 @@ body {
     padding-left: 2em;
     line-height: 30px;
 }
-.container-u-p a{
+
+.container-u-p a {
     color: white;
     text-decoration: none;
     transition: color 0.2s;
 }
-.container-u-p a:hover{
+
+.container-u-p a:hover {
     color: #63D471;
 }
-.admin-switch{
+
+.admin-switch {
     margin-left: 2em;
 }
 
@@ -588,14 +613,14 @@ body {
     color: white;
     border-radius: 10px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-}  
+}
 
 .usuarios-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); 
-    gap: 20px; 
-    padding: 100px; 
-}  
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 100px;
+}
 
 /* Estilo Pagina Publicaciones */
 
@@ -647,13 +672,14 @@ body {
 }
 
 .content-left-publicacion-guardados a:hover {
-    color: #63D471; 
+    color: #63D471;
 }
 
 .default {
     font-style: italic;
     color: white;
 }
+
 .no-guardadas {
     color: white;
     font-style: italic;
@@ -667,20 +693,22 @@ body {
         width: 90%;
     }
 
-    .content-left, .sidebar {
+    .content-left,
+    .sidebar {
         margin: 0 0 20px 0;
     }
 }
 
 /* Formularios */
 
-.main-content-formulario{
+.main-content-formulario {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     padding-top: 5em;
 }
+
 .formulario-post {
     background-color: #4E5166;
     padding: 30px;
@@ -701,7 +729,9 @@ body {
     font-size: 1.2em;
 }
 
-.formulario-post input, .formulario-post select, .formulario-post textarea{
+.formulario-post input,
+.formulario-post select,
+.formulario-post textarea {
     margin-bottom: 20px;
     padding: 10px;
     border: none;
@@ -745,7 +775,7 @@ body {
 
 
 .error-container {
-    background-color: white; 
+    background-color: white;
     color: #333;
     padding: 10px;
     margin-top: 5px;
@@ -754,9 +784,9 @@ body {
     align-items: center;
     font-size: 0.9em;
     position: relative;
-    width: 100%; 
+    width: 100%;
     max-width: 300px;
-    border: 1px solid lightgray; 
+    border: 1px solid lightgray;
     box-sizing: border-box;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
@@ -778,13 +808,14 @@ body {
     left: 10px;
     border-width: 0 10px 10px 10px;
     border-style: solid;
-    border-color: transparent transparent white transparent; 
+    border-color: transparent transparent white transparent;
 }
 
 /* Estilos para los botones de submit y cancelar en el formulario */
 .form-buttons .submit-button,
 .form-buttons .cancel-button {
-    background-color: #798C9C; /* Color de fondo inicial */
+    background-color: #798C9C;
+    /* Color de fondo inicial */
     color: white;
     border: none;
     padding: 10px 20px;
@@ -795,13 +826,16 @@ body {
 
 .form-buttons .submit-button:hover,
 .form-buttons .cancel-button:hover {
-    background-color: #63D471; /* Color de fondo al pasar el mouse */
-    transform: translateY(-3px); /* Efecto de elevación */
+    background-color: #63D471;
+    /* Color de fondo al pasar el mouse */
+    transform: translateY(-3px);
+    /* Efecto de elevación */
 }
 
 .form-buttons .submit-button:active,
 .form-buttons .cancel-button:active {
-    transform: translateY(0); /* Vuelve al nivel original al hacer clic */
+    transform: translateY(0);
+    /* Vuelve al nivel original al hacer clic */
 }
 
 .main-content-user-edit {
@@ -814,7 +848,9 @@ body {
     padding-top: 6em;
 }
 
-#bookmark-view, #like-view, #eliminar-view {
+#bookmark-view,
+#like-view,
+#eliminar-view {
     float: right;
 }
 
@@ -828,4 +864,3 @@ body {
     color: white;
     font-style: italic;
 }
-

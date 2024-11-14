@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Vista para eliminar un tutorial.
  * 

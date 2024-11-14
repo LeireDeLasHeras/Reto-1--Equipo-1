@@ -60,11 +60,15 @@ label {
     margin-bottom: 8px;
     color: white;
     font-size: 15px;
-    text-align: left; 
+    text-align: left;
     width: 100%;
 }
 
-.input_nickname, .input_nombre, .input_apellido, .input_correo, .input_password {
+.input_nickname,
+.input_nombre,
+.input_apellido,
+.input_correo,
+.input_password {
     width: 100%;
     height: 48px;
     background-color: #9FABB5;
@@ -76,16 +80,25 @@ label {
     transition: background-color 0.2s ease, outline 0.2s ease;
 }
 
-.input_nickname:hover, .input_nombre:hover, .input_apellido:hover, .input_correo:hover, .input_password:hover {
+.input_nickname:hover,
+.input_nombre:hover,
+.input_apellido:hover,
+.input_correo:hover,
+.input_password:hover {
     background-color: #9DA6AF;
 }
 
-.input_nickname:focus, .input_nombre:focus, .input_apellido:focus, .input_correo:focus, .input_password:focus {
+.input_nickname:focus,
+.input_nombre:focus,
+.input_apellido:focus,
+.input_correo:focus,
+.input_password:focus {
     outline: 2px solid #4E5166;
     background-color: #fff;
 }
 
-.boton_registro, .boton_cancelar_registro {
+.boton_registro,
+.boton_cancelar_registro {
     background-color: #4E5166;
     border-radius: 6px;
     text-align: center;
@@ -99,12 +112,13 @@ label {
     max-width: 180px;
     border: none;
     outline: none;
-    box-shadow: none;   
+    box-shadow: none;
     transition: background-color 0.2s ease;
     cursor: pointer;
 }
 
-.boton_registro:hover, .boton_cancelar_registro:hover {
+.boton_registro:hover,
+.boton_cancelar_registro:hover {
     background-color: #414352;
 }
 
@@ -153,7 +167,7 @@ label {
 }
 
 .error-container {
-    background-color: white; 
+    background-color: white;
     color: #333;
     padding: 10px;
     margin-top: 5px;
@@ -162,9 +176,9 @@ label {
     align-items: center;
     font-size: 0.9em;
     position: relative;
-    width: 100%; 
+    width: 100%;
     max-width: 300px;
-    border: 1px solid lightgray; 
+    border: 1px solid lightgray;
     box-sizing: border-box;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
@@ -186,5 +200,5 @@ label {
     left: 10px;
     border-width: 0 10px 10px 10px;
     border-style: solid;
-    border-color: transparent transparent white transparent; 
+    border-color: transparent transparent white transparent;
 }

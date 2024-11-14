@@ -1,34 +1,38 @@
 <?php
 
-class Respuesta{
-    private $table = "Respuesta";
+class Respuesta
+{
+
     private $connection;
- 
-    public function __construct(){
+
+    public function __construct()
+    {
         $this->getConection();
     }
 
-    public function getConection(){
+    public function getConection()
+    {
         $dbObj = new Db();
         $this->connection = $dbObj->conection;
     }
 
-    public function crearRespuesta($param){
+    public function crearRespuesta($param)
+    {
         $respuesta = isset($param['respuesta']) ? $param['respuesta'] : '';
-        $filePath = isset($param['file_path']) ? $param['file_path'] : ''; 
+        $filePath = isset($param['file_path']) ? $param['file_path'] : '';
 
         if (isset($param['respuesta'])) {
             try {
                 $stmt = $this->connection->prepare("INSERT INTO Respuesta (fecha, descripcion, fichero, idUsuario, idPregunta) VALUES (:fecha, :descripcion, :fichero, :idUsuario, :idPregunta)");
-    
+
                 $result = $stmt->execute([
                     ':fecha' => date('Y-m-d'),
                     ':descripcion' => $respuesta,
-                    ':fichero' => $param['file_path'], 
+                    ':fichero' => $param['file_path'],
                     ':idUsuario' => $_SESSION['user_data']['idUsuario'],
                     ':idPregunta' => $_GET['id']
-                ]);   
-    
+                ]);
+
                 //print zahor qawds son cambios pa que se entregue la rama coñi 
                 if ($result) {
                     header('Location: index.php?controller=pregunta&action=view&id=' . $_GET['id']);
@@ -36,15 +40,16 @@ class Respuesta{
                 }
                 return false;
             } catch (PDOException $e) {
-                echo "Error en la base de datos: " . $e->getMessage(); 
+                echo "Error en la base de datos: " . $e->getMessage();
                 return false;
             }
         }
         return false;
     }
-    
-    public function borrarRespuesta($idRespuesta, $idPregunta){
-        if(isset($_POST['delete'])){
+
+    public function borrarRespuesta($idRespuesta, $idPregunta)
+    {
+        if (isset($_POST['delete'])) {
             $sql = "DELETE FROM Respuesta WHERE idRespuesta = ?";
             $stmt = $this->connection->prepare($sql);
             $stmt->execute([$idRespuesta]);
@@ -53,58 +58,66 @@ class Respuesta{
         }
     }
 
-    public function isSaved($id){
+    public function isSaved($id)
+    {
         $sql = "SELECT * FROM RespuestasGuardadas WHERE idRespuesta = ? AND idUsuario = ?";
         $stmt = $this->connection->prepare($sql);
-        $stmt->execute([$id,$_SESSION['user_data']['idUsuario']]);
-        if($stmt->rowCount() > 0){
+        $stmt->execute([$id, $_SESSION['user_data']['idUsuario']]);
+        if ($stmt->rowCount() > 0) {
             return true;
         }
         return false;
     }
 
-    public function isLiked($id){
-        $sql = "SELECT * FROM RespuestasFavoritas WHERE idRespuesta = ? AND idUsuario = ?";  
+    public function isLiked($id)
+    {
+        $sql = "SELECT * FROM RespuestasFavoritas WHERE idRespuesta = ? AND idUsuario = ?";
         $stmt = $this->connection->prepare($sql);
-        $stmt->execute([$id,$_SESSION['user_data']['idUsuario']]);
-        if($stmt->rowCount() > 0){
+        $stmt->execute([$id, $_SESSION['user_data']['idUsuario']]);
+        if ($stmt->rowCount() > 0) {
             return true;
         }
         return false;
     }
 
-    public function save($idUsuario, $idRespuesta){
+    public function save($idUsuario, $idRespuesta)
+    {
         $sql = 'INSERT INTO RespuestasGuardadas (idUsuario, idRespuesta) VALUES (?,?)';
         $stmt = $this->connection->prepare($sql);
         return $stmt->execute([$idUsuario, $idRespuesta]);
     }
 
-    public function unsave($idUsuario, $idRespuesta){
+    public function unsave($idUsuario, $idRespuesta)
+    {
         $sql = 'DELETE FROM RespuestasGuardadas WHERE idUsuario = ? AND idRespuesta = ?';
         $stmt = $this->connection->prepare($sql);
         return $stmt->execute([$idUsuario, $idRespuesta]);
     }
 
-    public function like($idUsuario, $idRespuesta) {
+    public function like($idUsuario, $idRespuesta)
+    {
         $sql = 'INSERT INTO RespuestasFavoritas (idUsuario, idRespuesta) VALUES (?,?)';
         $stmt = $this->connection->prepare($sql);
         return $stmt->execute([$idUsuario, $idRespuesta]);
-    } 
+    }
 
-    public function unlike($idUsuario, $idRespuesta) {
+    public function unlike($idUsuario, $idRespuesta)
+    {
         $sql = 'DELETE FROM RespuestasFavoritas WHERE idUsuario = ? AND idRespuesta = ?';
         $stmt = $this->connection->prepare($sql);
         return $stmt->execute([$idUsuario, $idRespuesta]);
     }
 
-    public function getRespuestasByUserId($userId) {
+    public function getRespuestasByUserId($userId)
+    {
         $sql = "SELECT * FROM Respuesta WHERE idUsuario = ?";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute([$userId]);
         return $stmt->fetchAll();
     }
 
-    public function getRespuestasGuardadasByUserId($userId) {
+    public function getRespuestasGuardadasByUserId($userId)
+    {
         $sql = "SELECT Respuesta.* 
         FROM RespuestasGuardadas 
         JOIN Respuesta ON RespuestasGuardadas.idRespuesta = Respuesta.idRespuesta
@@ -113,6 +126,5 @@ class Respuesta{
         $stmt = $this->connection->prepare($sql);
         $stmt->execute([$userId]);
         return $stmt->fetchAll();
-    }  
+    }
 }
-

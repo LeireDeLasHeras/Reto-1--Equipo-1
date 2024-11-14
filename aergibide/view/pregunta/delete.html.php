@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Vista para eliminar una pregunta.
  * 
@@ -9,7 +10,6 @@
  * @copyright (c) 2024, Oier Albeniz, Leire de las Heras, Joseba Fernández
  */
 ?>
-
 
 <div class="main-content">
     <div class="content-left-borrar">

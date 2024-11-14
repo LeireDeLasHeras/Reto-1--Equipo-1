@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Vista para crear una pregunta.
  * 
@@ -19,7 +20,7 @@
             <form action="index.php?controller=pregunta&action=create" method="POST">
                 <label for="titulo">Título:</label>
                 <input type="text" id="titulo" name="titulo" placeholder="Escribe el título">
-                
+
                 <label for="tema">A&ntilde;adir tema:</label>
                 <select id="tema" name="tema">
                     <option value="Seguridad">Seguridad</option>
@@ -31,7 +32,7 @@
 
                 <label for="descripcion">Descripci&oacute;n:</label>
                 <textarea id="descripcion" name="descripcion" placeholder="Escribe una descripción..."></textarea>
-                
+
                 <div class="form-buttons">
                     <button type="button" class="cancel-button">Cancelar</button>
                     <input type="submit" class="submit-button" value="Publicar">

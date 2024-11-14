@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             xhr.open('POST', 'index.php?controller=' + controller + '&action=' + action);
             xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-            xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest'); // Agrega esta línea
+            xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest'); 
 
             xhr.onload = function () {
                 if (this.status === 200) {

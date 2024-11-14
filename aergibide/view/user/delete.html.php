@@ -1,13 +1,14 @@
 <?php
-    /**
-     * Vista para eliminar un usuario
-     * 
-     * @author: Oier Albeniz
-     * @author: Leire de las Heras
-     * @author: Joseba Fernández
-     * 
-     * @copyright (c) 2024, Oier Albeniz, Leire de las Heras, Joseba Fernández
-     */
+
+/**
+ * Vista para eliminar un usuario
+ * 
+ * @author: Oier Albeniz
+ * @author: Leire de las Heras
+ * @author: Joseba Fernández
+ * 
+ * @copyright (c) 2024, Oier Albeniz, Leire de las Heras, Joseba Fernández
+ */
 ?>
 
 <div class="main-content">
@@ -20,4 +21,3 @@
         </form>
     </div>
 </div>
-        
