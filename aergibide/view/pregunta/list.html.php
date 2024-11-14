@@ -12,10 +12,9 @@
 ?>
 
 <div class="main-content">
-    <div class="content-left">
-
-        <?php if (empty($dataToView["data"]["pregunta"])): ?>
-            <p>Actualmente no hay preguntas</p>
+    <div class="content-left">        
+        <?php if (empty($dataToView["data"]["pregunta"])): ?>      
+            <p class="empty-data">A&uacute;n no hay preguntas</p>
         <?php else: ?>
 
             <?php foreach ($dataToView["data"]["pregunta"] as $pregunta): ?>

@@ -823,3 +823,9 @@ body {
     border-bottom: 1px solid #ccc;
     padding: 1em;
 }
+
+.empty-data {
+    color: white;
+    font-style: italic;
+}
+

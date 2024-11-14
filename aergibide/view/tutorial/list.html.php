@@ -15,7 +15,7 @@
     <div class="content-left">
 
         <?php if (empty($dataToView["data"]["tutorial"])): ?>
-            <p style="color: white;">A&uacute;n no hay tutoriales de este tema</p>
+            <p class="empty-data">A&uacute;n no hay tutoriales</p>
         <?php else: ?>
 
             <?php foreach ($dataToView["data"]["tutorial"] as $tutorial): ?>
@@ -107,18 +107,18 @@
     <div class="sidebar">
         <h3>Temas</h3>
         <div class="topics">
-            <p><a href="index.php?controller=pregunta&action=list" class="tema">Todos</a></p>
-            <p><a href="index.php?controller=pregunta&action=list&tema=Seguridad" class="tema">Seguridad</a></p>
-            <p><a href="index.php?controller=pregunta&action=list&tema=Aviones" class="tema">Aviones</a></p>
-            <p><a href="index.php?controller=pregunta&action=list&tema=Piezas" class="tema">Piezas</a></p>
-            <p><a href="index.php?controller=pregunta&action=list&tema=Vuelos" class="tema">Vuelos</a></p>
-            <p><a href="index.php?controller=pregunta&action=list&tema=Reparaciones" class="tema">Reparaciones</a></p>
+            <p><a href="index.php?controller=tutorial&action=list" class="tema">Todos</a></p>
+            <p><a href="index.php?controller=tutorial&action=list&tema=Seguridad" class="tema">Seguridad</a></p>
+            <p><a href="index.php?controller=tutorial&action=list&tema=Aviones" class="tema">Aviones</a></p>
+            <p><a href="index.php?controller=tutorial&action=list&tema=Piezas" class="tema">Piezas</a></p>
+            <p><a href="index.php?controller=tutorial&action=list&tema=Vuelos" class="tema">Vuelos</a></p>
+            <p><a href="index.php?controller=tutorial&action=list&tema=Reparaciones" class="tema">Reparaciones</a></p>
         </div>
         <h3>Ordenar</h3>
         <div class="topics">
-            <p><a href="index.php?controller=pregunta&action=list&tema=MasRecientes" class="tema">M&aacute;s recientes</a></p>
-            <p><a href="index.php?controller=pregunta&action=list&tema=MasAntiguos" class="tema">M&aacute;s antiguos</a></p>
-            <p><a href="index.php?controller=pregunta&action=list&tema=MasPopulares" class="tema">M&aacute;s populares</a></p>
+            <p><a href="index.php?controller=tutorial&action=list&tema=MasRecientes" class="tema">M&aacute;s recientes</a></p>
+            <p><a href="index.php?controller=tutorial&action=list&tema=MasAntiguos" class="tema">M&aacute;s antiguos</a></p>
+            <p><a href="index.php?controller=tutorial&action=list&tema=MasPopulares" class="tema">M&aacute;s populares</a></p>
         </div>
     </div>
 </div>
