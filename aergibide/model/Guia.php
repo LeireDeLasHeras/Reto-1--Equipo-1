@@ -120,14 +120,17 @@ class Guia
 
     public function getGuiasByFecha($order)
     {
-        $sql = "SELECT g.idGuia, g.titulo, g.descripcion, g.fecha, g.tema, u.nickname, g.fichero, g.idUsuario
+        $sql = "SELECT g.idGuia, g.titulo, g.descripcion, g.fecha, g.tema, u.nickname, g.fichero, g.idUsuario, COUNT(gf.idGuia) as like_count
                 FROM Guia g
                 JOIN Usuario u ON g.idUsuario = u.idUsuario
+                LEFT JOIN GuiasFavoritas gf ON g.idGuia = gf.idGuia
+                GROUP BY g.idGuia
                 ORDER BY g.fecha $order";
         $stmt = $this->connection->prepare($sql);
         $stmt->execute();
         return $stmt->fetchAll();
     }
+    
 
     public function getGuiasGuardadasUsuario()
     {
