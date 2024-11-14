@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Vista de la lista de preguntas.
  * 
@@ -12,8 +13,8 @@
 
 <div class="main-content">
     <div class="content-left">
-        
-        <?php if (empty($dataToView["data"]["pregunta"])): ?>      
+
+        <?php if (empty($dataToView["data"]["pregunta"])): ?>
             <p>Actualmente no hay preguntas</p>
         <?php else: ?>
 
@@ -33,13 +34,13 @@
                                 break;
                             endif;
                         endforeach;
-                        ?>  
+                        ?>
 
                         <a class="bookmark" href="#" id-data="<?php echo $pregunta['idPregunta']; ?>" isSaved="<?php echo $saved ? 'true' : 'false'; ?>" controller-data="pregunta">
                             <img src="assets/img/logo_guardar_<?php echo $saved ? 'r' : 'l'; ?>.png" alt="Icono Bookmark guardado">
                         </a>
-                        
-                        <?php 
+
+                        <?php
                         //Comprueba si el usuario es el creador de la pregunta o es admin para cargar el icono de borrar
                         if ($pregunta['idUsuario'] == $_SESSION['user_data']['idUsuario'] || $_SESSION['user_data']['tipo'] == 'admin') : ?>
                             <button class="eliminar" onclick="window.location.href='index.php?controller=pregunta&action=delete&id=<?php echo $pregunta['idPregunta']; ?>'">
@@ -50,10 +51,9 @@
 
                     </h3>
                     <p><?php echo $pregunta["nickname"]; ?><br><?php echo $pregunta["fecha"]; ?></p><br>
-                    <p ><?php echo strlen($pregunta['descripcion']) > 75 ? substr($pregunta['descripcion'], 0, 75) . '...' : $pregunta['descripcion']; ?></p>
+                    <p><?php echo strlen($pregunta['descripcion']) > 75 ? substr($pregunta['descripcion'], 0, 75) . '...' : $pregunta['descripcion']; ?></p>
 
                     <p class="num-like">
-
                         <?php
                         //Comprueba si la pregunta está marcada como favorita para cargar el icono de like marcado o no
                         $liked = false;
@@ -61,14 +61,13 @@
                             if ($favorita["idPregunta"] == $pregunta["idPregunta"]):
                                 $liked = true;
                                 break;
-                            endif; 
+                            endif;
                         endforeach;
                         ?>
                         <a class="boton-like" href="#" id-data="<?php echo $pregunta['idPregunta']; ?>" isLiked="<?php echo $liked ? 'true' : 'false'; ?>" controller-data="pregunta">
                             <img class="like-icon" src="assets/img/logo_cora_<?php echo $liked ? 'r' : 'l'; ?>.png" alt="Icono Like">
                         </a>
-                        
-
+                        <span class="like-count" id="like-count-<?php echo $pregunta['idPregunta']; ?>"><?php echo $pregunta['like_count']; ?></span>
                     </p>
                 </div>
             <?php endforeach; ?>

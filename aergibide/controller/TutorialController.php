@@ -104,26 +104,30 @@ class TutorialController {
     }
 
     public function like(){
-        $idTutorial = $_GET['id'];    
+        $idTutorial = $_POST['id'];    
         $idUsuario = $_SESSION['user_data']['idUsuario'];
 
         $result = $this -> model -> like($idUsuario, $idTutorial);
+        $newLikeCount = $this->model->getLikeCount($idTutorial); // Método que obtendrá el nuevo conteo de likes
         $response  = [
-            'success' => $result
+            'success' => $result,
+            'newLikeCount' => $newLikeCount
         ];  
 
-        return json_encode($response);
+        return $response;
     }
 
     public function unlike(){
-        $idTutorial = $_GET['id'];    
+        $idTutorial = $_POST ['id'];    
         $idUsuario = $_SESSION['user_data']['idUsuario'];
 
         $result = $this -> model -> unlike($idUsuario, $idTutorial);
+        $newLikeCount = $this->model->getLikeCount($idTutorial); // Método que obtendrá el nuevo conteo de likes
         $response  = [
-            'success' => $result
+            'success' => $result,
+            'newLikeCount' => $newLikeCount
         ];  
 
-        return json_encode($response);
+        return $response;
     }
 }
