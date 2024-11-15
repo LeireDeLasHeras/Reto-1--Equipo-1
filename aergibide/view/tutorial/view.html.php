@@ -32,7 +32,7 @@
         <p><a href="index.php?controller=user&action=publicaciones&tipo=todas&idUsuario=<?php echo $dataToView["data"]["tutorial"]["idUsuario"]; ?>" controller-data="user"><?php echo $dataToView["data"]["tutorial"]["nickname"]; ?></a></p>
         <p><?php echo $dataToView["data"]["tutorial"]["fecha"]; ?></p>
 
-        <p><?php echo $dataToView["data"]["tutorial"]["descripcion"]; ?></p>
+        <p class="descripcion-view"><?php echo $dataToView["data"]["tutorial"]["descripcion"]; ?></p>
 
         <p><iframe width="600" height="338" src="https://www.youtube.com/embed/<?php echo $dataToView["data"]["tutorial"]["enlace"]; ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></p>
     </div>
