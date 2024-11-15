@@ -864,3 +864,7 @@ body {
     color: white;
     font-style: italic;
 }
+
+.descripcion-view {
+    text-align: justify;
+}

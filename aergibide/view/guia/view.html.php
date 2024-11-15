@@ -36,7 +36,7 @@
             </a></p>
 
         <p><?php echo $dataToView["data"]["guia"]["fecha"]; ?></p>
-        <p><?php echo $dataToView["data"]["guia"]["descripcion"]; ?></p>
+        <p class="descripcion-view"><?php echo $dataToView["data"]["guia"]["descripcion"]; ?></p>
 
         <?php if (!empty($dataToView["data"]["guia"]["fichero"])): ?>
             <a href="<?php echo $dataToView["data"]["guia"]["fichero"]; ?>" target="_blank">

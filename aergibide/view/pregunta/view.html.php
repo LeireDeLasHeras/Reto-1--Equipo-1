@@ -42,13 +42,13 @@
             </a>
         </p>
         <p><?php echo $dataToView["data"]["pregunta"]["fecha"]; ?></p>
-        <p><?php echo $dataToView["data"]["pregunta"]["descripcion"]; ?></p>
+        <p class="descripcion-view"><?php echo $dataToView["data"]["pregunta"]["descripcion"]; ?></p>
         <div class="respuestas">
             <div class="add-respuesta">
                 <a href="index.php?controller=respuesta&action=create&id=<?php echo $dataToView["data"]["pregunta"]["idPregunta"]; ?>">
                     <button>
                         Añadir Respuesta
-                    </button>
+                    </button> 
                 </a>
             </div>
             <h2>Respuestas</h2>
@@ -86,7 +86,7 @@
                             <?php echo $respuesta["nickname"]; ?>
                         </a>
                         <p><?php echo $respuesta["fecha"]; ?></p>
-                        <p><?php echo $respuesta["descripcion"]; ?></p>
+                        <p class="descripcion-view"><?php echo $respuesta["descripcion"]; ?></p>
 
                         <?php if (!empty($respuesta["fichero"])): ?>
                             <p>
