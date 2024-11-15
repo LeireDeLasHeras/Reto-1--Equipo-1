@@ -39,3 +39,5 @@
         <input type="button" id="cancel" name="cancel" class="boton_cancelar_registro" value="Cancelar" onclick="window.history.back()">
     </form>
 </main>
+
+<script src="assets/js/registro.js"></script>
